@@ -1,0 +1,60 @@
+.ui.table.about-table {
+    margin: 1vh 1vw;
+    padding: 1vh 1vw;
+    background-color: whitesmoke;
+    width: 98%
+  }
+  
+  .about-project-title{
+    font-size: 2.5rem;
+    margin: 5px;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .about-project-img {
+    width: 40vw
+  }
+  
+  .about-project-p {
+    font-size: 1.5vw;
+  }
+  
+  .ui.cards.about-team-card-container {
+    margin-top: 3%;
+    
+    justify-content: center;
+  }
+  
+  .ui.card.about-team-card {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 8%;
+  }
+  
+  .ui.card.about-team-card:hover {
+    transform: scale(1.1);
+  }
+  
+  
+  .extra.content.about-team-card-link {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .ui.table.about-table {
+      margin: 0.5vh 0.5vw;
+      padding: 0.5vh 0.5vw;
+      background-color: whitesmoke;
+      width: 90%
+    }
+  
+    .about-project-p {
+      font-size: 3.5vw;
+    }
+  
+    .about-project-img {
+      width: 95vw
+    }
+  }
