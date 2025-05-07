@@ -21,34 +21,38 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "22.x"
+          node-version: "22.x" # Matches the version seen in your logs
 
       - name: npm install, build, and test
         run: |
+          # It's generally better to fix dependency issues than use --force
+          # Consider removing --force if you can resolve dependency conflicts
           npm install --force
           npm run build --if-present
           npm run test --if-present
 
-      - name: Prepare deployment package
+      - name: Create deployment package
         run: |
-          mkdir -p ${{ github.workspace }}/deploy_package
-          # Copy build output
-          cp -r .next ${{ github.workspace }}/deploy_package/
-          # Copy public assets if you have them at the root
-          if [ -d "public" ]; then cp -r public ${{ github.workspace }}/deploy_package/; fi
-          # Copy package files for Azure to install dependencies
-          cp package.json ${{ github.workspace }}/deploy_package/
-          cp package-lock.json ${{ github.workspace }}/deploy_package/
-          # Copy Next.js config if it exists
-          if [ -f "next.config.js" ]; then cp next.config.js ${{ github.workspace }}/deploy_package/; fi
-          # Create the zip file from within the deploy_package directory
-          cd ${{ github.workspace }}/deploy_package && zip -r ../release.zip .
+          # We are zipping the repository root after the build.
+          # Azure's Oryx builder expects package.json and the lock file
+          # to run npm install on the server.
+          # We exclude node_modules because Azure will install dependencies itself.
+
+          # Optional: Clean node_modules first to ensure it's not accidentally zipped
+          rm -rf node_modules
+
+          # Create the zip file from the current directory (repo root)
+          # -r: recurse into directories
+          # .: zip the current directory
+          # -x "node_modules/*": exclude the node_modules directory and its contents
+          zip -r release.zip . -x "node_modules/*"
+        working-directory: ${{ github.workspace }} # Explicitly run this command at the root
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          # Make sure the path points to the release.zip in the workspace root
+          # Path to the zip file created in the previous step
           path: ${{ github.workspace }}/release.zip
 
   deploy:
@@ -63,7 +67,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-          path: ${{ github.workspace }}/artifact_download # Download to a specific folder
+          path: ${{ github.workspace }}/artifact_download # Download the zip to this specific folder
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
@@ -71,5 +75,6 @@ jobs:
         with:
           app-name: "cido"
           slot-name: "Production" # Or your staging slot
-          package: ${{ github.workspace }}/artifact_download/release.zip # Path to the downloaded zip
+          # Path to the downloaded zip file containing your code, package.json, and build output (.next)
+          package: ${{ github.workspace }}/artifact_download/release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B30DA89A2B249CFBD4621F7258391E0 }}
