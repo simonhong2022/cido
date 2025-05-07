@@ -31,20 +31,25 @@ jobs:
 
       - name: Prepare deployment package
         run: |
-          mkdir deploy_package
-          cp -r .next deploy_package/
-          # Ensure you have a public folder or remove/comment out the next line
-          cp -r public deploy_package/
-          cp package.json deploy_package/
-          cp package-lock.json deploy_package/
-          # cp next.config.js deploy_package/ # Uncomment if you have this file
-          cd deploy_package && zip -r ../release.zip .
+          mkdir -p ${{ github.workspace }}/deploy_package
+          # Copy build output
+          cp -r .next ${{ github.workspace }}/deploy_package/
+          # Copy public assets if you have them at the root
+          if [ -d "public" ]; then cp -r public ${{ github.workspace }}/deploy_package/; fi
+          # Copy package files for Azure to install dependencies
+          cp package.json ${{ github.workspace }}/deploy_package/
+          cp package-lock.json ${{ github.workspace }}/deploy_package/
+          # Copy Next.js config if it exists
+          if [ -f "next.config.js" ]; then cp next.config.js ${{ github.workspace }}/deploy_package/; fi
+          # Create the zip file from within the deploy_package directory
+          cd ${{ github.workspace }}/deploy_package && zip -r ../release.zip .
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          # Make sure the path points to the release.zip in the workspace root
+          path: ${{ github.workspace }}/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -58,15 +63,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+          path: ${{ github.workspace }}/artifact_download # Download to a specific folder
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "cido"
-          slot-name: "Production"
-          package: .
+          slot-name: "Production" # Or your staging slot
+          package: ${{ github.workspace }}/artifact_download/release.zip # Path to the downloaded zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B30DA89A2B249CFBD4621F7258391E0 }}
