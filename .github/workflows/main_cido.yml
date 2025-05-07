@@ -1,9 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy Node.js app to Azure Web App - cido
 
 on:
@@ -24,22 +21,39 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "22.x"
+          node-version: "22.x" # Matches the version seen in your logs
 
       - name: npm install, build, and test
         run: |
-          npm install
+          # It's generally better to fix dependency issues than use --force
+          # Consider removing --force if you can resolve dependency conflicts
+          npm install --force
           npm run build --if-present
           npm run test --if-present
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: Create deployment package
+        run: |
+          # We are zipping the repository root after the build.
+          # Azure's Oryx builder expects package.json and the lock file
+          # to run npm install on the server.
+          # We exclude node_modules because Azure will install dependencies itself.
+
+          # Optional: Clean node_modules first to ensure it's not accidentally zipped
+          rm -rf node_modules
+
+          # Create the zip file from the current directory (repo root)
+          # -r: recurse into directories
+          # .: zip the current directory
+          # -x "node_modules/*": exclude the node_modules directory and its contents
+          zip -r release.zip . -x "node_modules/*"
+        working-directory: ${{ github.workspace }} # Explicitly run this command at the root
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: release.zip
+          # Path to the zip file created in the previous step
+          path: ${{ github.workspace }}/release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,15 +67,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+          path: ${{ github.workspace }}/artifact_download # Download the zip to this specific folder
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "cido"
-          slot-name: "Production"
-          package: .
+          slot-name: "Production" # Or your staging slot
+          # Path to the downloaded zip file containing your code, package.json, and build output (.next)
+          package: ${{ github.workspace }}/artifact_download/release.zip
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B30DA89A2B249CFBD4621F7258391E0 }}
