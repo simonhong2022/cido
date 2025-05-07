@@ -1,6 +1,9 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
 name: Build and deploy Node.js app to Azure Web App - cido
 
 on:
@@ -13,7 +16,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read # This is required for actions/checkout
+      contents: read #This is required for actions/checkout
 
     steps:
       - uses: actions/checkout@v4
@@ -21,44 +24,22 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          # Use a Node.js version compatible with your project and Azure App Service.
-          # Your latest Azure logs showed v20.18.3. Aligning is good practice.
-          node-version: "20.x"
+          node-version: "22.x"
 
-      - name: npm install and build
+      - name: npm install, build, and test
         run: |
-          # Ensure npm install runs clean after fixing dependency conflicts
-          npm install 
-          # Run the build script if it exists
+          npm install
           npm run build --if-present
-          # Run tests if they exist
           npm run test --if-present
 
-      - name: Create deployment package
-        run: |
-          # We are zipping the repository root after the build.
-          # Azure's Oryx builder expects package.json and the lock file
-          # to run npm install on the server.
-          # We EXCLUDE node_modules because Azure will install dependencies itself.
-
-          # Optional: Clean node_modules first to ensure it's not accidentally zipped
-          # This is helpful if a previous step might have left node_modules.
-          # rm -rf node_modules # Uncomment this line if you want to be extra safe, but zip exclusion should be sufficient
-
-          # Create the zip file from the current directory (repo root)
-          # -r: recurse into directories
-          # .: zip the current directory
-          # -x "node_modules/*": EXCLUDE the node_modules directory and its contents
-          # -x ".git/*": EXCLUDE the .git directory
-          zip -r release.zip . -x "node_modules/*" -x ".git/*"
-        working-directory: ${{ github.workspace }} # Explicitly run this command at the root
+      - name: Zip artifact for deployment
+        run: zip release.zip . -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          # Path to the zip file created in the previous step
-          path: ${{ github.workspace }}/release.zip
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -72,15 +53,15 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
-          path: ${{ github.workspace }}/artifact_download # Download the zip to this specific folder
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
 
       - name: "Deploy to Azure Web App"
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: "cido"
-          slot-name: "Production" # Or your staging slot
-          # Path to the downloaded zip file containing your code, package.json, and build output (.next)
-          # Since node_modules is excluded, Oryx will trigger npm install on Azure.
-          package: ${{ github.workspace }}/artifact_download/release.zip
+          slot-name: "Production"
+          package: .
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9B30DA89A2B249CFBD4621F7258391E0 }}
