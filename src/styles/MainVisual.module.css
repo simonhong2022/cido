@@ -1,0 +1,11 @@
+.mainVisualWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .mainVisualSvg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }

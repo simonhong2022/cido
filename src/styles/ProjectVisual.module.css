@@ -1,0 +1,98 @@
+.projectNameText {
+  position: absolute;
+  left: 50px;
+  bottom: 60px;
+  color: #FFF;
+  font-family: "Pretendard Variable";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 190%; /* 114px */
+  z-index: 2;
+  margin-top: 12px;
+  /* Offset from Hot Project text */
+  transform: translateY(60px);
+}
+
+.hotProjectText {
+  position: absolute;
+  left: 50px;
+  bottom: 90px;
+  color: #FFF;
+  font-family: "Pretendard Variable";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 190%; /* 60.8px */
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.projectVisualWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.projectVisualSvg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.buttonGroup {
+  position: absolute;
+  right: 50px;
+  bottom: 60px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  z-index: 2;
+}
+
+.moreButton {
+  display: flex;
+  min-width: 160px;
+  padding: 4px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 100px;
+  background: var(--grays-ios-white, #FFF);
+  color: #000;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: background 0.2s, color 0.2s;
+}
+
+.moreButton:hover {
+  background: #000;
+  color: #FFF;
+}
+
+.buyButton {
+  display: flex;
+  min-width: 160px;
+  padding: 4px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  border: 1px solid var(--grays-ios-white, #FFF);
+  background: #FFF;
+  color: #000;
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.buyButton:hover {
+  background: #f2f2f2;
+}

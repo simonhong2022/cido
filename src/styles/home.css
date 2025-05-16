@@ -1,0 +1,11 @@
+/* HOME */
+.home-container {
+position: absolute;
+width: 1920px;
+height: 875px;
+left: 0px;
+top: 0px;
+
+background: #000000;
+}
+

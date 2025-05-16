@@ -1,3 +1,10 @@
+.main-bg {
+  min-height: 100vh;
+  background: #AEB3C9;
+  display: flex;
+  flex-direction: column;
+}
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -165,4 +172,12 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.mainContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
