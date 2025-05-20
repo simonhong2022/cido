@@ -6,6 +6,9 @@ import MainVisual from "../components/MainVisual";
 import ProjectVisual from "../components/ProjectVisual";
 import InterviewVisual from "../components/InterviewVisual";
 import CommunityVisual from "../components/CommunityVisual";
+import ProjectCards from "../components/ProjectCards";
+import InterviewCards from "../components/InterviewCards";
+import CommunityCards from "../components/CommunityCards";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,8 +27,11 @@ export default function Home() {
       <main className={styles.mainContainer}>
         <MainVisual />
         <ProjectVisual />
+        <ProjectCards />
         <InterviewVisual />
+        <InterviewCards />
         <CommunityVisual />
+        <CommunityCards />
       </main>
       <Footer />
     </div>

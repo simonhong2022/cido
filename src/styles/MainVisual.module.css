@@ -1,11 +1,25 @@
 .mainVisualWrapper {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    margin-top: 80px; /* Same as navbar height */
+    position: relative;
   }
   
   .mainVisualSvg {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Tablet */
+  @media screen and (max-width: 1024px) {
+    .mainVisualWrapper {
+      margin-top: 64px;
+    }
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 768px) {
+    .mainVisualWrapper {
+      margin-top: 56px;
+    }
   }

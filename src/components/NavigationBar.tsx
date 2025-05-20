@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../styles/NavigationBar.module.css";
+
 const navLinks = [
   { label: "Project", href: "#" },
   { label: "About", href: "/about" },
@@ -11,41 +12,29 @@ export default function NavigationBar() {
   return (
     <nav className={styles.navbar}>
       {/* Logo */}
-      <a href="/" style={{ display: "flex", alignItems: "center" }}>
+      <a href="/" className={styles.logo}>
         <img
           src="/Frame 38.svg"
           alt="cido logo"
-          style={{ height: 50, width: "auto", display: "block" }}
+          style={{ height: "100%", width: "auto", display: "block" }}
         />
       </a>
 
       {/* Navigation Links */}
-      <div style={{ display: "flex", gap: 48 }}>
+      <div className={styles.navLinks}>
         {navLinks.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            style={{
-              color: "white",
-              fontWeight: 700,
-              fontSize: 20,
-              textDecoration: "none",
-              fontFamily: "Montserrat, Arial, sans-serif",
-            }}
-          >
+          <a key={link.label} href={link.href} className={styles.navLink}>
             {link.label}
           </a>
         ))}
       </div>
 
       {/* Icons */}
-      <div style={{ display: "flex", gap: 32 }}>
+      <div className={styles.icons}>
         {/* Search Icon */}
         <svg
-          width="32"
-          height="32"
+          className={styles.icon}
           fill="none"
-          stroke="white"
           strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -56,10 +45,8 @@ export default function NavigationBar() {
         </svg>
         {/* User Icon */}
         <svg
-          width="32"
-          height="32"
+          className={styles.icon}
           fill="none"
-          stroke="white"
           strokeWidth="4"
           strokeLinecap="round"
           strokeLinejoin="round"

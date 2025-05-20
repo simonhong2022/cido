@@ -174,10 +174,29 @@ a.secondary {
   }
 }
 
+.mainBg {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
 .mainContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .mainContainer {
+    padding: 0;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .mainContainer {
+    padding: 0;
+  }
 }
