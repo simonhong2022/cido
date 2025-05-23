@@ -9,3 +9,30 @@ top: 0px;
 background: #000000;
 }
 
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.home main {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+  .home main {
+    padding: 0;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .home main {
+    padding: 0;
+  }
+}
+

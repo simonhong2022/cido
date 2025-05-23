@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/ProjectCards.module.css";
+import styles from "./ProjectCards.module.css";
 
 const ProjectCards = () => {
   // Example project data - you can replace this with your actual data

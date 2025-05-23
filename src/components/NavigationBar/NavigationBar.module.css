@@ -130,27 +130,27 @@
   /* Small Mobile */
   @media screen and (max-width: 480px) {
     .navbar {
-      padding: 0 16px;
+      padding: 0 14px;
     }
     
     .logo {
-      height: 30px;
+      height: 25px;
     }
     
     .navLinks {
-      gap: 16px;
+      gap: 12px;
     }
     
     .navLink {
-      font-size: 12px;
+      font-size: 10px;
     }
     
     .icons {
-      gap: 16px;
+      gap: 12px;
     }
     
     .icon {
-      width: 20px;
-      height: 20px;
+      width: 14px;
+      height: 14px;
     }
   }

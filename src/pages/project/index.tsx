@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import styles from "./Project.module.css";
+import React from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import Footer from "../../components/Footer/Footer";
-import styles from "./About.module.css";
-import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,11 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function About() {
+export default function Project() {
   return (
     <div className={styles.container}>
       <NavigationBar />
-      <main className={styles.mainContainer}></main>
+      <div className={styles.content}>
+        <p className={styles.title}>New Project</p>
+      </div>
       <Footer />
     </div>
   );

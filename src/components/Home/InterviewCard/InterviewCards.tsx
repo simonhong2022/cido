@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/InterviewCards.module.css";
+import styles from "./InterviewCards.module.css";
 
 const InterviewCards = () => {
   // Example interview data - you can replace this with your actual data
