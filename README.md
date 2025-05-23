@@ -1,40 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Cido Frontend
+
+A modern web application for designers and creative professionals to showcase their work, connect with others, and grow their professional network.
+
+## Features
+
+- **Project Showcase**: Display and browse design projects with detailed information
+- **Designer Profiles**: View and connect with professional designers
+- **Community Section**: Interactive space for designers to share and discuss
+- **Responsive Design**: Optimized for all devices from mobile to desktop
+- **Modern UI**: Clean and intuitive user interface with smooth animations
+
+## Tech Stack
+
+- React
+- TypeScript
+- CSS Modules
+- Responsive Design
+- Modern CSS Features (CSS Variables, Flexbox, Grid)
+
+## Project Structure
+
+```
+src/
+├── components/         # React components
+│   ├── NavigationBar   # Main navigation
+│   ├── ProjectCards    # Project showcase cards
+│   ├── InterviewCards  # Interview section cards
+│   └── CommunityCards  # Community section cards
+├── styles/            # CSS modules
+└── pages/            # Page components
+```
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [repository-url]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3. Start the development server
+```bash
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+4. Build for production
+```bash
+npm run build
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Design System
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Typography
+- Primary Font: Pretendard Variable
+- Secondary Font: Montserrat
 
-## Learn More
+### Colors
+- Primary: #000000
+- Secondary: #8E8E93
+- Text: #FFFFFF
+- Accent: [Your accent color]
 
-To learn more about Next.js, take a look at the following resources:
+### Components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+#### Cards
+- Project Cards: 440/490 aspect ratio
+- Interview Cards: 440/320 aspect ratio
+- Community Cards: 545/800 aspect ratio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### Navigation
+- Fixed position
+- Responsive design
+- Interactive elements
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+Project Link: [https://github.com/yourusername/cidofrontend](https://github.com/yourusername/cidofrontend)

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/CommunityCards.module.css";
+import styles from "./CommunityCards.module.css";
 
 const CommunityCards = () => {
   // Example community data - you can replace this with your actual data

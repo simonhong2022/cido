@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "../styles/NavigationBar.module.css";
+import styles from "./NavigationBar.module.css";
 
 const navLinks = [
-  { label: "Project", href: "#" },
+  { label: "Project", href: "/project" },
   { label: "About", href: "/about" },
-  { label: "Designers", href: "#" },
-  { label: "Community", href: "#" },
+  { label: "Designers", href: "/designers" },
+  { label: "Community", href: "/community" },
 ];
 
 export default function NavigationBar() {

@@ -1,0 +1,60 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 120px 120px 0;
+  position: relative;
+  flex: 1;
+}
+
+.title {
+  color: var(--Key-Color-80, #424242);
+  font-family: "Pretendard Variable", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 190%;
+  width: 180px;
+  height: 61px;
+  margin: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1440px) {
+  .content {
+    padding: 120px 80px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .content {
+    padding: 120px 48px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 120px 24px 0;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    padding: 120px 16px 0;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+} 

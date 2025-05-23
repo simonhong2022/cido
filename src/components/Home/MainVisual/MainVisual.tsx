@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styles/MainVisual.module.css";
+import styles from "./MainVisual.module.css";
 
 const MainVisual = () => (
   <div className={styles.mainVisualWrapper}>

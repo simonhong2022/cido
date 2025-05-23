@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../styles/ProjectVisual.module.css";
+import styles from "../AllVisual.module.css";
 
-const ProjectVisual = () => (
+const InterviewVisual = () => (
   <div className={styles.projectVisualWrapper}>
     <svg
       className={styles.projectVisualSvg}
@@ -13,13 +13,15 @@ const ProjectVisual = () => (
     >
       <rect width="1920" height="716" fill="#8E8E93" />
     </svg>
-    <span className={styles.hotProjectText}>Hot Project</span>
-    <span className={styles.projectNameText}>프로젝트 이름</span>
+    <span className={styles.hotProjectText}>Interview</span>
+    <span className={styles.projectNameText}>
+      완성보다 과정에서 더 많이 배웠어요
+    </span>
     <div className={styles.buttonGroup}>
       <button className={styles.moreButton}>더보기</button>
-      <button className={styles.buyButton}>구매하기</button>
+      <button className={styles.buyButton}>제안하기</button>
     </div>
   </div>
 );
 
-export default ProjectVisual;
+export default InterviewVisual;
