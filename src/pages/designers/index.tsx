@@ -3,6 +3,9 @@ import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import Footer from "../../components/Footer/Footer";
 import styles from "./Designers.module.css";
 import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
