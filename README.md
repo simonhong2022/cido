@@ -92,4 +92,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 Simon Hong - [@Simon Linkedin](https://www.linkedin.com/in/seongbong-hong-080293121/)
-Project Link: [https://github.com/yourusername/cidofrontend](https://github.com/yourusername/cidofrontend)
+SungMin Hong
+Project Link: [https://github.com/Cido-Graphics/cido-frontend](https://github.com/Cido-Graphics/cido-frontend)
