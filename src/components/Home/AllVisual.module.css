@@ -30,6 +30,11 @@
   display: block;
 }
 
+.projectVisualImage {
+  max-width: 100%;
+  height: auto;
+}
+
 .buttonGroup {
   position: absolute;
   bottom: 48px;

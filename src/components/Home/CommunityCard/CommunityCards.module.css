@@ -13,8 +13,9 @@
 }
 
 .cardWrapper {
-  flex: 0 0 calc(25% - 18px);
-  min-width: calc(25% - 18px);
+  width: 545px;
+  height: 800px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -22,7 +23,7 @@
 
 .communityCard {
   width: 100%;
-  aspect-ratio: 545/800;
+  height: 100%;
   border-radius: 20px;
   background: var(--grays-ios-gray, #8E8E93);
   overflow: hidden;
@@ -32,6 +33,57 @@
 
 .communityCard:hover {
   transform: translateY(-5px);
+}
+
+.communityCard1 {
+  background-color: #D7E1E3;
+}
+
+.communityCard2 {
+  background-color: #0041A6;
+}
+
+.communityCard3 {
+  background-color: #1D1D58;
+}
+
+.communityCard4 {
+  background-color: #7570AE;
+}
+
+.cardImage {
+  object-fit: cover;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.cardImage1 {
+  width: 443px;
+  height: 548px;
+  flex-shrink: 0;
+  aspect-ratio: 443/548;
+}
+
+.cardImage2 {
+  width: 453px;
+  height: 620px;
+  flex-shrink: 0;
+  aspect-ratio: 453/620;
+}
+
+.cardImage3 {
+  width: 530px;
+  height: 646px;
+  flex-shrink: 0;
+  aspect-ratio: 265/323;
+}
+
+.cardImage4 {
+  width: 440px;
+  height: 440px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
 }
 
 .cardContent {
@@ -45,13 +97,20 @@
 .cardTitle {
   color: var(--grays-ios-white, #FFF);
   font-family: "Pretendard Variable", sans-serif;
-  font-size: 20px;
+  font-size: 44px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 800;
   line-height: 190%;
-  margin: 0;
-  width: 174px;
-  height: 61px;
+}
+
+.cardTitle1 {
+  color: black;
+}
+
+.cardTitle2,
+.cardTitle3,
+.cardTitle4 {
+  color: white;
 }
 
 .cardDescription {
@@ -69,22 +128,12 @@
   .communityCardsContainer {
     padding: 40px 48px;
   }
-
-  .cardWrapper {
-    flex: 0 0 calc(25% - 18px);
-    min-width: calc(25% - 18px);
-  }
 }
 
 /* Tablet */
 @media screen and (max-width: 1024px) {
   .communityCardsContainer {
     padding: 32px 48px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 calc(33.333% - 16px);
-    min-width: calc(33.333% - 16px);
   }
 }
 
@@ -93,21 +142,11 @@
   .communityCardsContainer {
     padding: 24px 48px;
   }
-
-  .cardWrapper {
-    flex: 0 0 calc(50% - 12px);
-    min-width: calc(50% - 12px);
-  }
 }
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .communityCardsContainer {
     padding: 24px 24px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 100%;
-    min-width: 100%;
   }
 } 

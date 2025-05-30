@@ -13,8 +13,9 @@
 }
 
 .cardWrapper {
-  flex: 0 0 calc(25% - 18px);
-  min-width: calc(25% - 18px);
+  width: 440px;
+  height: 422px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -22,12 +23,16 @@
 
 .projectCard {
   width: 100%;
-  aspect-ratio: 440/320;
   border-radius: 20px;
   background: var(--grays-ios-gray, #8E8E93);
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
   position: relative;
+}
+
+.cardImage {
+  width: 440px;
+  height: 320px;
 }
 
 .projectCard:hover {
@@ -84,52 +89,4 @@
   color: #000000;
   margin: 0;
   text-align: left;
-}
-
-/* Desktop */
-@media screen and (max-width: 1440px) {
-  .projectCardsContainer {
-    padding: 40px 48px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 calc(25% - 18px);
-    min-width: calc(25% - 18px);
-  }
-}
-
-/* Tablet */
-@media screen and (max-width: 1024px) {
-  .projectCardsContainer {
-    padding: 32px 48px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 calc(33.333% - 16px);
-    min-width: calc(33.333% - 16px);
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 768px) {
-  .projectCardsContainer {
-    padding: 24px 48px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 calc(50% - 12px);
-    min-width: calc(50% - 12px);
-  }
-}
-
-/* Small Mobile */
-@media screen and (max-width: 480px) {
-  .projectCardsContainer {
-    padding: 24px 24px;
-  }
-
-  .cardWrapper {
-    flex: 0 0 100%;
-    min-width: 100%;
-  }
 } 

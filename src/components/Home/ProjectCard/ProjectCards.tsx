@@ -6,31 +6,35 @@ const ProjectCards = () => {
   const projects = [
     {
       id: 1,
-      title: "Project 1",
-      designer: "디자이너 이름1",
+      title: "루이스바라간 폰트 제작",
+      designer: "박소현",
       description:
         "프로젝트 1에 대한 간단한 설명입니다. 프로젝트의 주요 특징과 목적을 설명합니다.",
+      src: "/project1.png",
     },
     {
       id: 2,
-      title: "Project 2",
-      designer: "디자이너 이름2",
+      title: "A Misty Place",
+      designer: "박소현",
       description:
         "프로젝트 2에 대한 간단한 설명입니다. 프로젝트의 주요 특징과 목적을 설명합니다.",
+      src: "/project2.png",
     },
     {
       id: 3,
-      title: "Project 3",
-      designer: "디자이너 이름3",
+      title: "Making New Sequence",
+      designer: "홍영주",
       description:
         "프로젝트 3에 대한 간단한 설명입니다. 프로젝트의 주요 특징과 목적을 설명합니다.",
+      src: "/project3.png",
     },
     {
       id: 4,
-      title: "Project 4",
-      designer: "디자이너 이름4",
+      title: "2025 국제주류박람회",
+      designer: "박지현",
       description:
         "프로젝트 4에 대한 간단한 설명입니다. 프로젝트의 주요 특징과 목적을 설명합니다.",
+      src: "/project4.png",
     },
   ];
 
@@ -40,6 +44,11 @@ const ProjectCards = () => {
         {projects.map((project) => (
           <div key={project.id} className={styles.cardWrapper}>
             <div className={styles.projectCard}>
+              <img
+                src={project.src}
+                alt={project.title}
+                className={styles.cardImage}
+              />
               <div className={styles.cardOverlay}>
                 <p className={styles.cardDescription}>{project.description}</p>
               </div>
