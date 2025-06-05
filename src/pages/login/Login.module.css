@@ -1,0 +1,146 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-top: 80px; /* Adjust for fixed navbar */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px;
+  flex-grow: 1; /* Allows content to take up available space */
+}
+
+.logoContainer {
+  display: flex; /* Arrange items in a row */
+  align-items: center; /* Vertically align items */
+  margin-top: 100px;
+  margin-bottom: 61.58px;
+}
+
+.logo {
+    width: 260.949px;
+    height: 82.733px;
+    flex-shrink: 0;
+}
+
+.form {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputGroup {
+    display: flex;
+    width: 688px;
+    height: 81px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 15px;
+  border: none; /* Remove all borders */
+  border-bottom: 1px solid #e0e0ee; /* Add bottom border */
+  border-radius: 0; /* Remove border radius if not needed for bottom border only */
+  font-size: 16px;
+}
+
+.loginButton {
+  width: 689px;
+  height: 79px;
+  flex-shrink: 0;
+  padding: 15px;
+  background-color: #4b00ff; /* Blue from image */
+  border: none;
+  color: #ffffff;
+  font-family: "Pretendard Variable";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 190%; /* 45.6px */
+  cursor: pointer;
+  margin-top: 57px;
+  margin-bottom: 32px;
+  transition: background-color 0.2s ease;
+}
+
+.loginButton:hover {
+  background-color: #3a00cc;
+}
+
+.linkGroup {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.linkGroup a {
+    color: var(--grays-ios-black, #000);
+    font-family: "Pretendard Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 190%; /* 30.4px */
+    text-decoration: none;
+    margin-right: 36px;
+}
+
+.linkGroup a:hover {
+  text-decoration: underline;
+}
+
+.snsLogin {
+  margin-top: 56px;
+  text-align: center;
+  color: var(--grays-ios-gray, #8E8E93);
+  font-family: "Pretendard Variable";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 190%; /* 38px */
+}
+
+.ellipseContainer {
+    margin-top: 16px;
+}
+
+.ellipse {
+    width: 300px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.signupSection {
+  margin-top: 30px;
+  color: var(--grays-ios-gray, #8E8E93);
+  font-family: "Pretendard Variable";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 190%; /* 30.4px */
+  margin-bottom: 140px;
+}
+
+.signupSection a {
+    color: var(--grays-ios-black, #000);
+    font-family: "Pretendard Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 190%; /* 30.4px */
+    margin-left: 5px;
+}
+
+.signupSection a:hover {
+  text-decoration: underline;
+} 

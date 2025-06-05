@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./NavigationBar.module.css";
+import router from "next/router";
 
 const navLinks = [
   { label: "Project", href: "/project" },
   { label: "About", href: "/about" },
   { label: "Designers", href: "/designers" },
   { label: "Community", href: "/community" },
+  { label: "Login", href: "/login" },
 ];
 
 export default function NavigationBar() {
@@ -45,6 +47,7 @@ export default function NavigationBar() {
         </svg>
         {/* User Icon */}
         <svg
+          onClick={() => router.push("/login")}
           className={styles.icon}
           fill="none"
           strokeWidth="4"
