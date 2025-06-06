@@ -38,7 +38,8 @@
   
   .icons {
     display: flex;
-    gap: 32px;
+    gap: 24px;
+    align-items: center;
   }
   
   .icon {
@@ -46,10 +47,36 @@
     height: 32px;
     stroke: white;
     transition: stroke 0.2s ease-in-out;
+    cursor: pointer;
   }
   
   .icon:hover {
     stroke: #888;
+  }
+  
+  .navButton {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+  
+  .navButton:hover {
+    opacity: 0.8;
+  }
+  
+  .requestDesignButton {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .myWorkButton {
+    background-color: #4b00ff;
+    color: #ffffff;
+    border: none;
   }
   
   /* Desktop */
