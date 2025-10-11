@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
@@ -9,15 +10,16 @@ import 'swiper/css/pagination';
 import styles from './NewProjectBanner.module.css';
 
 const NewProjectBanner = () => {
+  const router = useRouter();
   const swiperRef = useRef<SwiperType | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
   const bannerImages = [
-    { id: 1, src: '/project/source/yeomyeong_university.png', alt: 'yeomyeong university' },
-    { id: 2, src: '/project/source/70ee3a5f178bfc6ca21fca6d79b2fbb3267f62db.jpg', alt: 'Allnsight' },
-    { id: 3, src: '/project/source/23954657a411fac81780941a5630408453210919.png', alt: 'Campus' },
-    { id: 4, src: '/project/source/Allnsight.png', alt: 'Allnsight' },
-    { id: 5, src: '/project/source/Campus.png', alt: 'Campus' },
+    { id: 1, src: '/project/source/yeomyeong_university.png', alt: 'yeomyeong university', projectId: 1 },
+    { id: 2, src: '/project/source/70ee3a5f178bfc6ca21fca6d79b2fbb3267f62db.jpg', alt: 'Allnsight', projectId: 1 },
+    { id: 3, src: '/project/source/23954657a411fac81780941a5630408453210919.png', alt: 'Campus', projectId: 1 },
+    { id: 4, src: '/project/source/Allnsight.png', alt: 'Allnsight', projectId: 1 },
+    { id: 5, src: '/project/source/Campus.png', alt: 'Campus', projectId: 1 },
   ];
 
   const toggleAutoPlay = () => {
@@ -76,7 +78,11 @@ const NewProjectBanner = () => {
         >
           {bannerImages.map((image) => (
             <SwiperSlide key={image.id} className={styles.swiperSlide}>
-              <div className={styles.bannerImageItem}>
+              <div 
+                className={styles.bannerImageItem}
+                onClick={() => router.push(`/project/${image.projectId}`)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img 
                   src={image.src}
                   alt={image.alt}

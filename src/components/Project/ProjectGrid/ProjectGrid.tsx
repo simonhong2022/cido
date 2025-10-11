@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './ProjectGrid.module.css';
 
 const ProjectGrid = () => {
+  const router = useRouter();
   const [likedItems, setLikedItems] = useState<number[]>([]);
 
   const projects = [
@@ -79,7 +81,12 @@ const ProjectGrid = () => {
   return (
     <div className={styles.gridContainer}>
       {projects.map((project) => (
-        <div key={project.id} className={styles.projectCard}>
+        <div 
+          key={project.id} 
+          className={styles.projectCard}
+          onClick={() => router.push(`/project/1`)}
+          style={{ cursor: 'pointer' }}
+        >
           <div className={styles.imageWrapper}>
             <img
               src={project.image}
