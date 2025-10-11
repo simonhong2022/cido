@@ -177,7 +177,6 @@ a.secondary {
 .mainBg {
   width: 100%;
   min-height: 100vh;
-  background: #fff;
 }
 
 .mainContainer {
@@ -185,6 +184,25 @@ a.secondary {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
+}
+
+/* 섹션 간격 - 반응형 */
+.sectionGap {
+  height: 160px; /* Desktop: 160px */
+}
+
+/* Tablet - Figma 1660px 이하 */
+@media screen and (max-width: 1660px) {
+  .sectionGap {
+    height: 120px; /* Tablet: 120px */
+  }
+}
+
+/* Mobile - Figma 744px 이하 */
+@media screen and (max-width: 744px) {
+  .sectionGap {
+    height: 80px; /* Mobile: 80px */
+  }
 }
 
 /* Large screens */

@@ -1,0 +1,154 @@
+.bannerContainer {
+  width: 100%;
+  margin-bottom: 120px;
+}
+
+.titleContainer {
+  margin-bottom: 32px;
+}
+
+/* Figma: "New Project" - 32px, weight 600 */
+.subtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #666666; /* 연한 회색으로 조정 */
+  margin: 0 0 8px 0;
+}
+
+/* Figma: "최근 프로젝트" - 48px, weight 700 */
+.title {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+/* 배너 슬라이더 */
+.sliderWrapper {
+  width: 100%;
+  position: relative;
+  padding: 20px 0 80px 0; /* 위아래 여유 공간 확보 */
+  overflow: hidden; /* 3번째 이미지를 잘라서 일부만 보이도록 */
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible; /* 호버 효과를 위해 visible */
+}
+
+.swiper :global(.swiper-wrapper) {
+  overflow: visible;
+}
+
+.swiperSlide {
+  height: auto;
+}
+
+.bannerImageItem {
+  width: 100%;
+  aspect-ratio: 504 / 630; /* Figma 비율 유지 */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bannerImageItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 재생/정지 버튼 - 오른쪽 하단 */
+.playPauseButton {
+  position: absolute;
+  bottom: 10px;
+  right: 30px; /* 30px로 조정 */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.playPauseButton:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Swiper Pagination */
+.swiper :global(.swiper-pagination) {
+  bottom: -60px !important; /* -60px로 조정 */
+}
+
+.swiper :global(.swiper-pagination-bullet) {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper :global(.swiper-pagination-bullet-active) {
+  background: #000000;
+  transform: scale(1.3);
+}
+
+/* Tablet - 1660px 이하 */
+@media screen and (max-width: 1660px) {
+  .bannerContainer {
+    margin-bottom: 80px;
+  }
+  
+  .subtitle {
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 40px;
+  }
+  
+}
+
+/* Mobile - 744px 이하 */
+@media screen and (max-width: 744px) {
+  .bannerContainer {
+    margin-bottom: 60px;
+  }
+  
+  .titleContainer {
+    margin-bottom: 24px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .playPauseButton {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 30px; /* 데스크톱과 동일하게 조정 */
+  }
+}

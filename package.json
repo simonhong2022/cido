@@ -7,20 +7,27 @@
     "build": "next build",
     "start": "next start -p 8080",
     "startAzure": "./node_modules/next/dist/bin/next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "figma:fetch": "node scripts/fetchFigmaTokens.js",
+    "figma:watch": "nodemon --watch .env.local --exec npm run figma:fetch"
   },
   "dependencies": {
     "@mui/material": "^7.1.0",
+    "axios": "^1.12.2",
+    "dotenv": "^17.2.3",
+    "figma-api": "^2.1.0-beta",
     "next": "15.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.5"
+    "semantic-ui-react": "^2.1.5",
+    "swiper": "^12.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "nodemon": "^3.1.10",
     "typescript": "^5"
   }
 }

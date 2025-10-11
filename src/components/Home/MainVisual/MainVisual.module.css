@@ -1,25 +1,98 @@
+/* Figma: HOME_Web - 1920px × 875px */
 .mainVisualWrapper {
     width: 100%;
-    margin-top: 80px; /* Same as navbar height */
+    height: 875px; /* Desktop: 875px */
+    margin-top: 101px; /* 네비게이션 높이와 동일 */
+    background-color: #000000; /* Figma: #000000 */
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .mainVisualSvg {
-    width: 100%;
-    height: auto;
-    display: block;
+  /* 메인 텍스트 - Figma Desktop: 80px, weight 800 */
+  .mainText {
+    font-family: 'Pretendard Variable', Arial, sans-serif;
+    font-size: 80px; /* Desktop */
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  
+  /* 왼쪽 대괄호 벡터 - Figma: #1918F8 */
+  .bracketLeft {
+    position: absolute;
+    left: calc(50% - 500px); /* 텍스트 중앙에서 500px 왼쪽 (80px 폰트 기준) */
+    top: 390px; /* Desktop: 390px from top */
+    width: 33px;
+    height: 99px;
+    z-index: 1;
+  }
+  
+  /* 오른쪽 대괄호 벡터 - Figma: #1918F8 */
+  .bracketRight {
+    position: absolute;
+    right: calc(50% - 500px); /* 텍스트 중앙에서 500px 오른쪽 (80px 폰트 기준) */
+    top: 390px; /* Desktop: 390px from top */
+    width: 33px;
+    height: 99px;
+    z-index: 1;
   }
 
-  /* Tablet */
-  @media screen and (max-width: 1024px) {
+  /* Tablet - Figma: HOME_Tablet 1660px × 544px, Navigation 80px */
+  @media screen and (max-width: 1660px) {
     .mainVisualWrapper {
-      margin-top: 64px;
+      height: 544px; /* Figma Tablet: 544px */
+      margin-top: 80px; /* Figma Tablet Navigation: 80px */
+    }
+    
+    .mainText {
+      font-size: 60px; /* 비율 유지: 80px * (544/875) ≈ 50px, 하지만 가독성을 위해 60px */
+    }
+    
+    .bracketLeft, .bracketRight {
+      width: 26px; /* 비율 유지: 33px * (544/875) ≈ 20.5px */
+      height: 77px; /* 비율 유지: 99px * (544/875) ≈ 61.5px */
+      top: 50%; /* 중앙 정렬 */
+      transform: translateY(-50%);
+    }
+    
+    .bracketLeft {
+      left: calc(50% - 380px); /* 텍스트 중앙 기준 (60px 폰트, 여유 공간 확보) */
+    }
+    
+    .bracketRight {
+      right: calc(50% - 380px); /* 텍스트 중앙 기준 (60px 폰트, 여유 공간 확보) */
     }
   }
 
-  /* Mobile */
-  @media screen and (max-width: 768px) {
+  /* Mobile - Figma: HOME_mobile 744px × 508px, Navigation 80px */
+  @media screen and (max-width: 744px) {
     .mainVisualWrapper {
-      margin-top: 56px;
+      height: 508px; /* Figma Mobile: 508px */
+      margin-top: 80px; /* Tablet과 동일한 Navigation 높이 */
+    }
+    
+    .mainText {
+      font-size: 40px; /* 모바일 가독성 유지 */
+      padding: 0 24px; /* 좌우 여백 추가 */
+    }
+    
+    .bracketLeft, .bracketRight {
+      width: 19px; /* 비율 유지: 33px * (508/875) ≈ 19px */
+      height: 57px; /* 비율 유지: 99px * (508/875) ≈ 57.5px */
+      top: 50%; /* 중앙 정렬 */
+      transform: translateY(-50%);
+    }
+    
+    .bracketLeft {
+      left: max(20px, calc(50% - 250px)); /* 텍스트 중앙 기준, 최소 20px 여백 */
+    }
+    
+    .bracketRight {
+      right: max(20px, calc(50% - 250px)); /* 텍스트 중앙 기준, 최소 20px 여백 */
     }
   }

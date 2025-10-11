@@ -4,17 +4,19 @@ import styles from "../AllVisual.module.css";
 const InterviewVisual = () => (
   <div className={styles.projectVisualWrapper}>
     <img
-      src="/interview_background.png"
-      alt="Description of the image"
+      src="/Cido Web_img/source/designer_image_choi.png"
+      alt="Hot Designer Banner"
       className={styles.projectVisualImage}
     />
-    <span className={styles.hotProjectText}>Interview</span>
-    <span className={styles.projectNameText}>
-      완성보다 과정에서 더 많이 배웠어요
-    </span>
+    {/* Figma 디자인: Hot Designer (32px, weight:600, #ffffff) */}
+    <span className={styles.hotProjectText}>Hot Designer</span>
+    {/* Figma 디자인: cido의 Hot 디자이너 (60px, weight:800, #ffffff) */}
+    <span className={styles.projectNameText}>cido의 Hot 디자이너</span>
     <div className={styles.buttonGroup}>
+      {/* Figma 디자인: 더보기 (24px, weight:600, #000000) */}
       <button className={styles.moreButton}>더보기</button>
-      <button className={styles.buyButton}>제안하기</button>
+      {/* Figma 디자인: 소통하기 (24px, weight:600, #ffffff) */}
+      <button className={styles.buyButton}>소통하기</button>
     </div>
   </div>
 );
