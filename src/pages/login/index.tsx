@@ -1,10 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "./Login.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import { useRouter } from "next/router";
 import CidoLogo from "./asset/cido.svg";
 import EllipseSvg from "./asset/ellipse.svg";
+import { useAuth } from "../../contexts/AuthContext";
+import { initKakao, loginWithKakao as getKakaoToken } from "../../utils/kakao";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,10 +20,23 @@ const geistMono = Geist_Mono({
 
 export default function Login() {
   const router = useRouter();
+  const { login, loginWithKakao, user, loading } = useAuth();
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    // Initialize Kakao SDK
+    initKakao();
+
+    // Redirect if already logged in
+    if (user && !loading) {
+      router.push("/");
+    }
+  }, [user, loading, router]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,12 +44,46 @@ export default function Login() {
       ...prev,
       [name]: value,
     }));
+    setError(""); // Clear error when user types
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement login logic here
-    console.log("Login attempt with:", formData);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const success = await login(formData.username, formData.password);
+      if (success) {
+        router.push("/");
+      } else {
+        setError("로그인에 실패했습니다. 사용자명과 비밀번호를 확인해주세요.");
+      }
+    } catch (err) {
+      setError("로그인 중 오류가 발생했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleKakaoLogin = async () => {
+    try {
+      setIsSubmitting(true);
+      setError("");
+
+      const accessToken = await getKakaoToken();
+      const success = await loginWithKakao(accessToken);
+
+      if (success) {
+        router.push("/");
+      } else {
+        setError("카카오 로그인에 실패했습니다.");
+      }
+    } catch (err) {
+      setError("카카오 로그인 중 오류가 발생했습니다.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -45,17 +94,20 @@ export default function Login() {
           <img src={CidoLogo.src} alt="Cido Logo" className={styles.logo} />
         </div>
 
+        {error && <div className={styles.errorMessage}>{error}</div>}
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <input
-              type="email"
-              id="email"
-              name="email"
+              type="text"
+              id="username"
+              name="username"
               className={styles.input}
-              placeholder="이메일 주소를 입력해 주세요"
-              value={formData.email}
+              placeholder="사용자명을 입력해 주세요"
+              value={formData.username}
               onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -69,11 +121,16 @@ export default function Login() {
               value={formData.password}
               onChange={handleChange}
               required
+              disabled={isSubmitting}
             />
           </div>
 
-          <button type="submit" className={styles.loginButton}>
-            로그인하기
+          <button
+            type="submit"
+            className={styles.loginButton}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "로그인 중..." : "로그인하기"}
           </button>
         </form>
 
@@ -85,11 +142,17 @@ export default function Login() {
         <div className={styles.snsLogin}>
           SNS 계정으로 로그인하기
           <div className={styles.ellipseContainer}>
-            <img
-              src={EllipseSvg.src}
-              alt="Ellipse"
-              className={styles.ellipse}
-            />
+            <button
+              onClick={handleKakaoLogin}
+              disabled={isSubmitting}
+              className={styles.kakaoButton}
+            >
+              <img
+                src={EllipseSvg.src}
+                alt="Kakao Login"
+                className={styles.ellipse}
+              />
+            </button>
           </div>
         </div>
 

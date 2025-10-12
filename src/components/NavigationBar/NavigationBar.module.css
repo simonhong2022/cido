@@ -78,6 +78,34 @@
     color: #ffffff;
     border: none;
   }
+
+  .userMenu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .userName {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .logoutButton {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .logoutButton:hover {
+    background-color: white;
+    color: black;
+  }
   
   /* Desktop */
   @media screen and (max-width: 1440px) {

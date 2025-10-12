@@ -1,10 +1,11 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "./Signup.module.css";
-import React from "react";
+import React, { useState } from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
-import Footer from "../../components/Footer/Footer";
 import { useRouter } from "next/router";
 import CidoLogo from "../login/asset/cido.svg";
+import { useAuth } from "../../contexts/AuthContext";
+import { initKakao, loginWithKakao as getKakaoToken } from "../../utils/kakao";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,9 +19,30 @@ const geistMono = Geist_Mono({
 
 export default function Signup() {
   const router = useRouter();
+  const { user, loginWithKakao } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  React.useEffect(() => {
+    initKakao();
+
+    // Redirect if already logged in
+    if (user) {
+      router.push("/");
+    }
+  }, [user, router]);
 
   const handleEmailSignupClick = () => {
     router.push("/signup/email-signup");
+  };
+
+  const handleKakaoSignup = () => {
+    // Use redirect method instead of popup
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${
+      process.env.NEXT_PUBLIC_KAKAO_JS_KEY
+    }&redirect_uri=${encodeURIComponent(
+      "http://localhost:8080/api/auth/kakao/callback"
+    )}&response_type=code`;
+    window.location.href = kakaoAuthUrl;
   };
 
   return (
@@ -40,7 +62,7 @@ export default function Signup() {
             cido의 디자인 콘텐츠를 편하게 이용하세요!
           </p>
 
-          <button className={styles.kakaoButton}>
+          <button className={styles.kakaoButton} onClick={handleKakaoSignup}>
             카카오로 3초만에 가입하기
           </button>
 

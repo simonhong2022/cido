@@ -29,6 +29,8 @@ export default function EmailSignup() {
     otherAccounts: "",
     interests: [] as string[], // Explicitly define as string[]
   });
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -38,6 +40,12 @@ export default function EmailSignup() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleVerificationCodeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setVerificationCode(e.target.value);
   };
 
   const handleInterestClick = (interest: string) => {
@@ -51,10 +59,66 @@ export default function EmailSignup() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement signup logic here with all form data
-    console.log("Signup attempt with:", formData);
-    // Example: Call context function to register user
-    // context.registerUser(formData);
+    if (!isVerifying) {
+      // Step 1: Send verification code to email
+      try {
+        const res = await fetch(
+          "https://cidobackend-gaf0dte7ajbnfqb5.koreacentral-01.azurewebsites.net/api/users/send-verification",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key":
+                process.env.NEXT_PUBLIC_CIDO_API_KEY || "YOUR_API_KEY_HERE",
+            },
+            body: JSON.stringify({ email: formData.email }),
+          }
+        );
+        if (res.ok) {
+          alert("인증 코드가 이메일로 전송되었습니다.");
+          setIsVerifying(true);
+        } else {
+          const error = await res.json();
+          alert(error.message || "인증 코드 전송에 실패했습니다.");
+        }
+      } catch (err) {
+        alert("네트워크 오류가 발생했습니다.");
+      }
+    } else {
+      // Step 2: Verify code and register
+      try {
+        const res = await fetch(
+          "https://cidobackend-gaf0dte7ajbnfqb5.koreacentral-01.azurewebsites.net/api/users/verify-and-register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key":
+                process.env.NEXT_PUBLIC_CIDO_API_KEY || "YOUR_API_KEY_HERE",
+            },
+            body: JSON.stringify({
+              email: formData.email,
+              verificationCode: verificationCode,
+              username: formData.id || formData.name,
+              password: formData.password,
+            }),
+          }
+        );
+        if (res.ok) {
+          alert("회원가입이 완료되었습니다!");
+          router.push("/login");
+        } else {
+          const error = await res.json();
+          if (error.code === "INVALID_VERIFICATION_CODE") {
+            alert("인증 코드가 올바르지 않습니다. 다시 확인해주세요.");
+          } else {
+            alert(error.message || "회원가입에 실패했습니다.");
+          }
+        }
+      } catch (err) {
+        alert("네트워크 오류가 발생했습니다.");
+      }
+    }
   };
 
   const interestsOptions = [
@@ -98,6 +162,24 @@ export default function EmailSignup() {
               required
             />
           </div>
+
+          {isVerifying && (
+            <div className={styles.inputGroup}>
+              <label htmlFor="verificationCode" className={styles.label}>
+                인증 코드 *
+              </label>
+              <input
+                type="text"
+                id="verificationCode"
+                name="verificationCode"
+                className={styles.input}
+                placeholder="이메일로 전송된 인증 코드를 입력하세요"
+                value={verificationCode}
+                onChange={handleVerificationCodeChange}
+                required
+              />
+            </div>
+          )}
 
           <div className={styles.inputGroup}>
             <label htmlFor="password" className={styles.label}>
@@ -243,7 +325,7 @@ export default function EmailSignup() {
 
           {/* Complete Application Button */}
           <button type="submit" className={styles.completeSignupButton}>
-            신청 완료하기
+            {isVerifying ? "인증 및 가입 완료" : "인증 코드 전송"}
           </button>
         </form>
       </div>
