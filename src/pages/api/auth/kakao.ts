@@ -21,6 +21,7 @@ export default async function handler(
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Cookie: req.headers.cookie || "",
       },
       body: JSON.stringify({ access_token }),
     });
@@ -31,12 +32,12 @@ export default async function handler(
       return res.status(response.status).json(data);
     }
 
-    // Set cookies from backend response
-    if (response.headers.get("set-cookie")) {
-      const cookies = response.headers.get("set-cookie")?.split(",");
-      cookies?.forEach((cookie) => {
-        res.setHeader("Set-Cookie", cookie.trim());
-      });
+    // Forward Set-Cookie headers from backend to client
+    const setCookie = response.headers.get("set-cookie");
+    if (setCookie) {
+      // Remove Domain attribute to avoid cross-domain cookie rejection when proxying
+      const cleaned = setCookie.replace(/;\s*Domain=[^;]+/gi, "");
+      res.setHeader("Set-Cookie", cleaned);
     }
 
     return res.status(200).json(data);
