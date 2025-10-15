@@ -8,9 +8,9 @@
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  margin-top: 101px;
+  margin-top: clamp(80px, 8.33vw, 160px); /* Nav 아래 반응형 여백 */
   padding: 80px 240px;
-  min-height: calc(100vh - 101px - 363px);
+  min-height: calc(100vh - 363px);
 }
 
 .loadMoreContainer {
@@ -40,7 +40,6 @@
 
 @media screen and (max-width: 1660px) {
   .projectContainer {
-    margin-top: 80px;
     padding: 60px 110px;
   }
   

@@ -6,6 +6,11 @@
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
   --background: #ffffff;
   --foreground: #171717;
+  --header-h: 101px;
+}
+
+@media (max-width: 1660px) {
+  :root { --header-h: 80px; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +26,12 @@ body {
   overflow-x: hidden;
   font-family: var(--font-geist-sans);
 }
+
+/* Anchor jump/scroll offset for fixed header */
+html { scroll-padding-top: var(--header-h); }
+
+/* Default top offset for all main content under fixed header */
+main { padding-top: var(--header-h); }
 
 body {
   color: var(--foreground);

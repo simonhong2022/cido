@@ -2,7 +2,6 @@
 .mainVisualWrapper {
     width: 100%;
     height: 875px; /* Desktop: 875px */
-    margin-top: 101px; /* 네비게이션 높이와 동일 */
     background-color: #000000; /* Figma: #000000 */
     position: relative;
     display: flex;
@@ -46,7 +45,6 @@
   @media screen and (max-width: 1660px) {
     .mainVisualWrapper {
       height: 544px; /* Figma Tablet: 544px */
-      margin-top: 80px; /* Figma Tablet Navigation: 80px */
     }
     
     .mainText {
@@ -73,7 +71,6 @@
   @media screen and (max-width: 744px) {
     .mainVisualWrapper {
       height: 508px; /* Figma Mobile: 508px */
-      margin-top: 80px; /* Tablet과 동일한 Navigation 높이 */
     }
     
     .mainText {

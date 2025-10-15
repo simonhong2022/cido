@@ -9,9 +9,9 @@
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  margin-top: 101px; /* Navigation 높이 */
+  margin-top: clamp(80px, 8.33vw, 160px);
   padding: 80px 240px; /* 프로젝트 페이지와 동일 */
-  min-height: calc(100vh - 101px - 363px);
+  min-height: calc(100vh - 363px);
 }
 
 /* 404 페이지 */
@@ -966,10 +966,7 @@
 
 /* 프로젝트 페이지와 동일한 반응형 - Tablet */
 @media screen and (max-width: 1660px) {
-  .main {
-    margin-top: 80px;
-    padding: 60px 110px;
-  }
+  .main { padding: 60px 110px; }
 }
 
 /* 프로젝트 페이지와 동일한 반응형 - Mobile */

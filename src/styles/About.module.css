@@ -1,0 +1,432 @@
+/* Container */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  /* remove max-width cap so sections can scale beyond 1920 */
+  margin: 0 auto;
+  padding-top: 0; /* override global to eliminate thin gap under nav */
+}
+
+/* Hero */
+.heroSection {
+  position: relative;
+  width: 100%;
+  /* 956px at 1920px, scale proportionally beyond/below */
+  height: clamp(520px, 49.8vw, 956px);
+}
+.heroBackground { position: absolute; inset: 0; }
+.heroImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+/* disable dark overlay since source image is already dark */
+.heroOverlay { display: none; }
+/* Figma top offset ~388px at 1920px => ~20.2vw; keep responsive paddings */
+.heroContent { position: absolute; left: 0; right: 0; top: clamp(140px, 20.2vw, 388px); padding: 0 clamp(24px, 8.33vw, 160px); color: #fff; display: flex; flex-direction: column; gap: 24px; }
+.heroTitle { font-family: 'Pretendard Variable', Arial, sans-serif; font-size: clamp(28px, 5vw, 96px); font-weight: 700; margin: 0; }
+.heroText { font-family: 'Pretendard Variable', Arial, sans-serif; font-size: clamp(14px, 1.04vw, 20px); line-height: 1.7; margin: 0; max-width: 1200px; }
+.heroTextGroup { display: flex; flex-direction: column; gap: 0; }
+.heroLine { font-family: 'Pretendard Variable', Arial, sans-serif; font-size: clamp(14px, 1.04vw, 20px); line-height: 1.7; margin: 0; white-space: normal; }
+
+/* Desktop: show line-broken text, hide merged text */
+.heroLineDesktop { display: block; }
+.heroLineMobile { display: none; }
+
+/* Vision placeholder (grid variant removed, exact variant restored below) */
+
+/* Connect grid */
+.connectSection { background: #f9f9f9; padding: clamp(80px, 6.25vw, 120px) clamp(24px, 6.25vw, 120px); display: flex; flex-direction: column; gap: 40px; }
+.connectTitle { text-align: center; font-size: clamp(28px, 2.08vw, 40px); font-weight: 700; margin: 0; color: #000; }
+.connectGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.connectCard { background: #fff; border-radius: 20px; padding: 24px; position: relative; min-height: 320px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+.connectCardTitle { font-size: clamp(24px, 2.08vw, 40px); font-weight: 600; margin: 0 0 8px; }
+.connectCardSub { font-size: clamp(18px, 1.46vw, 28px); font-weight: 600; margin: 0 0 12px; }
+.connectCardBody { font-size: clamp(14px, 1.04vw, 20px); line-height: 1.5; margin: 0 0 12px; color: #000; }
+.connectCardImage { position: absolute; right: 24px; bottom: 24px; width: clamp(180px, 16.7vw, 320px); height: clamp(180px, 16.7vw, 320px); object-fit: cover; }
+
+/* Team section */
+.teamSection { position: relative; height: clamp(420px, 41.7vw, 800px); overflow: hidden; }
+.teamImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(0.5px); }
+.teamOverlay { position: absolute; inset: 0; background: rgba(0,0,0,0.59); }
+.teamTextWrap { position: absolute; left: 50%; transform: translateX(-50%); top: clamp(140px, 13.4vw, 257px); width: min(725px, 90%); text-align: center; color: #fff; display: flex; flex-direction: column; gap: 24px; }
+.teamTitle { font-size: clamp(36px, 4.17vw, 80px); font-weight: 700; margin: 0; }
+.teamSub { font-size: clamp(16px, 1.25vw, 24px); line-height: 1.7; margin: 0; }
+
+/* CTA band */
+.ctaBand { position: relative; padding: clamp(80px, 8.33vw, 160px) clamp(24px, 6.25vw, 120px) clamp(60px, 6.25vw, 120px); background: #ffffff; }
+.ctaText { color: #000000; font-size: clamp(28px, 2.08vw, 40px); font-weight: 700; text-align: center; margin-bottom: 32px; }
+.ctaButtons { display: flex; gap: 17px; justify-content: center; flex-wrap: wrap; }
+.ctaButton { width: clamp(220px, 28.4vw, 546px); height: clamp(56px, 4.69vw, 90px); background: #1918f8; color: #fff; border: none; border-radius: 4px; font-size: clamp(16px, 1.25vw, 24px); font-weight: 700; cursor: pointer; }
+.ctaButton:hover { background: rgba(25,24,248,0.85); }
+
+/* Vision (exact from Figma desktop) */
+.visionExact {
+  position: relative;
+  width: 100%;
+  height: 1428px; /* desktop fixed height */
+  background: #212121;
+  overflow: hidden;
+}
+
+.visionHeadline {
+  position: absolute;
+  top: 196px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #ffffff;
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: -0.8px;
+}
+
+/* Left card */
+.visionCardLeftBg {
+  position: absolute;
+  top: calc(25% + 101px);
+  left: 120px;
+  width: 480px; /* shrink card */
+  height: 520px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #f2eae4 36.644%, #faf4ef 94%);
+}
+.visionCardTitleLeft {
+  position: absolute;
+  top: calc(25% + 139px);
+  left: 161px;
+  margin: 0;
+  color: #212121;
+  font: 700 40px 'Pretendard', Arial, sans-serif;
+}
+.visionCardKickerLeft {
+  position: absolute;
+  top: calc(25% + 225px);
+  left: 161px;
+  color: #212121;
+  font: 600 24px 'Pretendard', Arial, sans-serif;
+}
+.visionLeftImageWrap {
+  position: absolute;
+  top: calc(25% + 312px);
+  left: 320px; /* adjusted per feedback */
+  width: 280px; /* shrink image */
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.visionLeftImageWrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.visionLeftDesc {
+  position: absolute;
+  top: calc(75% + 23px);
+  left: 360px; /* center of left card (120px + 480/2) */
+  transform: translateX(-50%);
+  color: #f9f9f9;
+  text-align: center;
+  width: 480px; /* match card width so edges align */
+  font: 500 20px 'Pretendard Variable', Arial, sans-serif;
+  line-height: 1.7;
+}
+.visionLeftDesc p,
+.visionMidDesc p,
+.visionRightDesc p {
+  margin: 0;
+  white-space: nowrap; /* 한 줄 유지 (데스크탑) */
+}
+
+/* Middle card */
+.visionCardMidBg {
+  position: absolute;
+  top: calc(25% + 101px);
+  left: calc(33.333% + 47px);
+  width: 480px; /* shrink card */
+  height: 520px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #d7eec9 0%, #d6edc8 100%);
+}
+.visionCardTitleMid {
+  position: absolute;
+  top: calc(25% + 139px);
+  left: calc(33.333% + 92px);
+  margin: 0;
+  color: #212121;
+  font: 700 40px 'Pretendard', Arial, sans-serif;
+}
+.visionCardKickerMid {
+  position: absolute;
+  top: calc(25% + 225px);
+  left: calc(33.333% + 92px);
+  color: #212121;
+  font: 600 24px 'Pretendard', Arial, sans-serif;
+}
+.visionMidImageWrap {
+  position: absolute;
+  top: calc(25% + 321px);
+  left: calc(33.333% + 242px); /* shifted +24px to match left card */
+  width: 285px; /* shrink image */
+  height: 270px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.visionMidImageWrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.visionMidDesc {
+  position: absolute;
+  top: calc(75% + 23px);
+  left: calc(33.333% + 287px); /* 47px + 240px (card center) */
+  transform: translateX(-50%);
+  color: #f9f9f9;
+  text-align: center;
+  width: 480px; /* match card width */
+  font: 500 20px 'Pretendard Variable', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* Right card */
+.visionCardRightBg {
+  position: absolute;
+  top: calc(25% + 101px);
+  left: calc(66.667% - 27px);
+  width: 480px; /* shrink card */
+  height: 520px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #2a66bc 36.901%, #2b66bc 97.346%);
+}
+.visionCardTitleRight {
+  position: absolute;
+  top: calc(25% + 139px);
+  left: calc(66.667% + 18px);
+  margin: 0;
+  color: #f9f9f9;
+  font: 700 40px 'Pretendard', Arial, sans-serif;
+}
+.visionCardKickerRight {
+  position: absolute;
+  top: calc(25% + 225px);
+  left: calc(66.667% + 18px);
+  color: #f9f9f9;
+  font: 500 24px 'Pretendard Variable', Arial, sans-serif;
+}
+.visionRightImageWrap {
+  position: absolute;
+  top: calc(25% + 350px);
+  left: calc(66.667% + 168px); /* shifted +24px to match left card */
+  width: 285px; /* shrink image */
+  height: 240px;
+  overflow: hidden;
+}
+.visionRightImageWrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.visionRightDesc {
+  position: absolute;
+  top: calc(75% + 23px);
+  left: calc(66.667% + 213px); /* -27px + 240px (card center) */
+  transform: translateX(-50%);
+  color: #f9f9f9;
+  text-align: center;
+  width: 480px; /* match card width */
+  font: 500 20px 'Pretendard Variable', Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* Responsive: Tablet and Mobile (≤1660px) */
+@media screen and (max-width: 1660px) {
+  .visionExact {
+    height: auto;
+    padding: 80px 24px;
+  }
+  
+  /* Headline becomes static and stacks at top */
+  .visionHeadline {
+    position: static;
+    transform: none;
+    margin-bottom: 48px;
+  }
+  
+  /* Card wrappers become flex containers */
+  .visionCardLeft,
+  .visionCardMid,
+  .visionCardRight {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  
+  /* Background fills each card wrapper */
+  .visionCardLeftBg,
+  .visionCardMidBg,
+  .visionCardRightBg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    z-index: 0;
+    border-radius: 20px;
+  }
+  
+  /* All card children become relative and stack above background */
+  .visionCardTitleLeft,
+  .visionCardKickerLeft,
+  .visionLeftImageWrap,
+  .visionLeftDesc,
+  .visionCardTitleMid,
+  .visionCardKickerMid,
+  .visionMidImageWrap,
+  .visionMidDesc,
+  .visionCardTitleRight,
+  .visionCardKickerRight,
+  .visionRightImageWrap,
+  .visionRightDesc {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    z-index: 1;
+    width: 100%;
+  }
+  
+  /* Image wrappers right-align images */
+  .visionLeftImageWrap,
+  .visionMidImageWrap,
+  .visionRightImageWrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: auto;
+    min-height: 240px;
+    border-radius: 20px;
+    overflow: visible;
+  }
+  
+  .visionLeftImageWrap img,
+  .visionMidImageWrap img,
+  .visionRightImageWrap img {
+    position: static;
+    inset: auto;
+    width: clamp(240px, 50vw, 360px);
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+  
+  /* Text colors per card */
+  .visionCardTitleLeft,
+  .visionCardKickerLeft,
+  .visionLeftDesc {
+    color: #212121;
+  }
+  
+  .visionCardTitleMid,
+  .visionCardKickerMid,
+  .visionMidDesc {
+    color: #212121;
+  }
+  
+  .visionCardTitleRight,
+  .visionCardKickerRight,
+  .visionRightDesc {
+    color: #ffffff;
+  }
+  
+  /* Allow text wrapping on tablet/mobile */
+  .visionLeftDesc p,
+  .visionMidDesc p,
+  .visionRightDesc p {
+    white-space: normal;
+  }
+}
+
+/* Mobile-specific adjustments (≤744px) */
+@media screen and (max-width: 744px) {
+  .visionExact {
+    padding: 60px 24px;
+  }
+  
+  .visionHeadline {
+    font-size: 28px;
+    letter-spacing: -0.4px;
+    margin-bottom: 40px;
+  }
+  
+  .visionCardLeft,
+  .visionCardMid,
+  .visionCardRight {
+    padding: 24px 20px;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .visionLeftImageWrap,
+  .visionMidImageWrap,
+  .visionRightImageWrap {
+    min-height: 200px;
+  }
+  
+  .visionLeftImageWrap img,
+  .visionMidImageWrap img,
+  .visionRightImageWrap img {
+    width: clamp(200px, 60vw, 280px);
+  }
+  
+  .visionCardTitleLeft,
+  .visionCardTitleMid,
+  .visionCardTitleRight {
+    font-size: 28px;
+  }
+  
+  .visionCardKickerLeft,
+  .visionCardKickerMid,
+  .visionCardKickerRight {
+    font-size: 18px;
+  }
+  
+  .visionLeftDesc,
+  .visionMidDesc,
+  .visionRightDesc {
+    font-size: 16px;
+  }
+  
+  .heroContent { 
+    top: auto; 
+    bottom: 40px; 
+    padding: 0 24px;
+    gap: 16px;
+  }
+  
+  .heroTitle {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+  
+  /* Show merged text on mobile, hide desktop line breaks */
+  .heroLineDesktop {
+    display: none;
+  }
+  
+  .heroLineMobile {
+    display: block;
+  }
+  
+  /* Hide remaining text paragraphs on mobile (show only first merged paragraph) */
+  .heroLine:nth-child(5),
+  .heroLine:nth-child(6),
+  .heroLine:nth-child(7),
+  .heroLine:nth-child(8) {
+    display: none;
+  }
+  
+  .connectSection { padding: 80px 24px; }
+}
+
+/* (Other breakpoints not used per project convention) */

@@ -8,9 +8,9 @@
   width: 100%;
   max-width: 1920px; /* Home 기준 */
   margin: 0 auto;
-  margin-top: 101px; /* Desktop Navigation 높이 */
-  padding: 80px 370px; /* Desktop: 좌우 370px 패딩 (1920px - 1180px = 740px / 2) */
-  min-height: calc(100vh - 101px - 363px); /* Navigation, Footer 제외 */
+  margin-top: clamp(80px, 8.33vw, 160px); /* 반응형 여백: 1920px 기준 160px */
+  padding: var(--header-h) 370px 80px; /* 상단 오프셋 + 좌우 패딩 */
+  min-height: calc(100vh - 363px); /* Footer 제외 (header는 전역 main padding으로 보정) */
 }
 
 .loadMoreContainer {
@@ -40,10 +40,7 @@
 
 /* Tablet - 1660px 이하 */
 @media screen and (max-width: 1660px) {
-  .exploreContainer {
-    margin-top: 80px; /* Tablet Navigation 높이 */
-    padding: 60px 240px; /* Tablet 패딩 조정 */
-  }
+  .exploreContainer { padding: var(--header-h) 240px 60px; }
   
   .loadMoreButton {
     font-size: 20px;
@@ -53,9 +50,7 @@
 
 /* Mobile - 744px 이하 */
 @media screen and (max-width: 744px) {
-  .exploreContainer {
-    padding: 40px 24px; /* Mobile 패딩 */
-  }
+  .exploreContainer { padding: var(--header-h) 24px 40px; }
   
   .loadMoreButton {
     font-size: 18px;
