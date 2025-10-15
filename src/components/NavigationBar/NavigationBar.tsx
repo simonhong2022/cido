@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NavigationBar.module.css";
 import router from "next/router";
+import { useAuth } from "../../contexts/AuthContext";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -12,7 +13,10 @@ const navLinks = [
 ];
 
 export default function NavigationBar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Placeholder for login status (false = 로그아웃 상태)
+  // Backend auth system
+  const { user, logout } = useAuth();
+  
+  // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -58,7 +62,7 @@ export default function NavigationBar() {
           내 작업 업로드
         </button>
         {/* Conditional Button/Icon based on login status */}
-        {isLoggedIn ? (
+        {user ? (
           // Cart Icon
           <svg
             xmlns="http://www.w3.org/2000/svg"

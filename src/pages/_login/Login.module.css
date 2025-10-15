@@ -75,6 +75,39 @@
   background-color: #3a00cc;
 }
 
+.loginButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  color: #ff4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: center;
+  padding: 8px 16px;
+  background-color: #ffe6e6;
+  border-radius: 4px;
+  border: 1px solid #ffcccc;
+}
+
+.kakaoButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.kakaoButton:hover {
+  opacity: 0.8;
+}
+
+.kakaoButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .linkGroup {
   margin-top: 20px;
   margin-bottom: 30px;
