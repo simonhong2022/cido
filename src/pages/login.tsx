@@ -13,6 +13,8 @@ const LoginPage = () => {
   const handleLogin = () => {
     // 로그인 로직 (추후 구현)
     console.log('login', { email, password });
+    // 로그인 성공 시 마이페이지로 이동
+    router.push('/mypage');
   };
 
   const goRegister = () => {
