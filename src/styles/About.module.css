@@ -12,7 +12,7 @@
   width: 100%;
   /* remove max-width cap so sections can scale beyond 1920 */
   margin: 0 auto;
-  padding-top: 0; /* override global to eliminate thin gap under nav */
+  padding-top: 0 !important; /* override global to eliminate thin gap under nav */
 }
 
 /* Hero */
@@ -21,6 +21,7 @@
   width: 100%;
   /* 956px at 1920px, scale proportionally beyond/below */
   height: clamp(520px, 49.8vw, 956px);
+  margin-top: 100px;
 }
 .heroBackground { position: absolute; inset: 0; }
 .heroImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
@@ -80,7 +81,7 @@
 .visionCardLeftBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: calc(50% - 840px);
+  left: calc(50% - 960px + 120px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -89,7 +90,7 @@
 .visionCardTitleLeft {
   position: absolute;
   top: calc(25% + 139px);
-  left: calc(50% - 799px);
+  left: calc(50% - 960px + 161px);
   margin: 0;
   color: #212121;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -97,14 +98,14 @@
 .visionCardKickerLeft {
   position: absolute;
   top: calc(25% + 225px);
-  left: calc(50% - 799px);
+  left: calc(50% - 960px + 161px);
   color: #212121;
   font: 600 24px 'Pretendard', Arial, sans-serif;
 }
 .visionLeftImageWrap {
   position: absolute;
   top: calc(25% + 312px);
-  left: calc(50% - 640px); /* adjusted per feedback */
+  left: calc(50% - 960px + 320px); /* adjusted per feedback */
   width: 280px; /* shrink image */
   height: 280px;
   border-radius: 20px;
@@ -114,7 +115,7 @@
 .visionLeftDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: calc(50% - 600px); /* center of left card */
+  left: calc(50% - 960px + 360px); /* center of left card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -133,7 +134,7 @@
 .visionCardMidBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: calc(50% - 193px);
+  left: calc(50% - 240px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -142,7 +143,7 @@
 .visionCardTitleMid {
   position: absolute;
   top: calc(25% + 139px);
-  left: calc(50% - 148px);
+  left: calc(50% - 195px);
   margin: 0;
   color: #212121;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -150,14 +151,14 @@
 .visionCardKickerMid {
   position: absolute;
   top: calc(25% + 225px);
-  left: calc(50% - 148px);
+  left: calc(50% - 195px);
   color: #212121;
   font: 600 24px 'Pretendard', Arial, sans-serif;
 }
 .visionMidImageWrap {
   position: absolute;
   top: calc(25% + 321px);
-  left: calc(50% + 2px); /* shifted +24px to match left card */
+  left: calc(50% - 45px); /* align with card right edge */
   width: 285px; /* shrink image */
   height: 270px;
   border-radius: 20px;
@@ -167,7 +168,7 @@
 .visionMidDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: calc(50% + 47px); /* center of mid card */
+  left: 50%; /* center of mid card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -180,7 +181,7 @@
 .visionCardRightBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: calc(50% + 453px);
+  left: calc(50% - 960px + 1320px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -189,7 +190,7 @@
 .visionCardTitleRight {
   position: absolute;
   top: calc(25% + 139px);
-  left: calc(50% + 498px);
+  left: calc(50% - 960px + 1365px);
   margin: 0;
   color: #f9f9f9;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -197,14 +198,14 @@
 .visionCardKickerRight {
   position: absolute;
   top: calc(25% + 225px);
-  left: calc(50% + 498px);
+  left: calc(50% - 960px + 1365px);
   color: #f9f9f9;
   font: 500 24px 'Pretendard Variable', Arial, sans-serif;
 }
 .visionRightImageWrap {
   position: absolute;
   top: calc(25% + 350px);
-  left: calc(50% + 648px); /* shifted +24px to match left card */
+  left: calc(50% - 960px + 1515px); /* shifted +24px to match left card */
   width: 285px; /* shrink image */
   height: 240px;
   overflow: hidden;
@@ -213,7 +214,7 @@
 .visionRightDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: calc(50% + 693px); /* center of right card */
+  left: calc(50% - 960px + 1560px); /* center of right card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -224,6 +225,10 @@
 
 /* Responsive: Tablet and Mobile (≤1660px) */
 @media screen and (max-width: 1660px) {
+  .heroSection {
+    margin-top: 79px;
+  }
+  
   .visionExact {
     height: auto;
     padding: 80px 24px;
@@ -458,10 +463,9 @@
   left: 50%;
   transform: translateX(-50%);
   width: 1547px;
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 715px);
+  grid-template-rows: repeat(2, 549px);
   gap: 115px 117px;
   text-align: left;
 }
@@ -832,6 +836,539 @@
   
   .connectDividerH {
     display: none;
+  }
+}
+
+/* Team Section */
+.teamSection {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+}
+
+.teamBackground {
+  position: absolute;
+  inset: 0;
+  filter: blur(4.1px);
+}
+
+.teamBackgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 139.13%;
+  top: -21%;
+  left: 0;
+  object-fit: cover;
+  max-width: none;
+}
+
+.teamOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.59);
+}
+
+.teamContent {
+  position: absolute;
+  top: 257px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 725px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.teamTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+  width: 1920px;
+}
+
+.teamDescription {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.7;
+  color: #f9f9f9;
+  margin: 0;
+  width: 1920px;
+}
+
+/* Team Section Responsive */
+@media screen and (max-width: 1660px) {
+  .teamSection {
+    height: 600px;
+  }
+  
+  .teamContent {
+    top: 200px;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  .teamTitle {
+    font-size: 60px;
+    width: 100%;
+  }
+  
+  .teamDescription {
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .teamSection {
+    height: 500px;
+  }
+  
+  .teamContent {
+    top: 150px;
+    width: 90%;
+    gap: 32px;
+  }
+  
+  .teamTitle {
+    font-size: 40px;
+  }
+  
+  .teamDescription {
+    font-size: 16px;
+  }
+}
+
+/* Expert Interview Section */
+.expertSection {
+  width: 100%;
+  max-width: 1920px;
+  margin: 120px auto 0;
+  padding: 0 59.5px;
+}
+
+.expertSlider {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper {
+  overflow: visible;
+  padding-bottom: 20px;
+}
+
+.swiper :global(.swiper-slide) {
+  width: auto;
+}
+
+/* Intro Card (Blue Card) */
+.expertIntroCard {
+  width: 969px;
+  height: 861px;
+  background: #002da7;
+  border-radius: 20px;
+  padding: 68px 88px;
+  display: flex;
+  flex-direction: column;
+  gap: 33px;
+}
+
+.expertIntroTitle {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.5;
+  color: #ffffff;
+  margin: 0;
+}
+
+.expertIntroDescription {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.7;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Interview Card */
+.expertInterviewCard {
+  width: 689px;
+  height: 861px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.expertCardImage {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.expertCardImage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, #d7d7d7 65%, #c9c9c9);
+  border-radius: 20px;
+}
+
+.expertCardImage img {
+  position: absolute;
+  width: 163.82%;
+  height: 89.82%;
+  left: -20.25%;
+  top: 17.24%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.expertCardContent {
+  position: relative;
+  padding: 63px 59px 0;
+  z-index: 1;
+}
+
+.expertInterviewTitle {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.4;
+  color: #000000;
+  margin: 0 0 24px 0;
+}
+
+.expertUniversity {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #424242;
+  margin: 0 0 3px 0;
+}
+
+.expertName {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #424242;
+  margin: 0 0 494px 0;
+}
+
+.expertButton {
+  background: #002da7;
+  border-radius: 100px;
+  border: none;
+  padding: 4px 44px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.9;
+  color: #ffffff;
+  min-width: 80px;
+}
+
+.expertButton:hover {
+  background: rgba(0, 45, 167, 0.9);
+}
+
+.expertArrow {
+  width: 18px;
+  height: 16px;
+}
+
+/* Expert Section Responsive */
+@media screen and (max-width: 1660px) {
+  .expertSection {
+    padding: 0 40px;
+    margin-top: 80px;
+  }
+  
+  .swiper {
+    overflow: visible;
+  }
+  
+  .expertIntroCard {
+    width: 100%;
+    max-width: 800px;
+    height: 700px;
+    padding: 50px 60px;
+  }
+  
+  .expertIntroTitle {
+    font-size: 32px;
+  }
+  
+  .expertIntroDescription {
+    font-size: 20px;
+  }
+  
+  .expertInterviewCard {
+    width: 100%;
+    max-width: 600px;
+    height: 700px;
+  }
+  
+  .expertInterviewTitle {
+    font-size: 28px;
+  }
+  
+  .expertName {
+    margin-bottom: 350px;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .expertSection {
+    padding: 0 24px;
+    margin-top: 60px;
+  }
+  
+  .swiper {
+    overflow: visible;
+  }
+  
+  .expertSlider :global(.swiper-wrapper) {
+    overflow: visible;
+  }
+  
+  .expertIntroCard {
+    width: 100%;
+    height: 500px;
+    padding: 40px 30px;
+    gap: 20px;
+  }
+  
+  .expertIntroTitle {
+    font-size: 24px;
+  }
+  
+  .expertIntroDescription {
+    font-size: 16px;
+  }
+  
+  .expertInterviewCard {
+    width: 100%;
+    height: 500px;
+  }
+  
+  .expertCardContent {
+    padding: 40px 30px 0;
+  }
+  
+  .expertInterviewTitle {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
+  .expertUniversity {
+    font-size: 16px;
+  }
+  
+  .expertName {
+    font-size: 18px;
+    margin-bottom: 200px;
+  }
+  
+  .expertButton {
+    font-size: 16px;
+    padding: 4px 30px;
+    height: 56px;
+  }
+}
+
+/* CTA Section */
+.ctaSection {
+  position: relative;
+  width: 100%;
+  height: 1130px;
+  overflow: hidden;
+  margin-top: 120px;
+}
+
+.ctaBackground {
+  position: absolute;
+  inset: 0;
+}
+
+.ctaBackgroundImage {
+  position: absolute;
+  width: 100%;
+  height: 140%;
+  top: -20%;
+  left: 0;
+  object-fit: cover;
+  object-position: 50% 50%;
+  max-width: none;
+}
+
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.46);
+}
+
+.ctaContent {
+  position: absolute;
+  top: 457px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.ctaTitle {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.9;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.ctaDescription {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.ctaDescription p {
+  margin: 0;
+}
+
+.ctaDescription strong {
+  font-weight: 700;
+}
+
+/* CTA Section Responsive */
+@media screen and (max-width: 1660px) {
+  .ctaSection {
+    height: 900px;
+    margin-top: 80px;
+  }
+  
+  .ctaContent {
+    top: 350px;
+    padding: 0 40px;
+  }
+  
+  .ctaTitle {
+    font-size: 32px;
+  }
+  
+  .ctaDescription {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .ctaSection {
+    height: 700px;
+    margin-top: 60px;
+  }
+  
+  .ctaContent {
+    top: 250px;
+    padding: 0 24px;
+    gap: 24px;
+  }
+  
+  .ctaTitle {
+    font-size: 28px;
+  }
+  
+  .ctaDescription {
+    font-size: 16px;
+  }
+}
+
+/* Action Buttons Section */
+.actionButtonsSection {
+  max-width: 1920px;
+  margin: 120px auto 120px;
+  padding: 0 124px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+}
+
+.actionButton {
+  width: 546px;
+  height: 90px;
+  background-color: rgba(25, 24, 248, 1);
+  color: rgba(255, 255, 255, 1);
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Pretendard Variable', sans-serif;
+  line-height: 1.4;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.actionButton:hover {
+  background-color: rgba(20, 19, 200, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(25, 24, 248, 0.3);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+/* Action Buttons Responsive */
+@media screen and (max-width: 1660px) {
+  .actionButtonsSection {
+    margin: 80px auto 80px;
+    padding: 0 60px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .actionButton {
+    width: 100%;
+    max-width: 600px;
+    height: 80px;
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .actionButtonsSection {
+    margin: 60px auto 60px;
+    padding: 0 24px;
+    gap: 12px;
+  }
+  
+  .actionButton {
+    width: 100%;
+    max-width: 100%;
+    height: 70px;
+    font-size: 20px;
   }
 }
 

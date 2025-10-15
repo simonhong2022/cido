@@ -3,6 +3,8 @@ import Head from 'next/head';
 import NavigationBar from '../components/NavigationBar/NavigationBar';
 import Footer from '../components/Footer/Footer';
 import styles from '../styles/About.module.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 // Assets
 const ASSETS = {
@@ -194,6 +196,115 @@ const AboutPage = () => {
           {/* Dividers */}
           <div className={styles.connectDividerH}></div>
           <div className={styles.connectDividerV}></div>
+        </section>
+
+        {/* Team Section */}
+        <section className={styles.teamSection}>
+          <div className={styles.teamBackground}>
+            <img src="https://www.figma.com/api/mcp/asset/e498a81c-51e9-47fb-a79e-a89435041d85" alt="Team" className={styles.teamBackgroundImage} />
+            <div className={styles.teamOverlay}></div>
+          </div>
+          <div className={styles.teamContent}>
+            <h2 className={styles.teamTitle}>The Team</h2>
+            <p className={styles.teamDescription}>
+              우리는 디자인을 사랑하고, 창의적인 가능성을 믿는 사람들입니다.<br />
+              학생들의 아이디어가 세상과 연결될 수 있도록 새로운 기회의 다리를 놓습니다.<br />
+              디자인으로 사람을 잇는 플랫폼, Team cido가 함께 만들어갑니다.
+            </p>
+          </div>
+        </section>
+
+        {/* Expert Interview Section */}
+        <section className={styles.expertSection}>
+          <div className={styles.expertSlider}>
+            <Swiper
+              spaceBetween={20}
+              slidesPerView="auto"
+              className={styles.swiper}
+            >
+              {/* Intro Card */}
+              <SwiperSlide>
+                <div className={styles.expertIntroCard}>
+                  <h3 className={styles.expertIntroTitle}>
+                    선별된 전문가의 참여로, 신뢰할 수 있는<br />
+                    피드백과 진정성 있는 연결의 장을 마련합니다.
+                  </h3>
+                  <p className={styles.expertIntroDescription}>
+                    창의적 시도에 대한 깊이 있는 통찰, 실제 산업과 교육을 아우르는<br />
+                    경험을 가진 전문가들이 학생의 프로젝트를 함께 보고, 가능성을<br />
+                    발견하며 성장을 지원합니다.
+                  </p>
+                </div>
+              </SwiperSlide>
+
+              {/* Interview Card 1 */}
+              <SwiperSlide>
+                <div className={styles.expertInterviewCard}>
+                  <div className={styles.expertCardImage}>
+                    <img src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa" alt="Interview" />
+                  </div>
+                  <div className={styles.expertCardContent}>
+                    <h4 className={styles.expertInterviewTitle}>
+                      [포커스 인터뷰] 디자인 교육과<br />
+                      AI의 만남 ... 혁신적 전자책 실험
+                    </h4>
+                    <p className={styles.expertUniversity}>홍익대학교</p>
+                    <p className={styles.expertName}>사카베 히토미 교수</p>
+                    <button className={styles.expertButton}>
+                      인터뷰 보러가기
+                      <img src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5" alt="arrow" className={styles.expertArrow} />
+                    </button>
+                  </div>
+                </div>
+              </SwiperSlide>
+
+              {/* Interview Card 2 */}
+              <SwiperSlide>
+                <div className={styles.expertInterviewCard}>
+                  <div className={styles.expertCardImage}>
+                    <img src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa" alt="Interview" />
+                  </div>
+                  <div className={styles.expertCardContent}>
+                    <h4 className={styles.expertInterviewTitle}>
+                      [포커스 인터뷰] 디자인 교육과<br />
+                      AI의 만남 ... 혁신적 전자책 실험
+                    </h4>
+                    <p className={styles.expertUniversity}>홍익대학교</p>
+                    <p className={styles.expertName}>사카베 히토미 교수</p>
+                    <button className={styles.expertButton}>
+                      인터뷰 보러가기
+                      <img src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5" alt="arrow" className={styles.expertArrow} />
+                    </button>
+                  </div>
+                </div>
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className={styles.ctaSection}>
+          <div className={styles.ctaBackground}>
+            <img src="https://www.figma.com/api/mcp/asset/d488f1bb-f6d6-41df-a40f-2dcb670193fc" alt="시도" className={styles.ctaBackgroundImage} />
+            <div className={styles.ctaOverlay}></div>
+          </div>
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaTitle}>시도는 멈추지 않는다</h2>
+            <div className={styles.ctaDescription}>
+              <p>매일의 순간 속에서 무수한 시도를 합니다</p>
+              <p>조심스러운 한 걸음, 실패를 딛고 다시 내딛는 용기,</p>
+              <p>
+                <strong>[cido]</strong>는 그 <strong>'시도' 에서 확장된 창작의 가능성을 담은 브랜드</strong> 입니다
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Action Buttons Section */}
+        <section className={styles.actionButtonsSection}>
+          <button className={styles.actionButton}>작품 보러가기</button>
+          <button className={styles.actionButton}>디자이너 신청하기</button>
+          <button className={styles.actionButton}>디자인 의뢰하기</button>
         </section>
       </main>
 
