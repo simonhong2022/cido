@@ -39,16 +39,6 @@
 
 /* Vision placeholder (grid variant removed, exact variant restored below) */
 
-/* Connect grid */
-.connectSection { background: #f9f9f9; padding: clamp(80px, 6.25vw, 120px) clamp(24px, 6.25vw, 120px); display: flex; flex-direction: column; gap: 40px; }
-.connectTitle { text-align: center; font-size: clamp(28px, 2.08vw, 40px); font-weight: 700; margin: 0; color: #000; }
-.connectGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.connectCard { background: #fff; border-radius: 20px; padding: 24px; position: relative; min-height: 320px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
-.connectCardTitle { font-size: clamp(24px, 2.08vw, 40px); font-weight: 600; margin: 0 0 8px; }
-.connectCardSub { font-size: clamp(18px, 1.46vw, 28px); font-weight: 600; margin: 0 0 12px; }
-.connectCardBody { font-size: clamp(14px, 1.04vw, 20px); line-height: 1.5; margin: 0 0 12px; color: #000; }
-.connectCardImage { position: absolute; right: 24px; bottom: 24px; width: clamp(180px, 16.7vw, 320px); height: clamp(180px, 16.7vw, 320px); object-fit: cover; }
-
 /* Team section */
 .teamSection { position: relative; height: clamp(420px, 41.7vw, 800px); overflow: hidden; }
 .teamImage { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(0.5px); }
@@ -70,7 +60,7 @@
   width: 100%;
   height: 1428px; /* desktop fixed height */
   background: #212121;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .visionHeadline {
@@ -90,7 +80,7 @@
 .visionCardLeftBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: 120px;
+  left: calc(50% - 840px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -99,7 +89,7 @@
 .visionCardTitleLeft {
   position: absolute;
   top: calc(25% + 139px);
-  left: 161px;
+  left: calc(50% - 799px);
   margin: 0;
   color: #212121;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -107,14 +97,14 @@
 .visionCardKickerLeft {
   position: absolute;
   top: calc(25% + 225px);
-  left: 161px;
+  left: calc(50% - 799px);
   color: #212121;
   font: 600 24px 'Pretendard', Arial, sans-serif;
 }
 .visionLeftImageWrap {
   position: absolute;
   top: calc(25% + 312px);
-  left: 320px; /* adjusted per feedback */
+  left: calc(50% - 640px); /* adjusted per feedback */
   width: 280px; /* shrink image */
   height: 280px;
   border-radius: 20px;
@@ -124,7 +114,7 @@
 .visionLeftDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: 360px; /* center of left card (120px + 480/2) */
+  left: calc(50% - 600px); /* center of left card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -143,7 +133,7 @@
 .visionCardMidBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: calc(33.333% + 47px);
+  left: calc(50% - 193px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -152,7 +142,7 @@
 .visionCardTitleMid {
   position: absolute;
   top: calc(25% + 139px);
-  left: calc(33.333% + 92px);
+  left: calc(50% - 148px);
   margin: 0;
   color: #212121;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -160,14 +150,14 @@
 .visionCardKickerMid {
   position: absolute;
   top: calc(25% + 225px);
-  left: calc(33.333% + 92px);
+  left: calc(50% - 148px);
   color: #212121;
   font: 600 24px 'Pretendard', Arial, sans-serif;
 }
 .visionMidImageWrap {
   position: absolute;
   top: calc(25% + 321px);
-  left: calc(33.333% + 242px); /* shifted +24px to match left card */
+  left: calc(50% + 2px); /* shifted +24px to match left card */
   width: 285px; /* shrink image */
   height: 270px;
   border-radius: 20px;
@@ -177,7 +167,7 @@
 .visionMidDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: calc(33.333% + 287px); /* 47px + 240px (card center) */
+  left: calc(50% + 47px); /* center of mid card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -190,7 +180,7 @@
 .visionCardRightBg {
   position: absolute;
   top: calc(25% + 101px);
-  left: calc(66.667% - 27px);
+  left: calc(50% + 453px);
   width: 480px; /* shrink card */
   height: 520px;
   border-radius: 20px;
@@ -199,7 +189,7 @@
 .visionCardTitleRight {
   position: absolute;
   top: calc(25% + 139px);
-  left: calc(66.667% + 18px);
+  left: calc(50% + 498px);
   margin: 0;
   color: #f9f9f9;
   font: 700 40px 'Pretendard', Arial, sans-serif;
@@ -207,14 +197,14 @@
 .visionCardKickerRight {
   position: absolute;
   top: calc(25% + 225px);
-  left: calc(66.667% + 18px);
+  left: calc(50% + 498px);
   color: #f9f9f9;
   font: 500 24px 'Pretendard Variable', Arial, sans-serif;
 }
 .visionRightImageWrap {
   position: absolute;
   top: calc(25% + 350px);
-  left: calc(66.667% + 168px); /* shifted +24px to match left card */
+  left: calc(50% + 648px); /* shifted +24px to match left card */
   width: 285px; /* shrink image */
   height: 240px;
   overflow: hidden;
@@ -223,7 +213,7 @@
 .visionRightDesc {
   position: absolute;
   top: calc(75% + 23px);
-  left: calc(66.667% + 213px); /* -27px + 240px (card center) */
+  left: calc(50% + 693px); /* center of right card */
   transform: translateX(-50%);
   color: #f9f9f9;
   text-align: center;
@@ -257,7 +247,9 @@
     padding: 32px 24px;
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 32px;
+    margin: 0 auto 32px;
+    max-width: 700px;
+    width: 100%;
   }
   
   /* Background fills each card wrapper */
@@ -426,7 +418,421 @@
     display: none;
   }
   
-  .connectSection { padding: 80px 24px; }
+}
+
+/* Connect Section - Based on Figma CSS */
+.connectSection {
+  width: 100%;
+  max-width: 1920px;
+  height: 1732px;
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+  color: #000;
+  font-family: Pretendard;
+  margin: 0 auto;
+}
+
+.connectTitle {
+  position: absolute;
+  top: 125.86px;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: -0.02em;
+  line-height: 150%;
+  font-weight: 700;
+}
+
+.connectTitle p {
+  margin: 0;
+}
+
+.titleBreak {
+  display: none;
+}
+
+/* Grid Container */
+.connectGrid {
+  position: absolute;
+  top: 371.85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1547px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 115px 117px;
+  text-align: left;
+}
+
+/* Card Styles */
+.connectCard {
+  height: 549px;
+  width: 715px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.connectCard[data-card="interdisciplinary"] {
+  background: linear-gradient(0deg, #fff8eb, #fbf1e2);
+}
+
+.connectCard[data-card="designer"] {
+  background-color: #fff6e2;
+}
+
+.connectCard[data-card="enterprise"] {
+  background-color: #fff4e2;
+}
+
+.connectCard[data-card="artist"] {
+  background: linear-gradient(180deg, #fff6e0, #fff9e8);
+}
+
+/* Card Content */
+.cardContent {
+  position: absolute;
+  top: 43px;
+  left: 59px;
+  width: 277px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.cardTitleEn {
+  align-self: stretch;
+  position: relative;
+  line-height: 150%;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.cardTitleKo {
+  align-self: stretch;
+  position: relative;
+  font-size: 28px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+.cardDescription {
+  align-self: stretch;
+  position: relative;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  line-height: 150%;
+}
+
+.cardDescription p {
+  margin: 0;
+}
+
+/* Card Images */
+.cardImage {
+  position: absolute;
+  object-fit: cover;
+}
+
+.connectCard[data-card="interdisciplinary"] .cardImage {
+  top: 91.31px;
+  right: -28.07px;
+  width: 486.9px;
+  height: 730.4px;
+}
+
+.connectCard[data-card="designer"] .cardImage {
+  top: 89.01px;
+  left: 348.69px;
+  width: 325.5px;
+  height: 488px;
+}
+
+.connectCard[data-card="enterprise"] .cardImage {
+  top: 90.41px;
+  right: -10.7px;
+  width: 482.4px;
+  height: 723.2px;
+}
+
+.connectCard[data-card="artist"] .cardImage {
+  top: 97.91px;
+  left: 274px;
+  width: 463.7px;
+  height: 695.2px;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* IDEA Letters */
+.ideaLetters {
+  position: absolute;
+  top: 881.85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 192px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 38px 39px;
+  font-size: 47.55px;
+  color: #fff;
+}
+
+.ideaLetter {
+  border-radius: 40.12px;
+  background-color: #002da7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.ideaLetter:nth-child(1),
+.ideaLetter:nth-child(4) {
+  height: 77px;
+  width: 76px;
+  padding: 2.1px 29.1px;
+}
+
+.ideaLetter:nth-child(2),
+.ideaLetter:nth-child(3) {
+  height: 77px;
+  width: 77px;
+  padding: 0px 25px;
+}
+
+.ideaLetter:nth-child(4) {
+  padding: 0px 22.9px;
+}
+
+/* Dividers */
+.connectDividerH {
+  position: absolute;
+  top: 979.85px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 2px dashed #1918f8;
+  box-sizing: border-box;
+  width: 1642px;
+  max-width: calc(100% - 278px);
+  height: 2px;
+}
+
+.connectDividerV {
+  position: absolute;
+  top: 354.86px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-right: 2px dashed #1918f8;
+  box-sizing: border-box;
+  width: 2px;
+  height: 1252px;
+}
+
+/* Tablet responsive (≤1660px) */
+@media screen and (max-width: 1660px) {
+  .connectSection {
+    height: auto;
+    padding: 80px 60px;
+  }
+  
+  .connectTitle {
+    position: static;
+    transform: none;
+    font-size: 36px;
+    margin-bottom: 80px;
+  }
+  
+  .titleBreak {
+    display: inline;
+  }
+  
+  .connectGrid {
+    position: static;
+    transform: none;
+    left: auto;
+    top: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 40px;
+    margin: 0 auto 80px;
+  }
+  
+  .connectCard {
+    position: relative;
+    width: 480px !important;
+    max-width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 60px 40px;
+    margin: 0 auto;
+  }
+  
+  .cardContent {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .cardTitleEn {
+    font-size: 32px;
+  }
+  
+  .cardTitleKo {
+    font-size: 24px;
+  }
+  
+  .cardDescription {
+    font-size: 16px;
+  }
+  
+  .cardImage {
+    position: static;
+    flex-shrink: 0;
+    width: 260px;
+    height: 390px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .connectCard[data-card="interdisciplinary"] .cardImage,
+  .connectCard[data-card="designer"] .cardImage,
+  .connectCard[data-card="enterprise"] .cardImage,
+  .connectCard[data-card="artist"] .cardImage {
+    width: 260px;
+    height: 390px;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+  
+  .cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .ideaLetters {
+    display: none;
+  }
+  
+  .connectDividerH {
+    display: none;
+  }
+  
+  .connectDividerV {
+    display: none;
+  }
+}
+
+/* Mobile responsive (≤744px) */
+@media screen and (max-width: 744px) {
+  .connectSection {
+    padding: 60px 24px 60px;
+  }
+  
+  .connectTitle {
+    font-size: 28px;
+    margin-bottom: 60px;
+  }
+  
+  .connectGrid {
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .connectCard {
+    min-height: auto;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 24px;
+    gap: 24px;
+  }
+  
+  .cardContent {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    gap: 12px;
+    padding: 0;
+    top: auto;
+    left: auto;
+  }
+  
+  .cardTitleEn {
+    font-size: 28px;
+  }
+  
+  .cardTitleKo {
+    font-size: 20px;
+  }
+  
+  .cardDescription {
+    font-size: 16px;
+  }
+  
+  .cardDescription p {
+    white-space: normal;
+  }
+  
+  .cardImage {
+    position: static;
+    flex-shrink: 0;
+    width: 180px;
+    height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .connectCard[data-card="interdisciplinary"] .cardImage,
+  .connectCard[data-card="designer"] .cardImage,
+  .connectCard[data-card="enterprise"] .cardImage,
+  .connectCard[data-card="artist"] .cardImage {
+    width: 180px;
+    height: 270px;
+    top: auto;
+    left: auto;
+    right: auto;
+  }
+  
+  .cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .ideaLetters {
+    display: none;
+  }
+  
+  .connectDividerH {
+    display: none;
+  }
 }
 
 /* (Other breakpoints not used per project convention) */

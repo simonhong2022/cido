@@ -211,10 +211,10 @@
   .mobileMenu {
     display: none;
     position: fixed;
-    top: 101px; /* Desktop 높이 */
+    top: var(--header-h); /* 반응형 헤더 높이 */
     left: 0;
     width: 100%;
-    height: calc(100vh - 101px);
+    height: calc(100vh - var(--header-h)); /* 반응형 높이 */
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;

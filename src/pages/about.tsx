@@ -10,6 +10,10 @@ const ASSETS = {
   visionLeftImg: 'https://www.figma.com/api/mcp/asset/d01fedb6-b4fc-465d-b486-de3f4bea09f6',
   visionMidImg: 'https://www.figma.com/api/mcp/asset/fc22e896-e80a-4cd8-a351-462e6dad3971',
   visionRightImg: 'https://www.figma.com/api/mcp/asset/b8b75c90-6cfa-46ce-9d47-19f4daa7cd5a',
+  connectInterdisciplinary: 'https://www.figma.com/api/mcp/asset/c6e687c6-90f3-4e17-bdb9-80c193789999',
+  connectDesigner: 'https://www.figma.com/api/mcp/asset/bf60106a-1558-4c01-8131-2f5fa8799573',
+  connectEnterprise: 'https://www.figma.com/api/mcp/asset/d3c27f32-1c28-4d89-a13a-0086c463b78f',
+  connectArtist: 'https://www.figma.com/api/mcp/asset/295f7899-1589-4243-8179-74c53f3de030',
 };
 
 const AboutPage = () => {
@@ -106,14 +110,90 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* CTA band */}
-        <section className={styles.ctaBand}>
-          <div className={styles.ctaText}>시도는 멈추지 않는다</div>
-          <div className={styles.ctaButtons}>
-            <button className={styles.ctaButton}>작품 보러가기</button>
-            <button className={styles.ctaButton}>디자이너 신청하기</button>
-            <button className={styles.ctaButton}>디자인 의뢰하기</button>
+        {/* Connect Section */}
+        <section className={styles.connectSection}>
+          <div className={styles.connectTitle}>
+            <p>cido는 디자인 프로젝트를 위한 <br className={styles.titleBreak} />연결을 제공합니다.</p>
+            <p>cido에서 연결되세요!</p>
           </div>
+
+          <div className={styles.connectGrid}>
+            {/* Interdisciplinary */}
+            <div className={styles.connectCard} data-card="interdisciplinary">
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitleEn}>Interdisciplinary</h3>
+                <h4 className={styles.cardTitleKo}>학제 간 융합연구</h4>
+                <div className={styles.cardDescription}>
+                  <p>UXUI 프로토타입이 필요한 개발자,</p>
+                  <p>브랜딩이 필요한 학교 동아리,</p>
+                  <p>컨텐츠 제작이 필요한 마케터 등</p>
+                </div>
+              </div>
+              <div className={styles.cardImage}>
+                <img src={ASSETS.connectInterdisciplinary} alt="Interdisciplinary" />
+              </div>
+            </div>
+
+            {/* Designer */}
+            <div className={styles.connectCard} data-card="designer">
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitleEn}>Designer</h3>
+                <h4 className={styles.cardTitleKo}>홍익대 학생들</h4>
+                <div className={styles.cardDescription}>
+                  <p>자신의 디자인을 널리 알리고,</p>
+                  <p>작품 판매 및 프로젝트의 기회를 찾는</p>
+                  <p>홍익대학교 학생들</p>
+                </div>
+              </div>
+              <div className={styles.cardImage}>
+                <img src={ASSETS.connectDesigner} alt="Designer" />
+              </div>
+            </div>
+
+            {/* Enterprise */}
+            <div className={styles.connectCard} data-card="enterprise">
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitleEn}>Enterprise</h3>
+                <h4 className={styles.cardTitleKo}>기업 및 소상공인</h4>
+                <div className={styles.cardDescription}>
+                  <p>소상공인, 청년 창업가 등</p>
+                  <p>브랜드를 이루는</p>
+                  <p>각종 디자인이 필요한 사업가</p>
+                </div>
+              </div>
+              <div className={styles.cardImage}>
+                <img src={ASSETS.connectEnterprise} alt="Enterprise" />
+              </div>
+            </div>
+
+            {/* Artist */}
+            <div className={styles.connectCard} data-card="artist">
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitleEn}>Artist</h3>
+                <h4 className={styles.cardTitleKo}>아티스트</h4>
+                <div className={styles.cardDescription}>
+                  <p>인디밴드, 무용가, 독립 영화 감독 등</p>
+                  <p>작품 홍보에 독창적이고 실험적인</p>
+                  <p>디자인 작업을 원하는 개인 아티스트</p>
+                </div>
+              </div>
+              <div className={styles.cardImage}>
+                <img src={ASSETS.connectArtist} alt="Artist" />
+              </div>
+            </div>
+          </div>
+
+          {/* IDEA Letters */}
+          <div className={styles.ideaLetters}>
+            <div className={styles.ideaLetter}>I</div>
+            <div className={styles.ideaLetter}>D</div>
+            <div className={styles.ideaLetter}>E</div>
+            <div className={styles.ideaLetter}>A</div>
+          </div>
+
+          {/* Dividers */}
+          <div className={styles.connectDividerH}></div>
+          <div className={styles.connectDividerV}></div>
         </section>
       </main>
 
