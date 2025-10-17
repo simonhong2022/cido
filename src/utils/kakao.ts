@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export const KAKAO_JS_KEY = process.env.NEXT_PUBLIC_KAKAO_JS_KEY || "";
+export const KAKAO_JS_KEY = "f7c97d0f002a8e30c2dcd8a3328bec97";
 
 export const initKakao = () => {
   if (
