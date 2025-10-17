@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import Footer from '../../components/Footer/Footer';
-import styles from '../../styles/RegisterBasicInfo.module.css';
-import privacyStyles from '../../styles/PrivacyConsent.module.css';
+import React, { useState } from "react";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
+import Footer from "../../components/Footer/Footer";
+import styles from "./RegisterBasicInfo.module.css";
+import privacyStyles from "./PrivacyConsent.module.css";
 
 const RegisterBasicInfoPage = () => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: '',
-    userId: '',
+    email: "",
+    password: "",
+    name: "",
+    userId: "",
     job: [] as string[], // 여러 개 선택 가능
     studentProof: null as File | null,
-    introduction: '',
-    sns: '',
-    otherSites: '',
+    introduction: "",
+    sns: "",
+    otherSites: "",
     interests: [] as string[], // 관심사 카테고리
   });
 
@@ -33,36 +33,36 @@ const RegisterBasicInfoPage = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleJobToggle = (selectedJob: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       job: prev.job.includes(selectedJob)
-        ? prev.job.filter(j => j !== selectedJob)
-        : [...prev.job, selectedJob]
+        ? prev.job.filter((j) => j !== selectedJob)
+        : [...prev.job, selectedJob],
     }));
   };
 
   const handleInterestToggle = (interest: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       interests: prev.interests.includes(interest)
-        ? prev.interests.filter(i => i !== interest)
-        : [...prev.interests, interest]
+        ? prev.interests.filter((i) => i !== interest)
+        : [...prev.interests, interest],
     }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData(prev => ({ ...prev, studentProof: e.target.files![0] }));
+      setFormData((prev) => ({ ...prev, studentProof: e.target.files![0] }));
     }
   };
 
   const handleCheckDuplicate = () => {
     // 중복확인 로직 (추후 구현)
-    console.log('아이디 중복확인:', formData.userId);
+    console.log("아이디 중복확인:", formData.userId);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -80,23 +80,27 @@ const RegisterBasicInfoPage = () => {
     setAds(next);
   };
 
-  const onChangeRequired = (setter: (v: boolean) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.checked);
-    const nextAll = e.target.checked && tos && privacy && over14 && ads;
-    setAllChecked(nextAll);
-  };
+  const onChangeRequired =
+    (setter: (v: boolean) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setter(e.target.checked);
+      const nextAll = e.target.checked && tos && privacy && over14 && ads;
+      setAllChecked(nextAll);
+    };
 
-  const onChangeOptional = (setter: (v: boolean) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.checked);
-    const nextAll = e.target.checked && tos && privacy && over14;
-    setAllChecked(nextAll);
-  };
+  const onChangeOptional =
+    (setter: (v: boolean) => void) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setter(e.target.checked);
+      const nextAll = e.target.checked && tos && privacy && over14;
+      setAllChecked(nextAll);
+    };
 
   const handleConsentAgree = () => {
     if (!requiredChecked) return;
     setShowConsent(false);
     // 동의 완료 후 완료 페이지로 이동
-    router.push('/register/complete');
+    router.push("/register/complete");
   };
 
   const handleConsentCancel = () => {
@@ -104,25 +108,25 @@ const RegisterBasicInfoPage = () => {
   };
 
   const jobOptions = [
-    '디자인전공 학생',
-    '예술 관련 학생',
-    '타전공 학생',
-    '소상공인',
-    '예술가',
-    '기업',
-    '직장인'
+    "디자인전공 학생",
+    "예술 관련 학생",
+    "타전공 학생",
+    "소상공인",
+    "예술가",
+    "기업",
+    "직장인",
   ];
 
   const interestOptions = [
-    'Adobe illustration',
-    'Adobe illustration',
-    'Adobe illustration',
-    'Adobe illustration',
-    'Figma',
-    'HTML',
-    'HTML',
-    'Indesign',
-    'Photoshop'
+    "Adobe illustration",
+    "Adobe illustration",
+    "Adobe illustration",
+    "Adobe illustration",
+    "Figma",
+    "HTML",
+    "HTML",
+    "Indesign",
+    "Photoshop",
   ];
 
   return (
@@ -146,7 +150,9 @@ const RegisterBasicInfoPage = () => {
                 <label className={styles.label}>
                   이메일<span className={styles.requiredDot}>●</span>
                 </label>
-                <p className={styles.fieldNote}>*학생 디자이너 회원 가입시, 학교 이메일로 기입해야합니다</p>
+                <p className={styles.fieldNote}>
+                  *학생 디자이너 회원 가입시, 학교 이메일로 기입해야합니다
+                </p>
               </div>
               <input
                 type="email"
@@ -228,7 +234,9 @@ const RegisterBasicInfoPage = () => {
                   <button
                     key={job}
                     type="button"
-                    className={`${styles.jobButton} ${formData.job.includes(job) ? styles.active : ''}`}
+                    className={`${styles.jobButton} ${
+                      formData.job.includes(job) ? styles.active : ""
+                    }`}
                     onClick={() => handleJobToggle(job)}
                   >
                     {job}
@@ -245,7 +253,8 @@ const RegisterBasicInfoPage = () => {
                 </label>
               </div>
               <p className={styles.studentProofNote}>
-                *학생은 재학증명서, 졸업증명서 인증 사진은 필수로 해야 회원가입이 가능합니다.
+                *학생은 재학증명서, 졸업증명서 인증 사진은 필수로 해야
+                회원가입이 가능합니다.
               </p>
               <div className={styles.fileUploadArea}>
                 <input
@@ -255,7 +264,10 @@ const RegisterBasicInfoPage = () => {
                   onChange={handleFileChange}
                   className={styles.fileInput}
                 />
-                <label htmlFor="studentProof" className={styles.fileUploadButton}>
+                <label
+                  htmlFor="studentProof"
+                  className={styles.fileUploadButton}
+                >
                   이미지업로드
                 </label>
               </div>
@@ -271,7 +283,9 @@ const RegisterBasicInfoPage = () => {
             {/* 소개글 */}
             <div className={styles.fieldWrapper}>
               <label className={styles.label}>소개글</label>
-              <p className={styles.placeholder}>프로필에 올라가는 자신의 간단한 소개글을 입력해주세요</p>
+              <p className={styles.placeholder}>
+                프로필에 올라가는 자신의 간단한 소개글을 입력해주세요
+              </p>
               <input
                 type="text"
                 name="introduction"
@@ -284,7 +298,9 @@ const RegisterBasicInfoPage = () => {
             {/* SNS */}
             <div className={styles.fieldWrapper}>
               <label className={styles.label}>SNS</label>
-              <p className={styles.placeholder}>운영하고 있는 Instargram 아이디를 입력해주세요 </p>
+              <p className={styles.placeholder}>
+                운영하고 있는 Instargram 아이디를 입력해주세요{" "}
+              </p>
               <input
                 type="text"
                 name="sns"
@@ -297,7 +313,9 @@ const RegisterBasicInfoPage = () => {
             {/* 기타 계정, 사이트 */}
             <div className={styles.fieldWrapper}>
               <label className={styles.label}>기타 계정, 사이트</label>
-              <p className={styles.placeholder}>운영하고 있는 포트폴리오, 기업 사이트 등을 입력해주세요</p>
+              <p className={styles.placeholder}>
+                운영하고 있는 포트폴리오, 기업 사이트 등을 입력해주세요
+              </p>
               <input
                 type="text"
                 name="otherSites"
@@ -315,7 +333,9 @@ const RegisterBasicInfoPage = () => {
                   <button
                     key={`${interest}-${index}`}
                     type="button"
-                    className={`${styles.interestButton} ${formData.interests.includes(interest) ? styles.active : ''}`}
+                    className={`${styles.interestButton} ${
+                      formData.interests.includes(interest) ? styles.active : ""
+                    }`}
                     onClick={() => handleInterestToggle(interest)}
                   >
                     {interest}
@@ -339,44 +359,98 @@ const RegisterBasicInfoPage = () => {
 
         {/* 개인정보 수집 동의 모달 */}
         {showConsent && (
-          <div className={privacyStyles.overlay} role="dialog" aria-modal="true">
+          <div
+            className={privacyStyles.overlay}
+            role="dialog"
+            aria-modal="true"
+          >
             <div className={privacyStyles.modal}>
               <h1 className={privacyStyles.title}>개인정보 수집 동의</h1>
               <div className={privacyStyles.list}>
                 <label className={privacyStyles.row}>
-                  <input type="checkbox" checked={allChecked} onChange={toggleAll} className={privacyStyles.checkbox} />
+                  <input
+                    type="checkbox"
+                    checked={allChecked}
+                    onChange={toggleAll}
+                    className={privacyStyles.checkbox}
+                  />
                   <span className={privacyStyles.rowLabel}>전체 동의</span>
                 </label>
                 <div className={privacyStyles.divider} />
 
                 <label className={privacyStyles.row}>
-                  <input type="checkbox" checked={over14} onChange={onChangeRequired(setOver14)} className={privacyStyles.checkbox} />
-                  <span className={privacyStyles.rowText}>만 14세 이상입니다</span>
-                  <button type="button" className={privacyStyles.viewBtn}>보기</button>
+                  <input
+                    type="checkbox"
+                    checked={over14}
+                    onChange={onChangeRequired(setOver14)}
+                    className={privacyStyles.checkbox}
+                  />
+                  <span className={privacyStyles.rowText}>
+                    만 14세 이상입니다
+                  </span>
+                  <button type="button" className={privacyStyles.viewBtn}>
+                    보기
+                  </button>
                 </label>
 
                 <label className={privacyStyles.row}>
-                  <input type="checkbox" checked={tos} onChange={onChangeRequired(setTos)} className={privacyStyles.checkbox} />
+                  <input
+                    type="checkbox"
+                    checked={tos}
+                    onChange={onChangeRequired(setTos)}
+                    className={privacyStyles.checkbox}
+                  />
                   <span className={privacyStyles.rowText}>이용약관 동의</span>
-                  <button type="button" className={privacyStyles.viewBtn}>보기</button>
+                  <button type="button" className={privacyStyles.viewBtn}>
+                    보기
+                  </button>
                 </label>
 
                 <label className={privacyStyles.row}>
-                  <input type="checkbox" checked={privacy} onChange={onChangeRequired(setPrivacy)} className={privacyStyles.checkbox} />
-                  <span className={privacyStyles.rowText}>개인정보 수집, 이용 동의</span>
-                  <button type="button" className={privacyStyles.viewBtn}>보기</button>
+                  <input
+                    type="checkbox"
+                    checked={privacy}
+                    onChange={onChangeRequired(setPrivacy)}
+                    className={privacyStyles.checkbox}
+                  />
+                  <span className={privacyStyles.rowText}>
+                    개인정보 수집, 이용 동의
+                  </span>
+                  <button type="button" className={privacyStyles.viewBtn}>
+                    보기
+                  </button>
                 </label>
 
                 <label className={privacyStyles.row}>
-                  <input type="checkbox" checked={ads} onChange={onChangeOptional(setAds)} className={privacyStyles.checkbox} />
-                  <span className={privacyStyles.rowText}>광고성 정보 수신동의 (선택)</span>
-                  <button type="button" className={privacyStyles.viewBtn}>보기</button>
+                  <input
+                    type="checkbox"
+                    checked={ads}
+                    onChange={onChangeOptional(setAds)}
+                    className={privacyStyles.checkbox}
+                  />
+                  <span className={privacyStyles.rowText}>
+                    광고성 정보 수신동의 (선택)
+                  </span>
+                  <button type="button" className={privacyStyles.viewBtn}>
+                    보기
+                  </button>
                 </label>
               </div>
 
               <div className={privacyStyles.actions}>
-                <button className={privacyStyles.cancelBtn} onClick={handleConsentCancel}>취소하기</button>
-                <button className={privacyStyles.agreeBtn} onClick={handleConsentAgree} disabled={!requiredChecked}>동의하기</button>
+                <button
+                  className={privacyStyles.cancelBtn}
+                  onClick={handleConsentCancel}
+                >
+                  취소하기
+                </button>
+                <button
+                  className={privacyStyles.agreeBtn}
+                  onClick={handleConsentAgree}
+                  disabled={!requiredChecked}
+                >
+                  동의하기
+                </button>
               </div>
             </div>
           </div>
