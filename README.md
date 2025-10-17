@@ -12,11 +12,12 @@ A modern web application for designers and creative professionals to showcase th
 
 ## Tech Stack
 
-- React
-- TypeScript
-- CSS Modules
-- Responsive Design
-- Modern CSS Features (CSS Variables, Flexbox, Grid)
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **UI Libraries**: Material-UI, Semantic UI React
+- **Design Integration**: Figma API
+- **Styling**: CSS Modules, CSS Variables
+- **HTTP Client**: Axios
 
 ## Project Structure
 
@@ -52,6 +53,35 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## 🎨 Figma Integration
+
+This project supports automatic design token extraction from Figma files.
+
+### Quick Setup
+
+1. Copy the environment template:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Add your Figma credentials to `.env.local`:
+   ```env
+   FIGMA_ACCESS_TOKEN=your_token_here
+   FIGMA_FILE_KEY=your_file_key_here
+   ```
+
+3. Fetch design tokens from Figma:
+   ```bash
+   npm run figma:fetch
+   ```
+
+📖 **For detailed setup instructions, see [FIGMA_SETUP.md](./FIGMA_SETUP.md)**
+
+### Available Figma Commands
+
+- `npm run figma:fetch` - Fetch design tokens from Figma once
+- `npm run figma:watch` - Watch for changes and auto-fetch tokens
 
 ## Design System
 

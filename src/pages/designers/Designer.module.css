@@ -1,0 +1,279 @@
+/* Container */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 240px;
+  margin-top: clamp(80px, 8.33vw, 160px);
+}
+
+/* Hot Designers Section */
+.hotDesignersSection {
+  margin-bottom: 160px;
+}
+
+.titleContainer {
+  margin-bottom: 72px;
+}
+
+.subtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.title {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.33;
+  color: #000000;
+  margin: 0;
+}
+
+.hotDesignersScroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hotDesignersScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.hotDesignerCard {
+  flex: 0 0 auto;
+  width: 466.906px;
+  height: 542px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.hotDesignerCard:hover {
+  transform: translateY(-8px);
+}
+
+.hotDesignerCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Designer List Section */
+.designerListSection {
+  margin-bottom: 120px;
+}
+
+.listHeader {
+  margin-bottom: 80px;
+}
+
+.categoryTabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.categoryTab {
+  padding: 8px 16px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #8e8e93;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.categoryTab:hover {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.categoryTab.active {
+  color: #1918f8;
+  font-weight: 600;
+}
+
+/* Designer Grid */
+.designerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+}
+
+.designerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.designerCard:hover {
+  transform: translateY(-8px);
+}
+
+.profileImage {
+  width: 100%;
+  aspect-ratio: 345 / 440;
+  border-radius: 17px;
+  overflow: hidden;
+  background: #e0e0e0;
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.designerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.designerName {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #000000;
+  margin: 0;
+}
+
+.designerCategory {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #8e8e93;
+  margin: 0;
+}
+
+/* Responsive: Tablet (≤1660px) */
+@media screen and (max-width: 1660px) {
+  .main {
+    padding: 0 60px;
+  }
+
+  .hotDesignersSection {
+    margin-bottom: 120px;
+  }
+
+  .titleContainer {
+    margin-bottom: 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .hotDesignerCard {
+    width: 400px;
+    height: 465px;
+  }
+
+  .designerGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 16px;
+  }
+
+  .designerListSection {
+    margin-bottom: 100px;
+  }
+
+  .listHeader {
+    margin-bottom: 60px;
+  }
+}
+
+/* Responsive: Mobile (≤744px) */
+@media screen and (max-width: 744px) {
+  .main {
+    padding: 0 24px;
+  }
+
+  .hotDesignersSection {
+    margin-bottom: 80px;
+  }
+
+  .titleContainer {
+    margin-bottom: 40px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .hotDesignerCard {
+    width: 300px;
+    height: 350px;
+  }
+
+  .designerGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 12px;
+  }
+
+  .designerCard {
+    gap: 24px;
+  }
+
+  .designerName {
+    font-size: 18px;
+  }
+
+  .designerCategory {
+    font-size: 12px;
+  }
+
+  .designerListSection {
+    margin-bottom: 80px;
+  }
+
+  .listHeader {
+    margin-bottom: 40px;
+  }
+
+  .categoryTabs {
+    gap: 8px;
+  }
+
+  .categoryTab {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+

@@ -1,48 +1,509 @@
+/* Container */
 .container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 120px;
+  margin-top: clamp(80px, 8.33vw, 160px);
+}
+
+/* Featured Articles Section */
+.featuredSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 160px;
+}
+
+.featuredCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-8px);
+}
+
+.featuredImage {
+  width: 100%;
+  height: 400px;
+  background: #d0d0d0;
+}
+
+.featuredContent {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.featuredTag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 8px 20px;
+  background: #1918f8;
+  color: white;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.featuredTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.featuredAuthor {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.72;
+  color: #8e8e93;
+  margin: 0;
+}
+
+/* Q&A Section */
+.qaSection {
+  margin-bottom: 160px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+.qaTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+}
+
+.sectionTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+}
+
+.viewAllButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.viewAllButton:hover {
+  color: #1918f8;
+}
+
+.qaContainer {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  position: relative;
+}
+
+.qaBadge {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.qaGrid {
+  display: flex;
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.qaColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.qaDivider {
+  width: 1px;
+  background: #e0e0e0;
+}
+
+.qaItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.qaNumber {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  min-width: 30px;
+}
+
+.qaTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qaReplies {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1918f8;
+}
+
+/* Designer Interview Section */
+.interviewSection {
+  margin-bottom: 160px;
+}
+
+.interviewScroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.interviewScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.interviewCard {
+  flex: 0 0 auto;
+  width: 687px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.interviewCard:hover {
+  transform: translateY(-8px);
+}
+
+.interviewImage {
+  width: 100%;
+  height: 792px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.interviewImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.interviewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.interviewTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 2.5;
+  color: #000000;
+  margin: 0;
+}
+
+.interviewDesigner {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #8e8e93;
+  margin: 0;
+}
+
+/* Exhibition & Performance Section */
+.exhibitionSection {
+  margin-bottom: 120px;
+}
+
+.exhibitionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.exhibitionCard {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.exhibitionCard:hover {
+  transform: translateY(-8px);
+}
+
+.exhibitionImage {
+  width: 100%;
+  height: 400px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  margin-bottom: 28px;
+}
+
+.exhibitionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.exhibitionTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.exhibitionLocation {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: #8e8e93;
+  margin: 0;
+}
+
+.exhibitionPrice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.discount {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1918f8;
+}
+
+.price {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.63;
+  color: #000000;
+}
+
+/* Responsive: Tablet (≤1660px) */
+@media screen and (max-width: 1660px) {
+  .main {
+    padding: 0 60px;
+  }
+
+  .featuredSection {
+    margin-bottom: 120px;
+  }
+
+  .featuredTitle {
+    font-size: 28px;
+  }
+
+  .qaTitle,
+  .sectionTitle {
+    font-size: 40px;
+  }
+
+  .qaSection,
+  .interviewSection {
+    margin-bottom: 120px;
+  }
+
+  .interviewCard {
+    width: 550px;
+  }
+
+  .interviewImage {
+    height: 635px;
+  }
+
+  .interviewTitle {
+    font-size: 32px;
+  }
+
+  .exhibitionTitle {
+    font-size: 24px;
+  }
+}
+
+/* Responsive: Mobile (≤744px) */
+@media screen and (max-width: 744px) {
+  .main {
+    padding: 0 24px;
+  }
+
+  .featuredSection {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  .featuredImage {
+    height: 300px;
+  }
+
+  .featuredTitle {
+    font-size: 24px;
+  }
+
+  .featuredAuthor {
+    font-size: 16px;
+  }
+
+  .qaTitle,
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .sectionHeader {
     flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
   }
-  
-  .content {
+
+  .qaSection,
+  .interviewSection {
+    margin-bottom: 80px;
+  }
+
+  .qaContainer {
+    padding: 40px 24px;
+  }
+
+  .qaBadge {
+    top: 40px;
+    left: 24px;
+    font-size: 20px;
+  }
+
+  .qaGrid {
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 80px;
+  }
+
+  .qaDivider {
+    height: 1px;
     width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 120px 120px 0;
-    position: relative;
-    flex: 1;
   }
-  
-  /* Responsive styles */
-  @media screen and (max-width: 1440px) {
-    .content {
-      padding: 120px 80px 0;
-    }
+
+  .qaItem {
+    gap: 8px;
   }
-  
-  @media screen and (max-width: 1024px) {
-    .content {
-      padding: 120px 48px 0;
-    }
+
+  .qaNumber {
+    font-size: 16px;
   }
-  
-  @media screen and (max-width: 768px) {
-    .content {
-      padding: 120px 24px 0;
-    }
-    
-    .title {
-      font-size: 28px;
-    }
+
+  .qaTitle {
+    font-size: 16px;
   }
-  
-  @media screen and (max-width: 480px) {
-    .content {
-      padding: 120px 16px 0;
-    }
-    
-    .title {
-      font-size: 24px;
-    }
-  } 
+
+  .qaReplies {
+    font-size: 16px;
+  }
+
+  .interviewCard {
+    width: 400px;
+  }
+
+  .interviewImage {
+    height: 460px;
+  }
+
+  .interviewTitle {
+    font-size: 24px;
+  }
+
+  .interviewDesigner {
+    font-size: 18px;
+  }
+
+  .exhibitionGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .exhibitionImage {
+    height: 300px;
+  }
+
+  .exhibitionTitle {
+    font-size: 20px;
+  }
+
+  .exhibitionLocation {
+    font-size: 16px;
+  }
+
+  .discount {
+    font-size: 20px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .exhibitionSection {
+    margin-bottom: 80px;
+  }
+}
+

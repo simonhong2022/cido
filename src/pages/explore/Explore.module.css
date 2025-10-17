@@ -1,0 +1,60 @@
+.exploreBg {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.exploreContainer {
+  width: 100%;
+  max-width: 1920px; /* Home 기준 */
+  margin: 0 auto;
+  margin-top: clamp(80px, 8.33vw, 160px); /* 반응형 여백: 1920px 기준 160px */
+  padding: var(--header-h) 370px 80px; /* 상단 오프셋 + 좌우 패딩 */
+  min-height: calc(100vh - 363px); /* Footer 제외 (header는 전역 main padding으로 보정) */
+}
+
+.loadMoreContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  margin-bottom: 80px;
+}
+
+.loadMoreButton {
+  padding: 12px 32px;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  background: transparent;
+  border: 2px solid #000000;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadMoreButton:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Tablet - 1660px 이하 */
+@media screen and (max-width: 1660px) {
+  .exploreContainer { padding: var(--header-h) 240px 60px; }
+  
+  .loadMoreButton {
+    font-size: 20px;
+    padding: 10px 28px;
+  }
+}
+
+/* Mobile - 744px 이하 */
+@media screen and (max-width: 744px) {
+  .exploreContainer { padding: var(--header-h) 24px 40px; }
+  
+  .loadMoreButton {
+    font-size: 18px;
+    padding: 8px 24px;
+  }
+}
+

@@ -1,10 +1,10 @@
-.navbar {
+  .navbar {
     width: 100%;
-    height: 80px;
+    height: 101px; /* Figma Desktop: 100.86px */
     background: #000000;
     display: flex;
     align-items: center;
-    padding: 0 48px;
+    padding: 0 240px 0 240px; /* Figma 디자인에 맞춘 좌우 패딩 */
     position: fixed;
     top: 0;
     left: 0;
@@ -19,16 +19,16 @@
   
   .navLinks {
     display: flex;
-    gap: 48px;
+    gap: 60px; /* Figma 디자인에 맞춘 간격 */
     margin-right: auto;
   }
   
   .navLink {
     color: white;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 17px; /* Figma: 17.14px */
     text-decoration: none;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Pretendard Variable', Arial, sans-serif; /* Figma: Pretendard Variable */
     transition: color 0.2s ease-in-out;
   }
   
@@ -57,8 +57,9 @@
   .navButton {
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 14px; /* Figma: 13.71px */
+    font-weight: 700; /* Figma: 700 */
+    font-family: 'Pretendard Variable', Arial, sans-serif; /* Figma: Pretendard Variable */
     cursor: pointer;
     transition: opacity 0.2s ease;
   }
@@ -68,56 +69,69 @@
   }
   
   .requestDesignButton {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.3); /* Figma: #ffffff 30% 투명도 */
+    color: #f9f9f9; /* Figma: #f9f9f9 */
     border: none;
   }
   
   .myWorkButton {
-    background-color: #4b00ff;
+    background-color: #1918f8; /* Figma: #1918f8 */
     color: #ffffff;
     border: none;
   }
-  
-  /* Desktop */
-  @media screen and (max-width: 1440px) {
-    .navbar {
-      padding: 0 48px;
-    }
-    
-    .logo {
-      height: 45px;
-    }
-    
-    .navLinks {
-      gap: 40px;
-    }
-    
-    .navLink {
-      font-size: 18px;
-    }
+
+  .userMenu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .userName {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .logoutButton {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .logoutButton:hover {
+    background-color: white;
+    color: black;
   }
   
-  /* Tablet */
-  @media screen and (max-width: 1024px) {
+  /* Tablet & Mobile - Figma: 1660px 이하 */
+  @media screen and (max-width: 1660px) {
     .navbar {
-      padding: 0 32px;
+      height: 80px; /* Tablet: 80px */
+      padding: 0 40px;
     }
     
     .logo {
-      height: 40px;
+      display: none; /* 로고 숨김 */
     }
     
     .navLinks {
-      gap: 32px;
+      display: none; /* 햄버거 메뉴로 전환 */
     }
     
-    .navLink {
-      font-size: 16px;
+    .navButton {
+      display: none; /* 버튼 숨김 */
     }
     
+    /* Search, Mypage 아이콘은 보이게 유지 */
     .icons {
+      display: flex;
       gap: 24px;
+      margin-left: auto; /* 오른쪽 정렬 */
     }
     
     .icon {
@@ -126,58 +140,156 @@
     }
   }
   
-  /* Mobile */
-  @media screen and (max-width: 768px) {
+  /* Small Mobile - 480px 이하만 약간 조정 */
+  @media screen and (max-width: 480px) {
     .navbar {
-      padding: 0 24px;
-    }
-    
-    .logo {
-      height: 35px;
-    }
-    
-    .navLinks {
-      gap: 24px;
-    }
-    
-    .navLink {
-      font-size: 14px;
-    }
-    
-    .icons {
-      gap: 20px;
+      padding: 0 20px;
     }
     
     .icon {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
+    }
+    
+    .icons {
+      gap: 16px;
     }
   }
   
-  /* Small Mobile */
-  @media screen and (max-width: 480px) {
-    .navbar {
-      padding: 0 14px;
+  /* Mobile Menu Button */
+  .mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 30px;
+    height: 24px;
+    position: relative;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #ffffff !important; /* 흰색 햄버거 아이콘 - 강제 적용 */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .hamburgerActive {
+    gap: 0;
+  }
+
+  .hamburgerActive span:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5px;
+  }
+
+  .hamburgerActive span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburgerActive span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5px;
+  }
+
+  /* Mobile Menu */
+  .mobileMenu {
+    display: none;
+    position: fixed;
+    top: var(--header-h); /* 반응형 헤더 높이 */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-h)); /* 반응형 높이 */
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobileMenuOpen {
+    transform: translateX(0);
+  }
+
+  .mobileMenuContent {
+    padding: 40px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobileNavLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .mobileNavLink {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Pretendard Variable', Arial, sans-serif;
+    transition: color 0.2s ease;
+  }
+
+  .mobileNavLink:hover {
+    color: #1918f8;
+  }
+
+  .mobileButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .mobileNavButton {
+    padding: 16px 24px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Pretendard Variable', Arial, sans-serif;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    border: none;
+  }
+
+  .mobileRequestButton {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #f9f9f9;
+  }
+
+  .mobileWorkButton {
+    background-color: #1918f8;
+    color: #ffffff;
+  }
+
+  /* Tablet & Mobile Menu 활성화 - 1660px 이하에서 햄버거 메뉴 표시 */
+  @media screen and (max-width: 1660px) {
+    .mobileMenuButton {
+      display: block;
     }
     
-    .logo {
-      height: 25px;
-    }
-    
-    .navLinks {
-      gap: 12px;
-    }
-    
-    .navLink {
-      font-size: 10px;
-    }
-    
-    .icons {
-      gap: 12px;
-    }
-    
-    .icon {
-      width: 14px;
-      height: 14px;
+    .mobileMenu {
+      display: block;
+      top: 80px; /* Navigation: 80px */
+      height: calc(100vh - 80px);
     }
   }

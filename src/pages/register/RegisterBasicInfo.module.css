@@ -1,0 +1,443 @@
+/* RegisterBasicInfo 페이지 전체 컨테이너 */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9; /* Figma: 배경색 */
+}
+
+/* Main 영역 */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  margin-top: clamp(80px, 8.33vw, 160px);
+  padding: 160px 240px; /* Figma: 위아래 160px 간격 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 160px; /* 섹션 간 간격 */
+  min-height: calc(100vh - 363px);
+}
+
+/* 폼 섹션 (기본정보, 부가정보) */
+.formSection {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  gap: 128px; /* Figma: 타이틀과 필드 간 간격 */
+}
+
+/* 섹션 타이틀 (기본정보, 부가정보) */
+.sectionTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  text-align: left;
+}
+
+/* 입력 필드 컨테이너 */
+.fieldsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 54px; /* Figma: 필드 간 간격 */
+}
+
+/* 개별 필드 래퍼 */
+.fieldWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 라벨 행 (라벨 + 옵션 텍스트 또는 필드 노트) */
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+/* 라벨 */
+.label {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #424242;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+/* 필수 표시 점 */
+.requiredDot {
+  color: #1918f8;
+  font-size: 10px;
+  line-height: 0;
+  vertical-align: top;
+  position: relative;
+  top: 2px;
+}
+
+/* 필드 노트 (이메일 설명) */
+.fieldNote {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1918f8;
+  margin: 0;
+}
+
+/* 옵션 텍스트 (아이디, 직업) */
+.optionText {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1918f8;
+}
+
+/* Placeholder 텍스트 (부가정보) */
+.placeholder {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #8e8e93;
+  margin: 0;
+  line-height: 1.9;
+}
+
+/* 입력 필드 */
+.input {
+  width: 100%;
+  padding: 20px 0 16px 0; /* Figma: placeholder 위치 고려 */
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #8e8e93;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(199, 199, 204, 1); /* Figma: 밑줄만 */
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.input::placeholder {
+  color: #8e8e93;
+  line-height: 1.9;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: rgba(25, 24, 248, 1);
+}
+
+/* 아이디 필드 (입력 + 중복확인 버튼) */
+.inputWithButton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  position: relative;
+}
+
+.inputWithButton .input {
+  width: 100%;
+}
+
+.duplicateCheckBtn {
+  background: #1918f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 8px 23px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.duplicateCheckBtn:hover {
+  background: rgba(25, 24, 248, 0.8);
+}
+
+/* 직업 선택 버튼들 */
+.jobButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.jobButton {
+  background: #d1d1d6;
+  color: #424242;
+  border: none;
+  border-radius: 100px;
+  padding: 7px 24px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.jobButton.active {
+  background: #1918f8;
+  color: #f9f9f9;
+}
+
+.jobButton:hover:not(.active) {
+  background: #b8b8be;
+}
+
+/* 학생 증명서 영역 */
+.studentProofWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 500px; /* Figma: 고정 높이 */
+}
+
+.studentProofNote {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1918f8;
+  margin: 0;
+}
+
+/* 파일 업로드 영역 */
+.fileUploadArea {
+  flex: 1;
+  border: 1px solid #c7c7cc;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.fileUploadArea:hover {
+  border-color: rgba(25, 24, 248, 0.6);
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileUploadButton {
+  background: #1918f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px;
+  padding: 8px 24px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.fileUploadButton:hover {
+  background: rgba(25, 24, 248, 0.8);
+}
+
+/* 관심사 카테고리 버튼들 */
+.interestButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 8px;
+}
+
+.interestButton {
+  background: #d1d1d6;
+  color: #424242;
+  border: none;
+  border-radius: 100px;
+  padding: 8px 24px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.interestButton.active {
+  background: #1918f8;
+  color: #f9f9f9;
+}
+
+.interestButton:hover:not(.active) {
+  background: #b8b8be;
+}
+
+/* 신청 완료하기 버튼 컨테이너 */
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0; /* 섹션 간격으로 대체 */
+}
+
+.submitButton {
+  background: #1918f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 40px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  line-height: 1.9;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.submitButton:hover {
+  background: rgba(25, 24, 248, 0.8);
+}
+
+/* 반응형 - Tablet (1660px 이하) */
+@media screen and (max-width: 1660px) {
+  .main {
+    margin-top: 80px;
+    padding: 120px 110px;
+    gap: 120px;
+  }
+
+  .formSection {
+    gap: 80px;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+  }
+
+  .fieldsContainer {
+    gap: 40px;
+  }
+
+  .label {
+    font-size: 20px;
+  }
+
+  .fieldNote,
+  .optionText {
+    font-size: 14px;
+  }
+
+  .placeholder {
+    font-size: 18px;
+  }
+
+  .input {
+    font-size: 18px;
+  }
+
+  .jobButton {
+    font-size: 20px;
+  }
+
+  .studentProofWrapper {
+    height: 400px;
+  }
+
+  .studentProofNote {
+    font-size: 14px;
+  }
+
+  .interestButton,
+  .duplicateCheckBtn,
+  .fileUploadButton {
+    font-size: 14px;
+  }
+
+  .submitButton {
+    font-size: 20px;
+  }
+}
+
+/* 반응형 - Mobile (744px 이하) */
+@media screen and (max-width: 744px) {
+  .main {
+    padding: 80px 24px;
+    gap: 80px;
+  }
+
+  .formSection {
+    gap: 60px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .fieldsContainer {
+    gap: 30px;
+  }
+
+  .label {
+    font-size: 18px;
+  }
+
+  .fieldNote,
+  .optionText {
+    font-size: 12px;
+  }
+
+  .placeholder {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+  }
+
+  .jobButtons {
+    gap: 12px;
+  }
+
+  .jobButton {
+    font-size: 18px;
+  }
+
+  .studentProofWrapper {
+    height: 300px;
+  }
+
+  .studentProofNote {
+    font-size: 12px;
+  }
+
+  .interestButtons {
+    gap: 8px;
+  }
+
+  .interestButton,
+  .duplicateCheckBtn,
+  .fileUploadButton {
+    font-size: 12px;
+  }
+
+  .buttonContainer {
+    margin-top: 40px;
+  }
+
+  .submitButton {
+    font-size: 18px;
+  }
+}

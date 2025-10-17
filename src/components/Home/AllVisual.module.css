@@ -1,27 +1,44 @@
 .projectNameText {
   position: absolute;
-  bottom: 48px;
-  left: 48px;
+  bottom: 64px; /* Figma: 64px */
+  left: 120px; /* Figma: 120px */
   color: white;
-  font-size: 48px;
-  font-weight: 700;
-  font-family: Montserrat, Arial, sans-serif;
+  font-size: 60px;
+  font-weight: 800;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  z-index: 2; /* 그라데이션 위에 표시 */
 }
 
 .hotProjectText {
   position: absolute;
-  bottom: 120px;
-  left: 48px;
+  bottom: 152px; /* 64px(아래) + 60px(아래 텍스트) + 28px(간격) */
+  left: 120px; /* Figma: 120px */
   color: white;
   font-size: 32px;
-  font-weight: 700;
-  font-family: Montserrat, Arial, sans-serif;
+  font-weight: 600;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  z-index: 2; /* 그라데이션 위에 표시 */
 }
 
 .projectVisualWrapper {
   width: 100%;
+  aspect-ratio: 1920 / 782; /* Figma 비율 유지: 1920px × 782px */
+  margin: 0 auto;
   position: relative;
-  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+/* 그라데이션 오버레이 - Figma Fill 2 */
+.projectVisualWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .projectVisualSvg {
@@ -31,42 +48,61 @@
 }
 
 .projectVisualImage {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 프레임 크기에 맞춰 크롭 */
+  object-position: top; /* 기본: 위쪽 정렬 */
+  display: block;
+}
+
+/* Interview (Hot Designer) 이미지는 중앙 정렬 */
+.projectVisualWrapper:has(img[alt="Hot Designer Banner"]) .projectVisualImage {
+  object-position: center;
+}
+
+/* Community Banner 이미지는 중앙 정렬 */
+.projectVisualWrapper:has(img[alt="Community Banner"]) .projectVisualImage {
+  object-position: center;
+}
+
+/* Community 섹션은 더 밝은 그라데이션 (Figma: 23% → 100%) */
+.projectVisualWrapper:has(img[alt="Community Banner"])::after {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .buttonGroup {
   position: absolute;
-  bottom: 48px;
-  right: 48px;
+  bottom: 64px; /* Figma: 64px */
+  right: 120px; /* Figma: 120px */
   display: flex;
   gap: 16px;
+  z-index: 2; /* 그라데이션 위에 표시 */
 }
 
 .moreButton{
   padding: 16px 32px;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   border: 1px solid #FFF;
   border-radius: 100px;
   cursor: pointer;
-  font-family: Montserrat, Arial, sans-serif;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
   transition: all 0.2s ease;
   background: #FFFFFF;
-  color: black;
+  color: #000000;
 }
 
 .buyButton {
     padding: 16px 32px;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     border: 1px solid #FFF;
     border-radius: 100px;
     cursor: pointer;
-    font-family: Montserrat, Arial, sans-serif;
+    font-family: 'Pretendard Variable', Arial, sans-serif;
     transition: all 0.2s ease;
     background: transparent;
-    color: white;
+    color: #ffffff;
   }
 
 .moreButton:hover, .buyButton:hover {
@@ -76,16 +112,18 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Desktop */
-@media screen and (max-width: 1440px) {
+/* Tablet - Figma 디자인: 1660px 이하 */
+@media screen and (max-width: 1660px) {
   .hotProjectText {
-    font-size: 28px;
+    font-size: 24px;
+    font-weight: 600;
     bottom: 100px;
     left: 40px;
   }
 
   .projectNameText {
     font-size: 40px;
+    font-weight: 800;
     bottom: 40px;
     left: 40px;
   }
@@ -96,99 +134,46 @@
   }
 
   .moreButton, .buyButton {
-    padding: 14px 28px;
+    padding: 12px 24px;
     font-size: 16px;
+    font-weight: 600;
   }
 }
 
-/* Tablet */
-@media screen and (max-width: 1024px) {
+/* Mobile - Figma 디자인: 744px 이하 - 세로 배치 */
+@media screen and (max-width: 744px) {
+  .projectVisualWrapper {
+    margin-bottom: 48px;
+    aspect-ratio: 744 / 720; /* Figma Mobile 비율 */
+  }
+
   .hotProjectText {
-    font-size: 24px;
-    bottom: 80px;
-    left: 32px;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 140px; /* 아래에서 140px (버튼 56px + 메인텍스트 48px + 간격) */
+    left: 24px;
   }
 
   .projectNameText {
     font-size: 32px;
-    bottom: 32px;
-    left: 32px;
+    font-weight: 800;
+    position: absolute;
+    bottom: 88px; /* 아래에서 88px (버튼 56px + 간격 32px) */
+    left: 24px;
   }
 
   .buttonGroup {
-    bottom: 32px;
-    right: 32px;
-    gap: 12px;
-  }
-
-  .moreButton, .buyButton {
-    padding: 12px 24px;
-    font-size: 15px;
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 768px) {
-  .projectVisualWrapper {
-    margin-bottom: 48px;
-  }
-
-  .hotProjectText {
-    font-size: 20px;
-    top: 24px;
-    left: 24px;
-    bottom: auto;
-  }
-
-  .projectNameText {
-    font-size: 28px;
-    top: 64px;
-    left: 24px;
-    bottom: auto;
-  }
-
-  .buttonGroup {
-    bottom: 24px;
-    left: 24px;
-    right: auto;
+    position: absolute;
+    bottom: 24px; /* 아래에서 24px */
+    left: 24px; /* 왼쪽 정렬 */
+    right: auto; /* right 값 해제 */
     gap: 8px;
   }
 
   .moreButton, .buyButton {
     padding: 10px 20px;
-    font-size: 14px;
-  }
-}
-
-/* Small Mobile */
-@media screen and (max-width: 480px) {
-  .projectVisualWrapper {
-    margin-bottom: 32px;
-  }
-
-  .hotProjectText {
-    font-size: 18px;
-    top: 16px;
-    left: 16px;
-    bottom: auto;
-  }
-
-  .projectNameText {
-    font-size: 24px;
-    top: 48px;
-    left: 16px;
-    bottom: auto;
-  }
-
-  .buttonGroup {
-    bottom: 16px;
-    left: 16px;
-    right: auto;
-    gap: 8px;
-  }
-
-  .moreButton, .buyButton {
-    padding: 8px 16px;
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: 600;
   }
 }

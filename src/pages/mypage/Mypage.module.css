@@ -1,0 +1,697 @@
+/* Container */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+}
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 120px;
+  margin-top: 0;
+}
+
+/* Profile Header */
+.profileHeader {
+  background: #8e8e93;
+  padding: 60px 120px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+}
+
+.profileImageWrapper {
+  flex-shrink: 0;
+}
+
+.profileImage {
+  width: 205px;
+  height: 205px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+.profileName {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.profileDetails {
+  display: flex;
+  gap: 40px;
+}
+
+.detailColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.detailIcon {
+  width: 15px;
+  height: 15px;
+  background: #d9d9d9;
+  border-radius: 2px;
+}
+
+.profileBio {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: white;
+  margin: 0;
+  max-width: 945px;
+}
+
+.profileActions {
+  display: flex;
+  gap: 16px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 7px 34px;
+  background: #1918f8;
+  color: white;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.actionButton:hover {
+  background: #1412c4;
+}
+
+.actionButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #aeaeb2;
+  position: relative;
+  margin: 0 120px;
+}
+
+.tab {
+  padding: 20px 40px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #aeaeb2;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab:hover {
+  color: #000;
+}
+
+.activeTab {
+  color: #1918f8;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1918f8;
+}
+
+/* Projects Section */
+.projectsSection {
+  padding: 80px 120px;
+}
+
+.sectionTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 60px 0;
+}
+
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 20px;
+  margin-bottom: 40px;
+}
+
+.projectCard {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px);
+}
+
+.projectImage {
+  position: relative;
+  width: 100%;
+  height: 357px;
+  border-radius: 17px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  background: #424242;
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projectActions {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 7px;
+}
+
+.iconButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.iconButton:hover {
+  transform: scale(1.1);
+}
+
+.projectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.projectNumber {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  color: #000;
+}
+
+.projectTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.projectCategory {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #8e8e93;
+  margin: 0;
+}
+
+.projectPrice {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 33px;
+  font-weight: 800;
+  color: #1918f8;
+  margin: 0;
+}
+
+.moreButton {
+  display: block;
+  margin: 0 auto;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  color: #8e8e93;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+}
+
+/* Portfolios Section */
+.portfoliosSection {
+  padding: 80px 120px 120px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.viewAllButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #424242;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.viewAllButton:hover {
+  color: #1918f8;
+}
+
+.portfolioScroll {
+  display: flex;
+  gap: 17px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.portfolioScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.portfolioCard {
+  flex: 0 0 auto;
+  width: 586px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.portfolioCard:hover {
+  transform: translateY(-8px);
+}
+
+.portfolioImage {
+  width: 100%;
+  height: 674px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.portfolioImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolioInfo {
+  padding: 0 51px;
+}
+
+.portfolioTitle {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.38;
+  color: #000;
+  margin: 0 0 14px 0;
+}
+
+.portfolioCategory {
+  font-family: 'Pretendard', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  margin: 0 0 20px 0;
+}
+
+.portfolioButton {
+  padding: 4px 21px;
+  background: white;
+  color: #000;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 85px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.portfolioButton:hover {
+  background: #f0f0f0;
+}
+
+/* Buyer Section */
+.buyerSection {
+  padding: 80px 120px;
+}
+
+.buyerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 20px;
+}
+
+.buyerCard,
+.wishlistCard {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.buyerCard:hover,
+.wishlistCard:hover {
+  transform: translateY(-8px);
+}
+
+.buyerImage,
+.wishlistImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 17px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #e0e0e0;
+}
+
+.buyerImage img,
+.wishlistImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wishlistHeart {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buyerInfo,
+.wishlistInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buyerTitle,
+.wishlistTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.buyerCategory,
+.wishlistCategory {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8e8e93;
+  margin: 0;
+}
+
+.buyerPrice,
+.wishlistPrice {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1918f8;
+  margin: 0;
+}
+
+/* Jobs List */
+.jobsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+}
+
+.jobCard {
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jobCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.jobIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: #e0e0e0;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.jobIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jobInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jobCompany {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8e8e93;
+  margin: 0;
+}
+
+.jobTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.jobTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.jobTag {
+  padding: 6px 12px;
+  background: #f0f0f0;
+  border-radius: 16px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #424242;
+}
+
+/* Empty State */
+.emptyState {
+  padding: 120px 0;
+  text-align: center;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px;
+  color: #8e8e93;
+}
+
+/* Responsive: Tablet (≤1660px) */
+@media screen and (max-width: 1660px) {
+  .main {
+    padding: 0 60px;
+  }
+
+  .profileHeader {
+    padding: 40px 60px;
+  }
+
+  .tabs {
+    margin: 0 60px;
+  }
+
+  .projectsSection,
+  .portfoliosSection,
+  .buyerSection {
+    padding: 60px 60px;
+  }
+
+  .projectGrid,
+  .buyerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jobCard {
+    padding: 24px;
+  }
+
+  .jobTitle {
+    font-size: 20px;
+  }
+
+  .portfolioCard {
+    width: 500px;
+  }
+
+  .portfolioImage {
+    height: 576px;
+  }
+}
+
+/* Responsive: Mobile (≤744px) */
+@media screen and (max-width: 744px) {
+  .main {
+    padding: 0 24px;
+  }
+
+  .profileHeader {
+    flex-direction: column;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .profileName {
+    font-size: 32px;
+  }
+
+  .profileBio {
+    font-size: 14px;
+  }
+
+  .profileActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .actionButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tabs {
+    margin: 0 24px;
+    overflow-x: auto;
+  }
+
+  .tab {
+    font-size: 18px;
+    padding: 16px 24px;
+    white-space: nowrap;
+  }
+
+  .projectsSection,
+  .portfoliosSection,
+  .buyerSection {
+    padding: 40px 24px;
+  }
+
+  .sectionTitle {
+    font-size: 28px;
+  }
+
+  .projectGrid,
+  .buyerGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .jobCard {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .jobIcon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .jobTitle {
+    font-size: 18px;
+  }
+
+  .jobCompany {
+    font-size: 14px;
+  }
+
+  .portfolioCard {
+    width: 350px;
+  }
+
+  .portfolioImage {
+    height: 403px;
+  }
+}
+

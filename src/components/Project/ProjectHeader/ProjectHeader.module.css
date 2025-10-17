@@ -1,0 +1,84 @@
+.headerContainer {
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.titleContainer {
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #666666; /* 연한 회색으로 조정 */
+  margin: 0 0 8px 0;
+}
+
+.title {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.categoryContainer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.categoryButton {
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 2px solid #E0E0E0;
+  background: transparent;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryButton:hover {
+  border-color: #000000;
+  color: #000000;
+}
+
+.categoryButton.active {
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 1660px) {
+  .subtitle {
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 40px;
+  }
+  
+  .categoryButton {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .subtitle {
+    font-size: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .categoryButton {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}

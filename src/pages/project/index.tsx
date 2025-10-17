@@ -1,27 +1,26 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "./Project.module.css";
 import React from "react";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import Footer from "../../components/Footer/Footer";
+import NewProjectBanner from "../../components/Project/NewProjectBanner/NewProjectBanner";
+import ProjectHeader from "../../components/Project/ProjectHeader/ProjectHeader";
+import ProjectGrid from "../../components/Project/ProjectGrid/ProjectGrid";
+import styles from "./Project.module.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export default function Project() {
+const ProjectPage = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.projectBg}>
       <NavigationBar />
-      <div className={styles.content}>
-        <p className={styles.title}>New Project</p>
-      </div>
+      <main className={styles.projectContainer}>
+        <NewProjectBanner />
+        <ProjectHeader />
+        <ProjectGrid />
+        <div className={styles.loadMoreContainer}>
+          <button className={styles.loadMoreButton}>+ more</button>
+        </div>
+      </main>
       <Footer />
     </div>
   );
-}
+};
+
+export default ProjectPage;

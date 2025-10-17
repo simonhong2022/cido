@@ -1,160 +1,127 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import React, { useState } from "react";
+import Head from "next/head";
 import NavigationBar from "../../components/NavigationBar/NavigationBar";
 import Footer from "../../components/Footer/Footer";
-import styles from "./Designers.module.css";
-import React from "react";
-import Image from "next/image";
+import styles from "./Designer.module.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const DesignersPage = () => {
+  const [activeCategory, setActiveCategory] = useState("전체");
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  const categories = [
+    "전체",
+    "UI/UX",
+    "편집",
+    "Product",
+    "Graphic",
+    "Motion",
+    "Product",
+    "Illustration",
+    "AI",
+    "Craft",
+  ];
 
-export default function DesignersPage() {
+  // Mock data for hot designers
+  const hotDesigners = [
+    {
+      id: 1,
+      image:
+        "https://www.figma.com/api/mcp/asset/f9510fd3-fa2b-481d-b100-2d03e6d21036",
+    },
+    {
+      id: 2,
+      image:
+        "https://www.figma.com/api/mcp/asset/f9510fd3-fa2b-481d-b100-2d03e6d21036",
+    },
+    {
+      id: 3,
+      image:
+        "https://www.figma.com/api/mcp/asset/f9510fd3-fa2b-481d-b100-2d03e6d21036",
+    },
+    {
+      id: 4,
+      image:
+        "https://www.figma.com/api/mcp/asset/f9510fd3-fa2b-481d-b100-2d03e6d21036",
+    },
+  ];
+
+  // Mock data for designer cards
+  const designers = Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    name: "여명대학교",
+    category: "Branding, UXUI",
+    image:
+      "https://www.figma.com/api/mcp/asset/415542be-debd-470b-8525-7b90b22207a4",
+  }));
+
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Designers - Cido</title>
+        <meta
+          name="description"
+          content="만나보세요, 시도와 함께하는 디자이너들"
+        />
+      </Head>
+
       <NavigationBar />
-      <div className={styles.designer}>
-      			<b className={styles.b}>시도와 함께하는 디자이너들</b>
-      			<b className={styles.b1}>시도는 멈추지 않는다</b>
-      			<div className={styles.wrapperVector5}>
-        				<Image className={styles.wrapperVector5Child} fill alt="" src="/Vector 5.svg" />
-      			</div>
-      			<div className={styles.designerChild} />
-      			<div className={styles.designerItem} />
-      			<div className={styles.wrapperImageParent}>
-        				<div className={styles.wrapperImage}>
-          					<Image className={styles.imageIcon} fill alt="" src="/designer1.png" />
-        				</div>
-        				<div className={styles.wrapperImage}>
-          					<Image className={styles.imageIcon} fill alt="" src="/designer2.png" />
-        				</div>
-        				<div className={styles.wrapperImage}>
-          					<Image className={styles.imageIcon} fill alt="" src="/designer3.png" />
-        				</div>
-        				<div className={styles.frameChild} />
-      			</div>
-      			<div className={styles.div2}>최근 핫한 디자이너들을 만나보세요!</div>
-      			<div className={styles.hotDesigners}>Hot Designers</div>
-      			<div className={styles.rectangleParent}>
-        				<div className={styles.frameItem} />
-        				<b className={styles.b3}>필터</b>
-      			</div>
-      			<div className={styles.frameParent}>
-        				<div className={styles.frameGroup}>
-          					<div className={styles.wrapper04Parent} >
-            						<div className={styles.wrapper04}>
-              							<Image className={styles.icon} fill alt="" src="/최림_04.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>여명대학교</div>
-                								<div className={styles.brandingUxui}>Branding, UXUI</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626411.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>심현영</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626412.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>여명대학교</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-        				</div>
-        				<div className={styles.frameGroup}>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626411.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>심현영</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 89.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>박소현</div>
-                								<div className={styles.brandingUxui}>Branding, UXUI</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626412.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>여명대학교</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-        				</div>
-        				<div className={styles.frameGroup}>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 89.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>박소현</div>
-                								<div className={styles.brandingUxui}>Branding, UXUI</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626412.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>여명대학교</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-          					<div className={styles.wrapperRectangle34626411Parent}>
-            						<div className={styles.wrapperRectangle34626411}>
-              							<Image className={styles.wrapperRectangle34626411Child} fill alt="" src="/Rectangle 34626411.png" />
-            						</div>
-            						<div className={styles.frameWrapper}>
-              							<div className={styles.parent}>
-                								<div className={styles.div3}>심현영</div>
-                								<div className={styles.branding}>{`Branding, `}</div>
-              							</div>
-            						</div>
-          					</div>
-        				</div>
-      			</div>
-      			<div className={styles.more}>more</div>
-    		</div>
+
+      <main className={styles.main}>
+        {/* Hot Designers Section */}
+        <section className={styles.hotDesignersSection}>
+          <div className={styles.titleContainer}>
+            <p className={styles.subtitle}>Hot Designers</p>
+            <h1 className={styles.title}>최근 핫한 디자이너들을 만나보세요!</h1>
+          </div>
+          <div className={styles.hotDesignersScroll}>
+            {hotDesigners.map((designer) => (
+              <div key={designer.id} className={styles.hotDesignerCard}>
+                <img src={designer.image} alt={`Hot Designer ${designer.id}`} />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Designer List Section */}
+        <section className={styles.designerListSection}>
+          <div className={styles.listHeader}>
+            <div className={styles.titleContainer}>
+              <p className={styles.subtitle}>시도는 멈추지 않는다</p>
+              <h2 className={styles.title}>시도와 함께하는 디자이너들</h2>
+            </div>
+            <div className={styles.categoryTabs}>
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`${styles.categoryTab} ${
+                    activeCategory === category ? styles.active : ""
+                  }`}
+                  onClick={() => setActiveCategory(category)}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.designerGrid}>
+            {designers.map((designer) => (
+              <div key={designer.id} className={styles.designerCard}>
+                <div className={styles.profileImage}>
+                  <img src={designer.image} alt={designer.name} />
+                </div>
+                <div className={styles.designerInfo}>
+                  <h3 className={styles.designerName}>{designer.name}</h3>
+                  <p className={styles.designerCategory}>{designer.category}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
       <Footer />
     </div>
   );
-}
+};
+
+export default DesignersPage;

@@ -1,0 +1,1018 @@
+/* 프로젝트 페이지와 동일한 구조 */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(249, 249, 249, 1); /* 정확한 배경색 */
+}
+
+.main {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  margin-top: clamp(80px, 8.33vw, 160px);
+  padding: 80px 240px; /* 프로젝트 페이지와 동일 */
+  min-height: calc(100vh - 363px);
+}
+
+/* 404 페이지 */
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.notFound h1 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.notFound button {
+  padding: 12px 24px;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.notFound button:hover {
+  background: #333;
+}
+
+/* Main_Img 섹션 - Figma 구조에 맞춤 */
+.mainImgSection {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+  position: relative;
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 0;
+}
+
+.mainImgContainer {
+  width: 100%;
+  height: 100vh; /* 뷰포트 높이 기준 */
+  min-height: 600px; /* 최소 높이 보장 */
+  max-height: 900px; /* 최대 높이 제한 */
+  display: flex;
+  gap: 4vw; /* 반응형 gap */
+  align-items: stretch; /* 자식 요소들이 같은 높이로 늘어나도록 */
+}
+
+/* Image Frame - 반응형 */
+.imageFrame {
+  width: 49%; /* 전체 너비의 49% */
+  max-width: 705px;
+  height: 100%; /* 컨테이너 높이에 맞춤 */
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden; /* 프레임 밖의 이미지 숨김 */
+  background: #ffffff; /* 흰색 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  display: none; /* 메인 이미지 숨김 */
+  object-fit: cover;
+  object-position: center center; /* 중앙 기준으로 크롭 */
+}
+
+/* A4 - 1 오버레이 - 반응형 */
+.a4Overlay {
+  position: absolute;
+  top: 14%; /* 상대적 위치 */
+  left: 18%; /* 상대적 위치 */
+  width: 64%; /* 상대적 크기 */
+  height: 72%; /* 상대적 크기 */
+  display: block; /* A4 오버레이 표시 */
+}
+
+.overlayImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center; /* 중앙 기준으로 크롭 */
+}
+
+/* Information Frame - 반응형 */
+.informationFrame {
+  width: 47%; /* 전체 너비의 47% */
+  max-width: 590px;
+  height: 100%; /* mainImg와 같은 높이 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 위아래로 벌리기 */
+  gap: 2rem; /* 반응형 간격 */
+  flex-shrink: 0;
+}
+
+/* Paragraph_Container - 반응형 */
+.paragraphContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 간격 늘림 */
+}
+
+/* Title Frame - 반응형 */
+.titleFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem; /* 제목과 아이콘 사이 간격 */
+}
+
+/* Text Frame - 반응형 */
+.textFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* 제목과 디자이너명 사이 간격 */
+}
+
+/* H1 Frame - 반응형 */
+.h1Frame {
+  width: 100%;
+  height: auto;
+}
+
+.projectTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2.5vw, 33px); /* 반응형 폰트 크기 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.designerName {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(18px, 1.8vw, 23px); /* 반응형 폰트 크기 */
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Icon Frame - 반응형 */
+.iconFrame {
+  width: clamp(40px, 3vw, 48px);
+  height: clamp(40px, 3vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.heartIcon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: brightness(0) saturate(100%) invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* 회색 아이콘 */
+}
+
+.heartIcon:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%); /* 호버시 검은색 */
+}
+
+/* Information Text - 반응형 */
+.informationText {
+  width: 100%;
+  height: auto;
+}
+
+.informationText p {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(14px, 1.2vw, 16px); /* 반응형 폰트 크기 */
+  font-weight: 500;
+  line-height: 1.5;
+  color: #333333;
+  margin: 0;
+}
+
+/* Purchase Frame - 반응형 */
+.purchaseFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* 반응형 간격 */
+}
+
+/* Quantity Frame - 반응형 */
+.quantityFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 반응형 간격 */
+}
+
+.quantityLabel {
+  width: 100%;
+  height: auto;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(16px, 1.4vw, 18px); /* 반응형 폰트 크기 */
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Quantity Control Frame - 반응형 */
+.quantityControlFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Frame 1261154671 - 158x42 */
+.quantityButtonsFrame {
+  width: 158px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 버튼들을 양 끝으로 배치 */
+  gap: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.quantityBtn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  padding: 0; /* 버튼 패딩 제거 */
+}
+
+.quantityBtn:hover {
+  background: rgba(25, 24, 248, 0.1); /* 파란색 호버 배경 */
+}
+
+.quantityIcon {
+  width: 13px;
+  height: 14px;
+  display: block;
+}
+
+.quantityValue {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(25, 24, 248, 1); /* 정확한 파란색 */
+  min-width: 24px;
+  text-align: center;
+  line-height: 25px;
+}
+
+.price {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(20px, 2vw, 24px); /* 반응형 폰트 크기 */
+  font-weight: 700;
+  color: rgba(25, 24, 248, 1); /* 정확한 파란색 */
+  line-height: 1.2;
+}
+
+/* Frame 1261154877 - 590x157 */
+.buttonsFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 반응형 간격 */
+}
+
+/* Frame 1261154876 - 590x66 */
+.actionButtonsFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  gap: 1rem; /* 반응형 간격 */
+}
+
+/* Frame 1261154623 - 287x66 */
+.addToCartFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addToCartBtn {
+  width: 100%; /* 버튼 전체 너비 사용 */
+  height: 48px; /* 표준 버튼 높이 */
+  padding: 0 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: transparent;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px; /* 적절한 크기로 조정 */
+  font-weight: 500; /* 적절한 굵기로 조정 */
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addToCartBtn:hover {
+  border-color: #000000;
+  color: #000000;
+}
+
+/* Frame 1261154622 - 287x66 */
+.suggestFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestBtn {
+  width: 100%; /* 버튼 전체 너비 사용 */
+  height: 48px; /* 표준 버튼 높이 */
+  padding: 0 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: transparent;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px; /* 적절한 크기로 조정 */
+  font-weight: 500; /* 적절한 굵기로 조정 */
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.suggestBtn:hover {
+  border-color: #000000;
+  color: #000000;
+}
+
+/* Frame 1261154619 - 590x75 */
+.buyNowFrame {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buyNowBtn {
+  width: 100%; /* 버튼 전체 너비 사용 */
+  height: 56px; /* 표준 버튼 높이 */
+  padding: 0 24px;
+  background: rgba(25, 24, 248, 1); /* 정확한 파란색 배경 */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 18px; /* 적절한 크기로 조정 */
+  font-weight: 600; /* 적절한 굵기로 조정 */
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.buyNowBtn:hover {
+  background: rgba(25, 24, 248, 0.8); /* 더 진한 파란색 호버 */
+}
+
+/* Design_Project 섹션 */
+.designProjectSection {
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  margin: 160px auto 0; /* 중앙 정렬 + 상단 간격 */
+  padding: 0;
+}
+
+.sectionTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* 통일된 타이틀 크기 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 36px 0;
+  line-height: 1.39;
+}
+
+.designerProjects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.designerProjectItem {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.designerProjectImage {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.designerProjectImage:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.designerProjectInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.designerProjectTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.designerProjectDesigner {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
+}
+
+/* 탭 섹션 */
+.tabSection {
+  width: 100%;
+  max-width: 1440px;
+  margin: 8rem auto 5rem; /* 위쪽 간격 추가 */
+}
+
+.tabContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tabButtons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around; /* 버튼들을 균등하게 배치 */
+  gap: 0;
+  border-bottom: 2px solid #e0e0e0; /* 더 두꺼운 보더 */
+  position: relative;
+}
+
+.tabButton {
+  padding: 1.5rem 2rem; /* 더 큰 패딩 */
+  border: none;
+  background: transparent;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(16px, 1.4vw, 18px); /* 반응형 폰트 크기 */
+  font-weight: 600; /* 더 굵은 폰트 */
+  color: #666666;
+  cursor: pointer;
+  border-bottom: 3px solid transparent; /* 더 두꺼운 활성 보더 */
+  transition: all 0.2s ease;
+  position: relative;
+  flex: 1; /* 각 버튼이 동일한 너비 */
+}
+
+.tabButton.active {
+  color: #000000;
+  border-bottom-color: rgba(25, 24, 248, 1); /* 파란색 활성 보더 */
+  font-weight: 700; /* 활성 탭은 더 굵게 */
+}
+
+.tabButton:hover:not(.active) {
+  color: #000000;
+}
+
+.tabContent {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.detailDescription {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(15px, 1.3vw, 17px); /* 반응형 폰트 크기 */
+  line-height: 1.8;
+  color: #333333;
+  margin: 0;
+  max-width: 100%;
+}
+
+/* 상세 이미지 섹션 */
+.detailImageSection {
+  margin-bottom: 80px;
+}
+
+.detailImageTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* 통일된 타이틀 크기 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 36px 0;
+  line-height: 1.39;
+}
+
+.detailImage {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* 디자이너 프로필 섹션 - Figma 정확한 구조 */
+.designerProfileSection {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px; /* Figma itemSpacing: 28 */
+}
+
+/* 제목 영역 - Figma: Frame 1261154885 */
+.designerProfileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 36px; /* Figma itemSpacing: 36 */
+}
+
+.designerProfileTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* Figma: 28px, weight 700 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.39; /* Figma lineHeightPercentFontSize: 139% */
+}
+
+.designerProfileSubtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(18px, 1.8vw, 24px); /* Figma: 24px, weight 400 */
+  font-weight: 400;
+  color: rgba(142, 142, 147, 1); /* Figma color */
+  margin: 0;
+  line-height: 1.39; /* Figma lineHeightPercentFontSize: 139% */
+}
+
+/* 카드 컨테이너 - Figma: Frame 2269 (HORIZONTAL) */
+.designerProfileCardsContainer {
+  display: flex;
+  gap: 17px; /* Figma itemSpacing: 17 */
+  overflow-x: auto;
+  overflow-y: visible; /* 호버 시 위로 올라가는 것을 보이도록 */
+  padding: 8px 0; /* 위아래 여유 공간 */
+}
+
+/* 개별 카드 - Figma: Frame 2268 */
+.designerProfileCard {
+  flex: 0 0 auto;
+  width: clamp(280px, 23.6vw, 340px); /* Figma: 340px */
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Figma itemSpacing: 24 */
+  transition: all 0.3s ease;
+}
+
+.designerProfileCard:hover {
+  transform: translateY(-4px);
+}
+
+.designerProfileImage {
+  width: 100%;
+  aspect-ratio: 340 / 442; /* Figma: 340x442 */
+  border-radius: 17px; /* Figma cornerRadius: 17 */
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 텍스트 정보 - Figma: Frame 2267 */
+.designerProfileDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* 텍스트들이 바로 붙어있음 */
+}
+
+.designerProfileName {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(20px, 1.6vw, 23px); /* Figma: 23px, weight 600 */
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  line-height: 1.5; /* Figma: 150% */
+  letter-spacing: -0.02em; /* Figma: -0.46px */
+}
+
+.designerProfileSns {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(16px, 1.4vw, 20px); /* Figma: 20px, weight 400 */
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+}
+
+/* 인터뷰 섹션 - Figma 정확한 구조 */
+.interviewSection {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px; /* Figma itemSpacing: 36 */
+}
+
+.interviewTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* Figma: 28px, weight 700 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.39;
+}
+
+/* 인터뷰 카드 컨테이너 - Figma: Frame 1261154857 (HORIZONTAL) */
+.interviewCardsContainer {
+  display: flex;
+  gap: 20px; /* Figma itemSpacing: 20 */
+  overflow-x: auto;
+  overflow-y: visible; /* 호버 시 위로 올라가는 것을 보이도록 */
+  padding: 8px 0; /* 위아래 여유 공간 */
+}
+
+/* 개별 인터뷰 카드 - Figma: Frame 2270 */
+.interviewCard {
+  flex: 0 0 auto;
+  width: clamp(380px, 32.3vw, 466px); /* Figma: 466px */
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Figma itemSpacing: 24 */
+  transition: all 0.3s ease;
+}
+
+.interviewCard:hover {
+  transform: translateY(-4px);
+}
+
+/* 이미지 래퍼 - Figma: Frame 1261154878 */
+.interviewImageWrapper {
+  width: 100%;
+  aspect-ratio: 466 / 320; /* Figma: 466x320 */
+  border-radius: 20px; /* Figma cornerRadius: 20 */
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.interviewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 텍스트 정보 - Figma: Frame 2266 */
+.interviewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.interviewProjectTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* Figma: 28px, weight 600 */
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.interviewProjectDesigner {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(20px, 1.8vw, 24px); /* Figma: 24px, weight 400 */
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 추천 프로젝트 섹션 - 프로젝트 페이지와 동일한 구조 */
+.recommendationSection {
+  width: 100%;
+  margin-bottom: 80px; /* 사이즈 조정 */
+}
+
+.titleContainer {
+  margin-bottom: 24px; /* 사이즈 조정 */
+}
+
+/* Figma: "Recommendation" - 24px, weight 600 */
+.subtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 24px; /* 사이즈 조정 */
+  font-weight: 600;
+  color: #666666;
+  margin: 0 0 8px 0;
+}
+
+/* Figma: "추천 프로젝트" - 다른 섹션과 통일 */
+.title {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: clamp(24px, 2vw, 28px); /* 통일된 타이틀 크기 */
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.39;
+}
+
+/* 배너 슬라이더 */
+.sliderWrapper {
+  width: 100%;
+  position: relative;
+  padding: 20px 0 100px 0; /* 하단 패딩을 더 늘려서 페이지네이션이 보이도록 */
+  overflow: hidden; /* 양 옆을 숨김 */
+}
+
+.swiper {
+  width: 100%;
+  overflow: visible; /* 호버 효과를 위해 visible 유지 */
+}
+
+.swiper :global(.swiper-wrapper) {
+  overflow: visible;
+}
+
+.swiperSlide {
+  height: auto;
+}
+
+.bannerImageItem {
+  width: 100%;
+  aspect-ratio: 504 / 300; /* 이미지 높이를 더 줄임 */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bannerImageItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 재생/정지 버튼 - 오른쪽 하단 */
+.playPauseButton {
+  position: absolute;
+  bottom: 35px; /* 35px로 조정 */
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #000;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.playPauseButton:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Swiper Pagination */
+.swiper :global(.swiper-pagination) {
+  bottom: -60px !important;
+}
+
+.swiper :global(.swiper-pagination-bullet) {
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper :global(.swiper-pagination-bullet-active) {
+  background: #000000;
+  transform: scale(1.3);
+}
+
+.recommendationProjectTitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.recommendationDesigner {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666666;
+  margin: 0;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 1024px) {
+  .mainImgContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .designerProjects,
+  .recommendationSlider .swiper {
+    padding: 0 1rem;
+  }
+  
+  .designerProfileContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .interviewCard {
+    flex-direction: column;
+  }
+  
+  .interviewImage {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding: 0 16px;
+  }
+  
+  .mainImgSection {
+    margin-bottom: 80px; /* mainImg 아래 충분한 간격 */
+  }
+  
+  .designProjectSection {
+    margin-top: 0; /* 모바일에서 상단 마진 제거 */
+    margin-bottom: 60px;
+  }
+  
+  .tabSection,
+  .detailImageSection,
+  .designerProfileSection,
+  .interviewSection,
+  .recommendationSection {
+    margin-bottom: 60px;
+  }
+  
+  .projectTitle {
+    font-size: 28px;
+  }
+  
+  .designerProjects,
+  .recommendationSlider .swiper {
+    padding: 0 0.5rem;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+  }
+  
+  .tabButtons {
+    flex-direction: column;
+    border-bottom: none;
+  }
+  
+  .tabButton {
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 0;
+  }
+  
+  .tabButton.active {
+    border-bottom-color: rgba(25, 24, 248, 1); /* 데스크톱과 동일한 파란색 */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .projectTitle {
+    font-size: 24px;
+  }
+  
+  .price {
+    font-size: 20px;
+  }
+  
+  .designerProfileCardsContainer {
+    gap: 12px;
+  }
+  
+  .designerProfileCard {
+    width: clamp(250px, 80vw, 300px);
+  }
+  
+  .interviewCardsContainer {
+    gap: 12px;
+  }
+  
+  .interviewCard {
+    width: clamp(300px, 85vw, 400px);
+  }
+}
+
+/* 프로젝트 페이지와 동일한 반응형 - Tablet */
+@media screen and (max-width: 1660px) {
+  .main { padding: 60px 110px; }
+}
+
+/* 프로젝트 페이지와 동일한 반응형 - Mobile */
+@media screen and (max-width: 744px) {
+  .main {
+    padding: 40px 24px;
+  }
+  
+  /* 모바일에서 세로 레이아웃으로 변경 */
+  .mainImgContainer {
+    flex-direction: column;
+    gap: 2rem;
+    height: auto; /* 모바일에서는 자동 높이 */
+    min-height: auto; /* 최소 높이 제한 해제 */
+    max-height: none; /* 최대 높이 제한 해제 */
+  }
+  
+  .imageFrame {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 4/5; /* 모바일에 적합한 비율 */
+  }
+  
+  .informationFrame {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .actionButtonsFrame {
+    flex-direction: column;
+  }
+  
+        /* 추천 프로젝트 반응형 */
+        .title {
+          font-size: 24px;
+        }
+        
+        /* 재생 버튼 모바일 */
+        .playPauseButton {
+          width: 40px;
+          height: 40px;
+          bottom: 35px;
+          right: 30px;
+        }
+        
+        .swiper :global(.swiper-pagination) {
+          bottom: -60px !important;
+        }
+}

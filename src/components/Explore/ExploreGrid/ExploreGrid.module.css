@@ -1,0 +1,55 @@
+/* Desktop - 3열 Masonry 레이아웃 (CSS columns) */
+.gridContainer {
+  width: 100%;
+  column-count: 3;
+  column-gap: 20px;
+}
+
+.projectCard {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  break-inside: avoid; /* 카드가 열 사이에서 잘리지 않도록 */
+  margin-bottom: 20px;
+  display: inline-block; /* break-inside를 위해 필요 */
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.projectImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Tablet - 1660px 이하 - 2열 Masonry */
+@media screen and (max-width: 1660px) {
+  .gridContainer {
+    column-count: 2;
+    column-gap: 16px;
+  }
+  
+  .projectCard {
+    margin-bottom: 16px;
+  }
+}
+
+/* Mobile - 744px 이하 - 1열 */
+@media screen and (max-width: 744px) {
+  .gridContainer {
+    column-count: 1;
+    column-gap: 0;
+  }
+  
+  .projectCard {
+    margin-bottom: 16px;
+  }
+}
+

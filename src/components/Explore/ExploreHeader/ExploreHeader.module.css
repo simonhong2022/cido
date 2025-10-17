@@ -1,0 +1,99 @@
+.headerContainer {
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.titleContainer {
+  margin-bottom: 32px;
+}
+
+/* Figma: "Explore" - 32px, weight 600 */
+.subtitle {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 8px 0;
+}
+
+/* Figma: "이미지만 모아보다" - 48px, weight 700 */
+.title {
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+/* 카테고리 필터 */
+.categoryContainer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Figma: 24px, weight 600 */
+.categoryButton {
+  padding: 8px 24px;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Pretendard Variable', Arial, sans-serif;
+  background: transparent;
+  border: 2px solid #e0e0e0;
+  border-radius: 100px;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryButton:hover {
+  border-color: #000000;
+  color: #000000;
+}
+
+.categoryButton.active {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+/* Tablet - 1660px 이하 */
+@media screen and (max-width: 1660px) {
+  .subtitle {
+    font-size: 28px;
+  }
+  
+  .title {
+    font-size: 40px;
+  }
+  
+  .categoryButton {
+    font-size: 20px;
+    padding: 6px 20px;
+  }
+}
+
+/* Mobile - 744px 이하 */
+@media screen and (max-width: 744px) {
+  .headerContainer {
+    margin-bottom: 32px;
+  }
+  
+  .titleContainer {
+    margin-bottom: 24px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .categoryButton {
+    font-size: 16px;
+    padding: 6px 16px;
+  }
+}
+
