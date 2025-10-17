@@ -17,6 +17,9 @@ export default async function handler(
         "Content-Type": "application/json",
         Cookie: req.headers.cookie || "",
       },
+      // Include credentials to forward cookies to backend if needed
+      // @ts-ignore - node-fetch compatibility
+      credentials: "include",
     });
 
     const data = await response.json();

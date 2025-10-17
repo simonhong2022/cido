@@ -110,7 +110,10 @@ export const loginWithKakao = (): Promise<string> => {
         return;
       }
 
-      if (!window.Kakao.Auth || !window.Kakao.Auth.login) {
+      if (
+        !window.Kakao.Auth ||
+        (!window.Kakao.Auth.login && !window.Kakao.Auth.authorize)
+      ) {
         reject(
           new Error(
             "Kakao Auth module not available. Check if KAKAO_JS_KEY is set correctly."
@@ -128,14 +131,52 @@ export const loginWithKakao = (): Promise<string> => {
         return;
       }
 
-      window.Kakao.Auth.login({
-        success: (authObj: any) => {
-          resolve(authObj.access_token);
-        },
-        fail: (err: any) => {
-          reject(err);
-        },
-      });
+      if (window.Kakao.Auth.login) {
+        window.Kakao.Auth.login({
+          success: (authObj: any) => {
+            resolve(authObj.access_token);
+          },
+          fail: (err: any) => {
+            reject(err);
+          },
+        });
+        return;
+      }
+
+      // Fallback to redirect-based OAuth if popup login isn't available
+      try {
+        const redirectUri = `${window.location.origin}/api/auth/kakao/callback`;
+        window.Kakao.Auth.authorize({
+          redirectUri,
+          scope: "profile_nickname,account_email",
+        });
+        // Redirects away; never resolves
+      } catch (err) {
+        reject(err as Error);
+      }
+    });
+  });
+};
+
+export const authorizeWithKakaoRedirect = (
+  redirectUri?: string
+): Promise<never> => {
+  return waitForKakao().then(() => {
+    return new Promise((_, reject) => {
+      if (!window.Kakao || !window.Kakao.Auth || !window.Kakao.Auth.authorize) {
+        reject(new Error("Kakao authorize not available"));
+        return;
+      }
+      const uri =
+        redirectUri || `${window.location.origin}/api/auth/kakao/callback`;
+      try {
+        window.Kakao.Auth.authorize({
+          redirectUri: uri,
+          scope: "profile_nickname,account_email",
+        });
+      } catch (e) {
+        reject(e as Error);
+      }
     });
   });
 };

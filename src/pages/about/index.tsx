@@ -1,21 +1,28 @@
-import React from 'react';
-import Head from 'next/head';
-import NavigationBar from '../components/NavigationBar/NavigationBar';
-import Footer from '../components/Footer/Footer';
-import styles from '../styles/About.module.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import React from "react";
+import Head from "next/head";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
+import Footer from "../../components/Footer/Footer";
+import styles from "./About.module.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 // Assets
 const ASSETS = {
-  hero: '/about/image 42.png',
-  visionLeftImg: 'https://www.figma.com/api/mcp/asset/d01fedb6-b4fc-465d-b486-de3f4bea09f6',
-  visionMidImg: 'https://www.figma.com/api/mcp/asset/fc22e896-e80a-4cd8-a351-462e6dad3971',
-  visionRightImg: 'https://www.figma.com/api/mcp/asset/b8b75c90-6cfa-46ce-9d47-19f4daa7cd5a',
-  connectInterdisciplinary: 'https://www.figma.com/api/mcp/asset/c6e687c6-90f3-4e17-bdb9-80c193789999',
-  connectDesigner: 'https://www.figma.com/api/mcp/asset/bf60106a-1558-4c01-8131-2f5fa8799573',
-  connectEnterprise: 'https://www.figma.com/api/mcp/asset/d3c27f32-1c28-4d89-a13a-0086c463b78f',
-  connectArtist: 'https://www.figma.com/api/mcp/asset/295f7899-1589-4243-8179-74c53f3de030',
+  hero: "/about/image 42.png",
+  visionLeftImg:
+    "https://www.figma.com/api/mcp/asset/d01fedb6-b4fc-465d-b486-de3f4bea09f6",
+  visionMidImg:
+    "https://www.figma.com/api/mcp/asset/fc22e896-e80a-4cd8-a351-462e6dad3971",
+  visionRightImg:
+    "https://www.figma.com/api/mcp/asset/b8b75c90-6cfa-46ce-9d47-19f4daa7cd5a",
+  connectInterdisciplinary:
+    "https://www.figma.com/api/mcp/asset/c6e687c6-90f3-4e17-bdb9-80c193789999",
+  connectDesigner:
+    "https://www.figma.com/api/mcp/asset/bf60106a-1558-4c01-8131-2f5fa8799573",
+  connectEnterprise:
+    "https://www.figma.com/api/mcp/asset/d3c27f32-1c28-4d89-a13a-0086c463b78f",
+  connectArtist:
+    "https://www.figma.com/api/mcp/asset/295f7899-1589-4243-8179-74c53f3de030",
 };
 
 const AboutPage = () => {
@@ -32,20 +39,50 @@ const AboutPage = () => {
         {/* Hero */}
         <section className={styles.heroSection}>
           <div className={styles.heroBackground}>
-            <img src={ASSETS.hero} alt="About hero" className={styles.heroImage} />
+            <img
+              src={ASSETS.hero}
+              alt="About hero"
+              className={styles.heroImage}
+            />
             <div className={styles.heroOverlay} />
           </div>
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>About, cido</h1>
             <div className={styles.heroTextGroup}>
-              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>{"cido는 홍익대학교 학생들의 Idea Factory, 창의적 공작소입니다. 인쇄, 간판, 그래픽, 일러스트, 북 디자인 등 "}</p>
-              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>{"다양한 시각 분야에서 학생들의 실험적인 아이디어와 도전이 모여 새로운 가능성을 만드는 플랫폼입니다."}</p>
-              <p className={`${styles.heroLine} ${styles.heroLineMobile}`}>{"cido는 홍익대학교 학생들의 Idea Factory, 창의적 공작소입니다. 인쇄, 간판, 그래픽, 일러스트, 북 디자인 등 다양한 시각 분야에서 학생들의 실험적인 아이디어와 도전이 모여 새로운 가능성을 만드는 플랫폼입니다."}</p>
-              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>&nbsp;</p>
-              <p className={styles.heroLine}>{"'더 나아가는' 정신 아래, 신진 디자이너와 다양한 소비자가 만나 영감을 나누고, 새로운 문화와 비즈니스를 실험합니다. "}</p>
-              <p className={styles.heroLine}>{"큐레이션된 컬렉션, 독창적인 작품 판매, 그리고 홍익대학교 학생들의 이야기를 담은 트렌디한 플랫폼."}</p>
-              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>&nbsp;</p>
-              <p className={styles.heroLine}>{"당신의 첫 창작, cido에서 시작하세요."}</p>
+              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>
+                {
+                  "cido는 홍익대학교 학생들의 Idea Factory, 창의적 공작소입니다. 인쇄, 간판, 그래픽, 일러스트, 북 디자인 등 "
+                }
+              </p>
+              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>
+                {
+                  "다양한 시각 분야에서 학생들의 실험적인 아이디어와 도전이 모여 새로운 가능성을 만드는 플랫폼입니다."
+                }
+              </p>
+              <p className={`${styles.heroLine} ${styles.heroLineMobile}`}>
+                {
+                  "cido는 홍익대학교 학생들의 Idea Factory, 창의적 공작소입니다. 인쇄, 간판, 그래픽, 일러스트, 북 디자인 등 다양한 시각 분야에서 학생들의 실험적인 아이디어와 도전이 모여 새로운 가능성을 만드는 플랫폼입니다."
+                }
+              </p>
+              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>
+                &nbsp;
+              </p>
+              <p className={styles.heroLine}>
+                {
+                  "'더 나아가는' 정신 아래, 신진 디자이너와 다양한 소비자가 만나 영감을 나누고, 새로운 문화와 비즈니스를 실험합니다. "
+                }
+              </p>
+              <p className={styles.heroLine}>
+                {
+                  "큐레이션된 컬렉션, 독창적인 작품 판매, 그리고 홍익대학교 학생들의 이야기를 담은 트렌디한 플랫폼."
+                }
+              </p>
+              <p className={`${styles.heroLine} ${styles.heroLineDesktop}`}>
+                &nbsp;
+              </p>
+              <p className={styles.heroLine}>
+                {"당신의 첫 창작, cido에서 시작하세요."}
+              </p>
             </div>
           </div>
         </section>
@@ -115,7 +152,10 @@ const AboutPage = () => {
         {/* Connect Section */}
         <section className={styles.connectSection}>
           <div className={styles.connectTitle}>
-            <p>cido는 디자인 프로젝트를 위한 <br className={styles.titleBreak} />연결을 제공합니다.</p>
+            <p>
+              cido는 디자인 프로젝트를 위한 <br className={styles.titleBreak} />
+              연결을 제공합니다.
+            </p>
             <p>cido에서 연결되세요!</p>
           </div>
 
@@ -132,7 +172,10 @@ const AboutPage = () => {
                 </div>
               </div>
               <div className={styles.cardImage}>
-                <img src={ASSETS.connectInterdisciplinary} alt="Interdisciplinary" />
+                <img
+                  src={ASSETS.connectInterdisciplinary}
+                  alt="Interdisciplinary"
+                />
               </div>
             </div>
 
@@ -201,14 +244,21 @@ const AboutPage = () => {
         {/* Team Section */}
         <section className={styles.teamSection}>
           <div className={styles.teamBackground}>
-            <img src="https://www.figma.com/api/mcp/asset/e498a81c-51e9-47fb-a79e-a89435041d85" alt="Team" className={styles.teamBackgroundImage} />
+            <img
+              src="https://www.figma.com/api/mcp/asset/e498a81c-51e9-47fb-a79e-a89435041d85"
+              alt="Team"
+              className={styles.teamBackgroundImage}
+            />
             <div className={styles.teamOverlay}></div>
           </div>
           <div className={styles.teamContent}>
             <h2 className={styles.teamTitle}>The Team</h2>
             <p className={styles.teamDescription}>
-              우리는 디자인을 사랑하고, 창의적인 가능성을 믿는 사람들입니다.<br />
-              학생들의 아이디어가 세상과 연결될 수 있도록 새로운 기회의 다리를 놓습니다.<br />
+              우리는 디자인을 사랑하고, 창의적인 가능성을 믿는 사람들입니다.
+              <br />
+              학생들의 아이디어가 세상과 연결될 수 있도록 새로운 기회의 다리를
+              놓습니다.
+              <br />
               디자인으로 사람을 잇는 플랫폼, Team cido가 함께 만들어갑니다.
             </p>
           </div>
@@ -226,12 +276,16 @@ const AboutPage = () => {
               <SwiperSlide>
                 <div className={styles.expertIntroCard}>
                   <h3 className={styles.expertIntroTitle}>
-                    선별된 전문가의 참여로, 신뢰할 수 있는<br />
+                    선별된 전문가의 참여로, 신뢰할 수 있는
+                    <br />
                     피드백과 진정성 있는 연결의 장을 마련합니다.
                   </h3>
                   <p className={styles.expertIntroDescription}>
-                    창의적 시도에 대한 깊이 있는 통찰, 실제 산업과 교육을 아우르는<br />
-                    경험을 가진 전문가들이 학생의 프로젝트를 함께 보고, 가능성을<br />
+                    창의적 시도에 대한 깊이 있는 통찰, 실제 산업과 교육을
+                    아우르는
+                    <br />
+                    경험을 가진 전문가들이 학생의 프로젝트를 함께 보고, 가능성을
+                    <br />
                     발견하며 성장을 지원합니다.
                   </p>
                 </div>
@@ -241,18 +295,26 @@ const AboutPage = () => {
               <SwiperSlide>
                 <div className={styles.expertInterviewCard}>
                   <div className={styles.expertCardImage}>
-                    <img src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa" alt="Interview" />
+                    <img
+                      src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa"
+                      alt="Interview"
+                    />
                   </div>
                   <div className={styles.expertCardContent}>
                     <h4 className={styles.expertInterviewTitle}>
-                      [포커스 인터뷰] 디자인 교육과<br />
+                      [포커스 인터뷰] 디자인 교육과
+                      <br />
                       AI의 만남 ... 혁신적 전자책 실험
                     </h4>
                     <p className={styles.expertUniversity}>홍익대학교</p>
                     <p className={styles.expertName}>사카베 히토미 교수</p>
                     <button className={styles.expertButton}>
                       인터뷰 보러가기
-                      <img src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5" alt="arrow" className={styles.expertArrow} />
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5"
+                        alt="arrow"
+                        className={styles.expertArrow}
+                      />
                     </button>
                   </div>
                 </div>
@@ -262,18 +324,26 @@ const AboutPage = () => {
               <SwiperSlide>
                 <div className={styles.expertInterviewCard}>
                   <div className={styles.expertCardImage}>
-                    <img src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa" alt="Interview" />
+                    <img
+                      src="https://www.figma.com/api/mcp/asset/7cdd2222-ec24-4968-bfbf-22e876a2d3aa"
+                      alt="Interview"
+                    />
                   </div>
                   <div className={styles.expertCardContent}>
                     <h4 className={styles.expertInterviewTitle}>
-                      [포커스 인터뷰] 디자인 교육과<br />
+                      [포커스 인터뷰] 디자인 교육과
+                      <br />
                       AI의 만남 ... 혁신적 전자책 실험
                     </h4>
                     <p className={styles.expertUniversity}>홍익대학교</p>
                     <p className={styles.expertName}>사카베 히토미 교수</p>
                     <button className={styles.expertButton}>
                       인터뷰 보러가기
-                      <img src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5" alt="arrow" className={styles.expertArrow} />
+                      <img
+                        src="https://www.figma.com/api/mcp/asset/dca1e6cf-0a94-4395-ad80-6e715bbf12e5"
+                        alt="arrow"
+                        className={styles.expertArrow}
+                      />
                     </button>
                   </div>
                 </div>
@@ -285,7 +355,11 @@ const AboutPage = () => {
         {/* CTA Section */}
         <section className={styles.ctaSection}>
           <div className={styles.ctaBackground}>
-            <img src="https://www.figma.com/api/mcp/asset/d488f1bb-f6d6-41df-a40f-2dcb670193fc" alt="시도" className={styles.ctaBackgroundImage} />
+            <img
+              src="https://www.figma.com/api/mcp/asset/d488f1bb-f6d6-41df-a40f-2dcb670193fc"
+              alt="시도"
+              className={styles.ctaBackgroundImage}
+            />
             <div className={styles.ctaOverlay}></div>
           </div>
           <div className={styles.ctaContent}>
@@ -294,7 +368,9 @@ const AboutPage = () => {
               <p>매일의 순간 속에서 무수한 시도를 합니다</p>
               <p>조심스러운 한 걸음, 실패를 딛고 다시 내딛는 용기,</p>
               <p>
-                <strong>[cido]</strong>는 그 <strong>'시도' 에서 확장된 창작의 가능성을 담은 브랜드</strong> 입니다
+                <strong>[cido]</strong>는 그{" "}
+                <strong>'시도' 에서 확장된 창작의 가능성을 담은 브랜드</strong>{" "}
+                입니다
               </p>
             </div>
           </div>

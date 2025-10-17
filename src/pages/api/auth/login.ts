@@ -10,12 +10,10 @@ export default async function handler(
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username || !password) {
-    return res
-      .status(400)
-      .json({ message: "Username and password are required" });
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required" });
   }
 
   try {
@@ -24,7 +22,7 @@ export default async function handler(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await response.json();
@@ -33,12 +31,22 @@ export default async function handler(
       return res.status(response.status).json(data);
     }
 
-    // Set cookies from backend response
-    if (response.headers.get("set-cookie")) {
-      const cookies = response.headers.get("set-cookie")?.split(",");
-      cookies?.forEach((cookie) => {
-        res.setHeader("Set-Cookie", cookie.trim());
-      });
+    // Forward Set-Cookie headers from backend to client, removing Domain
+    const anyHeaders = response.headers as any;
+    const setCookies: string[] | undefined = anyHeaders.getSetCookie
+      ? anyHeaders.getSetCookie()
+      : undefined;
+    if (setCookies && setCookies.length) {
+      res.setHeader(
+        "Set-Cookie",
+        setCookies.map((c: string) => c.replace(/;\s*Domain=[^;]+/gi, ""))
+      );
+    } else {
+      const single = response.headers.get("set-cookie");
+      if (single) {
+        const cleaned = single.replace(/;\s*Domain=[^;]+/gi, "");
+        res.setHeader("Set-Cookie", cleaned);
+      }
     }
 
     return res.status(200).json(data);

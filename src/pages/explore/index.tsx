@@ -1,9 +1,9 @@
-import React from 'react';
-import NavigationBar from '../components/NavigationBar/NavigationBar';
-import Footer from '../components/Footer/Footer';
-import ExploreHeader from '../components/Explore/ExploreHeader/ExploreHeader';
-import ExploreGrid from '../components/Explore/ExploreGrid/ExploreGrid';
-import styles from './Explore.module.css';
+import React from "react";
+import NavigationBar from "../../components/NavigationBar/NavigationBar";
+import Footer from "../../components/Footer/Footer";
+import ExploreHeader from "../../components/Explore/ExploreHeader/ExploreHeader";
+import ExploreGrid from "../../components/Explore/ExploreGrid/ExploreGrid";
+import styles from "./Explore.module.css";
 
 export default function Explore() {
   return (
@@ -31,4 +31,3 @@ export default function Explore() {
     </div>
   );
 }
-

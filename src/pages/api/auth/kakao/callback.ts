@@ -33,15 +33,25 @@ export default async function handler(
       return res.status(response.status).json(data);
     }
 
-    // Set cookies from backend response
-    if (response.headers.get("set-cookie")) {
-      const cookies = response.headers.get("set-cookie")?.split(",");
-      cookies?.forEach((cookie) => {
-        res.setHeader("Set-Cookie", cookie.trim());
-      });
+    // Forward Set-Cookie headers from backend to client
+    const anyHeaders = response.headers as any;
+    const setCookies: string[] | undefined = anyHeaders.getSetCookie
+      ? anyHeaders.getSetCookie()
+      : undefined;
+    if (setCookies && setCookies.length) {
+      res.setHeader(
+        "Set-Cookie",
+        setCookies.map((c: string) => c.replace(/;\s*Domain=[^;]+/gi, ""))
+      );
+    } else {
+      const single = response.headers.get("set-cookie");
+      if (single) {
+        const cleaned = single.replace(/;\s*Domain=[^;]+/gi, "");
+        res.setHeader("Set-Cookie", cleaned);
+      }
     }
 
-    // Redirect to home page or dashboard after successful authentication
+    // Redirect to home page after successful authentication
     res.redirect(302, "/");
   } catch (error) {
     console.error("Kakao callback error:", error);

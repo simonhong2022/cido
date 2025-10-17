@@ -33,11 +33,21 @@ export default async function handler(
     }
 
     // Forward Set-Cookie headers from backend to client
-    const setCookie = response.headers.get("set-cookie");
-    if (setCookie) {
-      // Remove Domain attribute to avoid cross-domain cookie rejection when proxying
-      const cleaned = setCookie.replace(/;\s*Domain=[^;]+/gi, "");
-      res.setHeader("Set-Cookie", cleaned);
+    const anyHeaders = response.headers as any;
+    const setCookies: string[] | undefined = anyHeaders.getSetCookie
+      ? anyHeaders.getSetCookie()
+      : undefined;
+    if (setCookies && setCookies.length) {
+      res.setHeader(
+        "Set-Cookie",
+        setCookies.map((c: string) => c.replace(/;\s*Domain=[^;]+/gi, ""))
+      );
+    } else {
+      const single = response.headers.get("set-cookie");
+      if (single) {
+        const cleaned = single.replace(/;\s*Domain=[^;]+/gi, "");
+        res.setHeader("Set-Cookie", cleaned);
+      }
     }
 
     return res.status(200).json(data);

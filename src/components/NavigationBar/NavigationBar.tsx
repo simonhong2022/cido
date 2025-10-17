@@ -14,8 +14,8 @@ const navLinks = [
 
 export default function NavigationBar() {
   // Backend auth system
-  const { user, logout } = useAuth();
-  
+  const { user, logout, loading } = useAuth();
+
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -32,20 +32,26 @@ export default function NavigationBar() {
 
       {/* Desktop Navigation Links */}
       <div className={styles.navLinks}>
-        {navLinks.filter(link => link.label !== "Home").map((link) => (
-          <a key={link.label} href={link.href} className={styles.navLink}>
-            {link.label}
-          </a>
-        ))}
+        {navLinks
+          .filter((link) => link.label !== "Home")
+          .map((link) => (
+            <a key={link.label} href={link.href} className={styles.navLink}>
+              {link.label}
+            </a>
+          ))}
       </div>
 
       {/* Mobile Menu Button - Tablet/Mobile에서 왼쪽에 표시 */}
-      <button 
+      <button
         className={styles.mobileMenuButton}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         aria-label="메뉴 열기"
       >
-        <span className={`${styles.hamburger} ${isMobileMenuOpen ? styles.hamburgerActive : ''}`}>
+        <span
+          className={`${styles.hamburger} ${
+            isMobileMenuOpen ? styles.hamburgerActive : ""
+          }`}
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -62,7 +68,9 @@ export default function NavigationBar() {
           내 작업 업로드
         </button>
         {/* Conditional Button/Icon based on login status */}
-        {user ? (
+        {loading ? (
+          <div style={{ width: 160, height: 32 }} />
+        ) : user ? (
           // Cart Icon
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -94,24 +102,56 @@ export default function NavigationBar() {
           alt="search"
           className={styles.icon}
         />
-        <img
-          src="/Cido Web_icon/HOME/Frame 33.svg"
-          alt="mypage"
-          onClick={() => router.push("/login")}
-          className={styles.icon}
-          style={{ cursor: 'pointer' }}
-        />
+        {loading ? (
+          <div style={{ width: 160, height: 32 }} />
+        ) : user ? (
+          <div className={styles.userMenu}>
+            <span
+              className={styles.userName}
+              onClick={() => router.push("/mypage")}
+              style={{ cursor: "pointer" }}
+            >
+              {(user as any).username ||
+                ((user as any).email || "").split("@")[0] ||
+                "User"}
+            </span>
+            <button
+              className={styles.logoutButton}
+              onClick={async () => {
+                try {
+                  await logout();
+                } finally {
+                  router.push("/");
+                }
+              }}
+            >
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <img
+            src="/Cido Web_icon/HOME/Frame 33.svg"
+            alt="mypage"
+            onClick={() => router.push("/login")}
+            className={styles.icon}
+            style={{ cursor: "pointer" }}
+          />
+        )}
       </div>
 
       {/* Mobile Menu */}
-      <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.mobileMenuOpen : ''}`}>
+      <div
+        className={`${styles.mobileMenu} ${
+          isMobileMenuOpen ? styles.mobileMenuOpen : ""
+        }`}
+      >
         <div className={styles.mobileMenuContent}>
           {/* Mobile Navigation Links */}
           <div className={styles.mobileNavLinks}>
             {navLinks.map((link) => (
-              <a 
-                key={link.label} 
-                href={link.href} 
+              <a
+                key={link.label}
+                href={link.href}
                 className={styles.mobileNavLink}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -119,13 +159,17 @@ export default function NavigationBar() {
               </a>
             ))}
           </div>
-          
+
           {/* Mobile Buttons */}
           <div className={styles.mobileButtons}>
-            <button className={`${styles.mobileNavButton} ${styles.mobileRequestButton}`}>
+            <button
+              className={`${styles.mobileNavButton} ${styles.mobileRequestButton}`}
+            >
               디자인 의뢰
             </button>
-            <button className={`${styles.mobileNavButton} ${styles.mobileWorkButton}`}>
+            <button
+              className={`${styles.mobileNavButton} ${styles.mobileWorkButton}`}
+            >
               작업 업로드
             </button>
           </div>
