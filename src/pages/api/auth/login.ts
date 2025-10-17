@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-const BACKEND_URL = process.env.BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL =
+  "https://cidobackend-gaf0dte7ajbnfqb5.koreacentral-01.azurewebsites.net";
 
 export default async function handler(
   req: NextApiRequest,
